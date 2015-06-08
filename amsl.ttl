@@ -281,8 +281,8 @@ amsl:erAltTitle a owl:DatatypeProperty ;
     rdfs:domain amsl:BasicContractData .
 
 amsl:expectedPrice a owl:DatatypeProperty ;
-    rdfs:label "Planpreis laufendes Jahr (EUR)"@de,
-        "expected price current year (EUR)"@en ;
+    rdfs:label "Planpreis (EUR)"@de,
+        "expected price (EUR)"@en ;
     rdfs:comment "Verknüpft den Preis, welcher für das laufende Jahr für den Vertrag geschätzt und eingeplant wurde"@de,
         "Links the price that was expected and planned for the license for the current year"@en ;
     rdfs:domain amsl:AnnualContractData .
@@ -292,7 +292,8 @@ amsl:expectedPriceFollowingYear a owl:DatatypeProperty ;
         "expected price following year (EUR)"@en ;
     rdfs:comment "Verknüpft den Preis, welcher für das nachfolgende Jahr für den Vertrag geschätzt und eingeplant wurde"@de,
         "Links the price that was expected and planned for the license for the following year"@en ;
-    rdfs:domain amsl:AnnualContractData .    
+    rdfs:domain amsl:AnnualContractData ;
+    owl:deprecated "true"^^xsd:boolean .    
 
 amsl:externalContact a owl:ObjectProperty ;
     rdfs:label "Externer Ansprechpartner"@de,

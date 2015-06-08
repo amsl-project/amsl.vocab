@@ -800,6 +800,15 @@ amsl:paymentPeriod  a owl:ObjectProperty ;
     rdfs:range amsl:PaymentPeriod .    
 
 
+amsl:workflowStatus a owl:ObjectProperty ;
+    rdfs:label "Status im Geschäftsgang"@de ,
+        "workflow status"@en ;
+    rdfs:comment "Verknüpft Informationen zu dem Status des Jahresvertrages im Geschäftsgang, ob ein Vertrag etwa bereits verlängert wurde oder ob die Verhandlungen dazu noch laufen."@de,
+        "Links information on the workflow status of an annual contract, e. g. that a contract has already been renewed or that the negotiations are still ongoing."@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range amsl:WorkflowStatus . 
+
+
 
   
     
@@ -1125,7 +1134,10 @@ amsl:MetadataSourceImplStatus a owl:Class ;
     owl:oneOf   (amsl:Wish amsl:Inquired  amsl:InProcess amsl:Trial amsl:Active  amsl:Impossible ) .
 
 amsl:ERStatus a owl:Class ;
-    owl:oneOf ( amsl:Active amsl:CancellationNominee amsl:Cancelled  amsl:Trial amsl:Wish  ) .  
+    owl:oneOf ( amsl:Active amsl:Cancelled  amsl:Trial amsl:Wish  ) .  
+
+amsl:WorkflowStatus a owl:Class ;
+    owl:oneOf ( amsl:Inquired amsl:Renewed amsl:NotRenewed)   . 
 
 
 amsl:Active a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
@@ -1134,7 +1146,8 @@ amsl:Active a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
         
 amsl:CancellationNominee a amsl:ERStatus ;
     rdfs:label "Abbestellkandidat"@de,
-        "Nominee for Cancellation"@en .
+        "Nominee for Cancellation"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 amsl:Cancelled a amsl:ERStatus ;
     rdfs:label "Abbestellt"@de,
@@ -1153,15 +1166,22 @@ amsl:InProcess a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus ;
         "In Process (techn.)"@en ;
     rdfs:comment "Wird momentan technisch bearbeitet."@de, "Is being technically processed"@en .
 
-amsl:Inquired a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus ;
+amsl:Inquired a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus , amsl:WorkflowStatus ;
     rdfs:label "Angefragt / In Verhandlung"@de,
         "Inquired / In Negotiation"@en .
+
+amsl:NotRenewed a amsl:WorkflowStatus ;
+    rdfs:label "Nicht Verlängert"@de,
+        "Not renewed"@en .
         
 amsl:Prospected a amsl:ShibbolethImplStatus  ;
     rdfs:label "In Aussicht"@de,
         "Prospected"@en .
 
-        
+amsl:Renewed a amsl:WorkflowStatus ;
+    rdfs:label "Verlängert"@de,
+        "Renewed"@en .
+       
 amsl:Trial a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
     rdfs:label "Test"@de,
         "Trial"@en .

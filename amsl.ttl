@@ -816,7 +816,7 @@ amsl:workflowStatus a owl:ObjectProperty ;
 ######################## Collections & Individuals #####################################
     
 amsl:AcqNote a owl:Class ;
-    owl:oneOf ( amsl:AllianceLicense amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:PDA   amsl:PPV  amsl:Unknown ) . 
+    owl:oneOf ( amsl:AllianceLicense amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:ScientificInformationServicesLicense amsl:PDA amsl:PPV  amsl:Unknown ) . 
 
 amsl:AllianceLicense a amsl:AcqNote ;
     rdfs:label "Allianzlizenz"@de,
@@ -829,6 +829,10 @@ amsl:ConsortialLicense a amsl:AcqNote ;
 amsl:DedicatedLicense a amsl:AcqNote ;
     rdfs:label "Eigene Lizenz"@de,
         "Dedicated License"@en .
+
+amsl:ScientificInformationServicesLicense a amsl:AcqNote ;
+    rdfs:label "FID-Lizenz"@de ,
+        "Scientific Information Services License"@en .       
                 
 amsl:Gift a amsl:AcqNote ;
     rdfs:label "Geschenk"@de,

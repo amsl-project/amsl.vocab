@@ -940,7 +940,7 @@ amsl:StrucDB a amsl:DBType ;
  
         
 amsl:ERType  a owl:Class ;
-    owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage  ) .       
+    owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage amsl:Metadata  ) .       
 
 amsl:Database a amsl:ERType ;
     rdfs:label "Datenbank"@de,
@@ -961,6 +961,10 @@ amsl:Ejournal a amsl:ERType ;
 amsl:EjournalPackage a amsl:ERType ;
     rdfs:label "E-Journals-Paket"@de,
         "e-journal package"@en .
+
+amsl:Metadata a amsl:ERType ;
+    rdfs:label "Metadaten"@de,
+        "metadata"@en .
  
 
 amsl:ExtendedBoolean  a owl:Class ;

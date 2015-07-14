@@ -73,6 +73,12 @@ amsl:Platform a rdfs:Class ;
     rdfs:comment "Das Portal bzw. der Service, der die Inhalte bereitstellt und zugänglich macht."@de,
         "The portal resp. service providing the electronic content and the access to it."@en .
 
+amsl:Subtotal a rdfs:Class ;
+    rdfs:label "Teilsumme"@de,
+        "Subtotal"@en ;
+    rdfs:comment "Eine Teilsumme bspw. eines Rechnungs- oder Planpreises."@de ,
+        "A subtotal of e.g. an invoice or expected price." .
+
    
 
 
@@ -738,6 +744,22 @@ amsl:scholarlySharing a owl:ObjectProperty ;
         "Links information on the right of authorized users and/or the licensee to transmit hard copy or an electronic copy of a portion of the licensed materials to a third party for personal, scholarly, educational, scientific or professional use"@en ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
+
+amsl:invoicePriceSubtotal a owl:ObjectProperty ;
+    rdfs:label "Rechnungspreis Teilsumme"@de ,
+        "Invoice price subtotal"@en ;
+    rdfs:comment "Verknüpft die Teilsumme eines Rechnungspreises. Dieser wiederum kann der Betrag sowie das belastete Budget zugeordnet werden."@de,
+        "Links the subtotal of an invoice price. The subtotal again may be linked with the amount due and the budget charged."@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range amsl:Subtotal .
+
+amsl:expectedPriceSubtotal a owl:ObjectProperty ;
+    rdfs:label "Planpreis Teilsumme"@de ,
+        "Expected price subtotal"@en ;
+    rdfs:comment "Verknüpft die Teilsumme eines Planpreises. Dieser wiederum kann der Betrag sowie das belastete Budget zugeordnet werden."@de,
+        "Links the subtotal of an expected price. The subtotal again may be linked with the amount due and the budget charged."@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range amsl:Subtotal .
 
 amsl:budgetAbbr a owl:DataTypeProperty ;
     rdfs:label "Budgetkürzel"@de,

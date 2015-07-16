@@ -64,7 +64,7 @@ amsl:ContractItem a rdfs:Class ;
 
 
 amsl:FacultyShare a rdfs:Class ;
-    rdf:label "Fakultätsanteil"@de ,
+    rdfs:label "Fakultätsanteil"@de ,
         "Faculty share"@en ;
     rdfs:comment "Der Anteil an einem Vertrag, den eine bestimmte Fakultät trägt."@de ,
         "The share of a license contract a certain faculty bears."@en .

@@ -272,15 +272,6 @@ amsl:description a owl:DatatypeProperty ;
         "Links an account of the content of the resource. It may include pointers to other relevant objects (e.g., tables of contents)"@en ;
     rdfs:domain amsl:BasicContractData .
 
-amsl:facultyShare a owl:ObjectProperty ;
-    rdfs:label "Fakultätsanteil"@de ,
-        "Faculty share"@en ;
-    rdfs:comment "Verknüpft den Anteil an einem Vertrag, der von einer bestimmten Fakultät getragen wird." @de ,
-        "Links the share of a license contract a certain faculty bears"@en ;
-    rdfs:domain amsl:BasicContractData ;
-    rdfs:range amsl:FacultyShare .
-
-
 amsl:linkToDescription a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "URL der Anbieterbeschreibung"@de,
@@ -440,7 +431,15 @@ amsl:faculty a owl:ObjectProperty ;
         "Faculty"@en ;
     rdfs:comment "Verknüpft eine bestimmte Fakultät, etwa bei Fakultätsanteilen"@de ,
         "Links a certain faculty, e.g. in the context of faculty shares."@en ;
-    rdfs:range aiiso:Faculty .    
+    rdfs:range aiiso:Faculty .   
+
+amsl:facultyShare a owl:ObjectProperty ;
+    rdfs:label "Fakultätsanteil"@de ,
+        "Faculty share"@en ;
+    rdfs:comment "Verknüpft den Anteil an einem Vertrag, der von einer bestimmten Fakultät getragen wird."@de ,
+        "Links the share of a license contract a certain faculty bears"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:FacultyShare .
 
 amsl:illNote a owl:DatatypeProperty ;
     rdfs:label "Fernleihnotiz"@de,

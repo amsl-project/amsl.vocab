@@ -1212,8 +1212,8 @@ amsl:CancellationNominee a amsl:ERStatus ;
     owl:deprecated "true"^^xsd:boolean .
         
 amsl:Cancelled a amsl:ERStatus ;
-    rdfs:label "Abbestellt"@de,
-        "Cancelled"@en .    
+    rdfs:label "Abbestellt / beendet"@de,
+        "Cancelled / terminated"@en .    
 
 amsl:Implemented a amsl:ShibbolethImplStatus ;
     rdfs:label "Implementiert"@de,

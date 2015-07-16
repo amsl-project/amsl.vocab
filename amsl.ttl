@@ -1,3 +1,4 @@
+@prefix aiiso: <http://purl.org/vocab/aiiso/schema#> .
 @prefix amsl: <http://vocab.ub.uni-leipzig.de/amsl/> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
@@ -60,6 +61,14 @@ amsl:ContractItem a rdfs:Class ;
         "Contract Item"@en ;
     rdfs:comment "Die einzelnen elektronischen Ressourcen, die von einem Vetrag oder einem Lizenzpaket umfasst werden."@de ,
     	"Individual electronic resources that are contained in a license contract or package."@en .
+
+
+amsl:FacultyShare a rdfs:Class ;
+    rdf:label "Fakultätsanteil"@de ,
+        "Faculty share"@en ;
+    rdfs:comment "Der Anteil an einem Vertrag, den eine bestimmte Fakultät trägt."@de ,
+        "The share of a license contract a certain faculty bears."@en .
+
 
 amsl:LicensePackage a rdfs:Class ;
     rdfs:label "Paket"@de,
@@ -263,6 +272,15 @@ amsl:description a owl:DatatypeProperty ;
         "Links an account of the content of the resource. It may include pointers to other relevant objects (e.g., tables of contents)"@en ;
     rdfs:domain amsl:BasicContractData .
 
+amsl:facultyShare a owl:ObjectProperty ;
+    rdfs:label "Fakultätsanteil"@de ,
+        "Faculty share"@en ;
+    rdfs:comment "Verknüpft den Anteil an einem Vertrag, der von einer bestimmten Fakultät getragen wird." @de ,
+        "Links the share of a license contract a certain faculty bears"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:FacultyShare .
+
+
 amsl:linkToDescription a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "URL der Anbieterbeschreibung"@de,
@@ -417,6 +435,13 @@ amsl:expectedInvoiceDate a owl:DatatypeProperty ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range xsd:date .
 
+amsl:faculty a owl:ObjectProperty ;
+    rdfs:label "Fakultät"@de ,
+        "Faculty"@en ;
+    rdfs:comment "Verknüpft eine bestimmte Fakultät, etwa bei Fakultätsanteilen"@de ,
+        "Links a certain faculty, e.g. in the context of faculty shares."@en ;
+    rdfs:range aiiso:Faculty .    
+
 amsl:illNote a owl:DatatypeProperty ;
     rdfs:label "Fernleihnotiz"@de,
         "Interlibrary Loan Note"@en ;
@@ -464,6 +489,13 @@ amsl:organizationType a owl:ObjectProperty ;
     	"Links the category resp. type of an organization"@en ;    
     rdfs:domain foaf:Organization ;
     rdfs:range amsl:OrganizationType .
+
+amsl:percentage a owl:DatatypeProperty ;
+    rdfs:label "prozentualer Anteil"@de ,
+        "percentage"@en ;
+    rdfs:comment "Verknüpft einen prozetualen Anteil, etwa bei Fakultätsanteilen."@de ,
+        "Links a percentage, e.g. in the context of faculty shares."@en ;
+    rdfs:range xsd:decimal .
 
 amsl:platform a  owl:ObjectProperty ;
     rdfs:label "via Plattform"@de,

@@ -23,7 +23,7 @@ amsl: a owl:Ontology ;
     vann:preferredNamespacePrefix "amsl" ;
     vann:preferredNamespaceUri "http://vocab.ub.uni-leipzig.de/amsl/" ;
     doap:homepage <http://amsl.technology> ;
-    doap:maintainer <http://aksw.org/Partner/AnnikaDomin> , <http://aksw.org/NormanRadtke> , <http://aksw.org/SebastianNuck> ;
+    doap:maintainer <http://aksw.org/Partner/AnnikaDomin> ;
     foaf:maker 
         <http://aksw.org/NatanaelArndt>,
         <http://aksw.org/Partner/AnnikaDomin>,
@@ -1293,6 +1293,14 @@ rdfs:range amsl:MetadataSourceImplStatus .
 amsl:metadataUsedByLibrary a owl:ObjectProperty;
 rdfs:label "Metadaten nutzende Bibliothek"@de, "metadata using library"@en ;
 rdfs:comment "Verknüpft die Bibliothek, die die Metadaten einer Kollektion nutzt."@de, "Links the library using a collection's metadata."@en ;
+rdfs:domain amsl:MetadataCollection ;
+rdfs:range foaf:Organization .
+
+amsl:metadataUsageProhibited a owl:ObjectProperty ;
+rdfs:label "Metadatennutzung untersagt"@de ,
+     "metadata usage prohibited" ;
+rdfs:comment "Verknüpft eine Bibliothek, der die Nutzung einer bestimmten Metadatenkollektion z. B. aus lizenzrechtlichen Gründen untersagt ist."@de , 
+    "Links a library that is prohibited from using a certain metadata collection due to e.g. licensing restrictions."@en ;
 rdfs:domain amsl:MetadataCollection ;
 rdfs:range foaf:Organization .
 

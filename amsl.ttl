@@ -966,9 +966,96 @@ amsl:workflowStatus a owl:ObjectProperty ;
     rdfs:range amsl:WorkflowStatus . 
 
 
+#### NEW: KBART support
 
-  
-    
+amsl:dateFirstIssueOnline a owl:DatatypeProperty ;
+    rdfs:label "Datum der ersten online verfügbaren Ausgabe"@de,
+        "Date of first issue available online"@en ;
+    rdfs:comment "Verknüpft das Datum der ersten online verfügbaren Ausgabe eines E-Journals oder E-Books."@de ,
+        "Links the date of the first issue of an e-journal or e-book available online."@en ;
+    rdfs:domain amsl:ContractItem ;
+    rdfs:range xsd:date .   
+
+amsl:dateLastIssueOnline a owl:DatatypeProperty ;
+    rdfs:label "Datum der letzten online verfügbaren Ausgabe"@de,
+        "Date of last issue available online"@en ;
+    rdfs:comment "Verknüpft das Datum der letzten online verfügbaren Ausgabe eines E-Journals oder E-Books."@de ,
+        "Links the date of the last issue of an e-journal or e-book available online."@en ;
+    rdfs:domain amsl:ContractItem ;
+    rdfs:range xsd:date .   
+
+amsl:numberFirstVolumeOnline a owl:DatatypeProperty ;
+    rdfs:label "Nummer des ersten online verfügbaren Jahrgangs"@de,
+        "Number of first volume available online"@en ;
+    rdfs:comment "Verknüpft die Nummer des ersten online verfügbaren Jahrganges eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Bd.' oder 'Jg.')."@de ,
+        "Links the number of the first volume of an e-journal available online. Do not include any labels (e.g., 'vol.' or 'v.')."@en ;
+    rdfs:domain amsl:ContractItem  . 
+
+amsl:numberFirstIssueOnline a owl:DatatypeProperty ;
+    rdfs:label "Nummer der ersten online verfügbaren Ausgabe"@de,
+        "Number of first issue available online"@en ;
+    rdfs:comment "Verknüpft die Nummer der ersten online verfügbaren Ausgabe eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Nr.' oder 'Heft')."@de ,
+        "Links the number of the first issue of an e-journal available online. Do not include any labels (e.g., 'no.' or 'n.') nor any supplement or part values."@en ;
+    rdfs:domain amsl:ContractItem  . 
+
+
+amsl:numberLastVolumeOnline a owl:DatatypeProperty ;
+    rdfs:label "Nummer des letzten online verfügbaren Jahrgangs"@de,
+        "Number of last volume available online"@en ;
+    rdfs:comment "Verknüpft die Nummer des letzten online verfügbaren Jahrganges eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Bd.' oder 'Jg.')."@de ,
+        "Links the number of the last volume of an e-journal available online. Do not include any labels (e.g., 'vol.' or 'v.')."@en ;
+    rdfs:domain amsl:ContractItem  . 
+
+amsl:numberLastIssueOnline a owl:DatatypeProperty ;
+    rdfs:label "Nummer der letzten online verfügbaren Ausgabe"@de,
+        "Number of last issue available online"@en ;
+    rdfs:comment "Verknüpft die Nummer der letzten online verfügbaren Ausgabe eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Nr.' oder 'Heft')."@de ,
+        "Links the number of the last issue of an e-journal available online. Do not include any labels (e.g., 'no.' or 'n.') nor any supplement or part values."@en ;
+    rdfs:domain amsl:ContractItem  . 
+
+amsl:embargoInfo a owl:DatatypeProperty ;
+    rdfs:label "Embargo"@de ,
+        "embargo"@en ;
+    rdfs:comment "Verknüpft Embargo-Informationen in der KBART-Erfassungsweise."@de ,
+        "Links embargo information in KBART style."@en ;
+    rdfs:domain amsl:ContractItem .
+
+amsl:coverageDepth a owl:ObjectProperty ;
+    rdfs:label "Abdeckungstiefe"@de ,
+        "Coverage Depth"@en ;
+    rdfs:comment "Verknüpft Informationen über die Tiefe, in der der Inhalt abgedeckt wird."@de ,
+        "Links information on the extent to which content is covered."@en ;
+    rdfs:domain amsl:ContractItem ;
+    rdfs:range amsl:CoverageDepth .
+
+ amsl:coverageNotes a owl:DatatypeProperty ;
+    rdfs:label "Abdeckungsnotiz"@de ,
+        "Coverage Notes"@en ;
+    rdfs:comment "Verknüpft weiterführende Informationen über die Abdeckungstiefe."@de ,
+        "Links further information on the coverage depth."@en ;
+    rdfs:domain amsl:ContractItem .  
+
+
+amsl:CoverageDepth a owl:Class ;
+    owl:oneOf ( amsl:FulltextCoverage amsl:SelectedArticlesCoverage amsl:AbstractCoverage ) .
+
+
+amsl:FulltextCoverage a amsl:CoverageDepth ;
+    rdfs:label "Volltext"@de , 
+        "Fulltext"@en .
+
+amsl:SelectedArticlesCoverage a amsl:CoverageDepth ;
+    rdfs:label "Ausgewählte Artikel"@de ,
+        "Selected articles"@en .
+
+amsl:AbstractCoverage a amsl:CoverageDepth ;
+    rdfs:label "Abstracts"@de ,
+        "Abstracts"@en .
+
+
+
+
+
     
 ######################## Collections & Individuals #####################################
     

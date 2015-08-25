@@ -900,8 +900,8 @@ amsl:scholarlySharing a owl:ObjectProperty ;
 
 amsl:shibbolethImplStatus a owl:ObjectProperty ;
     rdfs:label "Status Shibboleth Implementation"@de, "Shibboleth implementation status"@en ;
-    rdfs:comment "Verknüpft Informationen über den Status der Shibboleth Implementation"@de,
-        "Links information on the status of the shibboleth implementation"@en ;
+    rdfs:comment "Verknüpft Informationen über den Status der Shibboleth Implementation."@de,
+        "Links information on the status of the shibboleth implementation."@en ;
     rdfs:domain amsl:Platform ;
     rdfs:range amsl:ShibbolethImplStatus .
 
@@ -912,6 +912,14 @@ amsl:shutDownDate a owl:DatatypeProperty ;
         "Links the date the access to the ER shuts down."@en ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range xsd:date .
+
+amsl:solrShard a owl:ObjectProperty ;
+    rdfs:label "Solr-Shard"@de ,
+        "solr shard"@en ;
+    rdfs:comment "Verknüpft den Solr-Shard einer Metadatenquelle."@de,
+        "Links the solr shard of a metadata source."@en ;
+    rdfs:domain amsl:MetadataSource ;
+    rdfs:range amsl:SolrShard .
 
 amsl:sourceID a owl:DatatypeProperty ;
     rdfs:label "Source ID"@de,
@@ -942,6 +950,14 @@ amsl:terminationReason a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft den Grund für die Kündigung eines Vertrags"@de,
         "Links the reason a subscription was terminated"@en ;
     rdfs:domain amsl:BasicContractData .
+
+amsl:ticketURL a owl:ObjectProperty ;
+    rdfs:label "Ticket-URL"@de ,
+        "ticket URL"@en ;
+    rdfs:comment "Verknüpft die URL des korrespondierenden Tickets in einem internen Ticketsystem."@de ,
+        "Links the URL of a corresponding ticket in an internal ticket system"@en ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:MetadataSource amsl:MetadataCollection ) ] .
 
 amsl:updateRhythm a owl:DatatypeProperty ;
     rdfs:label  "Update-Rhythmus"@de ,
@@ -1403,6 +1419,7 @@ amsl:PaymentInLicensingYear a amsl:PaymentPeriod ;
         "Payment in licensing year"@en .
 
 
+amsl:SolrShard a owl:Class .
 
 
 amsl:UserGroup a owl:Class ;

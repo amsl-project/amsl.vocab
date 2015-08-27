@@ -50,6 +50,12 @@ amsl:BasicContractData a rdfs:Class ;
     rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Parteien. Dieser Vertragsteil beinhaltet die Basisinformationen (statische Daten) eines Vertrages."@de,
         "A class modeling a business contract between the library and one or more parties. This one contains the basic (static) properties of a contract."@en .
 
+amsl:BranchOffice a rdfs:Class ;
+    rdfs:label "Branch Office"@en ,
+        "Zweigstelle"@de ;
+    rdfs:comment "Eine Zweigstelle einer Organisation."@de ,
+        "A branch office of an organisation."@en .
+
 amsl:Budget a rdfs:Class ;
     rdfs:label "Budget"@de,
         "Budget"@en ;
@@ -93,6 +99,7 @@ amsl:LicensePackage a rdfs:Class ;
         "License Package"@en ;
     rdfs:comment "Ein Lizenzvertrag kann aus mehreren Lizenzpaketen zusammengestellt sein."@de,
         "A license contract can be made up by several license packages."@en .
+
 
 amsl:Platform a rdfs:Class ;
     rdfs:label "Plattform"@de,
@@ -174,6 +181,14 @@ amsl:basicContractData a rdf:Property,
         "Links the basict contract data, certain annual contract data are associated with"@en ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range amsl:BasicContractData .
+
+amsl:branchOffice a owl:ObjectProperty ;
+    rdfs:label "Branch Office"@en ,
+        "Zweigstelle"@de ;
+    rdfs:comment "Verknüpft ine Zweigstelle einer Organisation."@de ,
+        "Links a branch office of an organisation."@en ;
+    rdfs:domain foaf:Organization ;
+    rdfs:range amsl:BranchOffice .
 
 amsl:budget a owl:ObjectProperty ;
     rdfs:label "hat Budget"@de,
@@ -640,7 +655,7 @@ amsl:isMemberOf a owl:ObjectProperty ;
     	"Links the organization a person is a member of"@en ;    
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( foaf:Person sioc:User ) ] ;
-    rdfs:range foaf:Organization .
+    rdfs:range foaf:Organization . 
 
 amsl:isRelatedTo a owl:ObjectProperty ;
     rdfs:label "ist thematisch zugehörig zu"@de,

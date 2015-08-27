@@ -1252,7 +1252,7 @@ amsl:StrucDB a amsl:DBType ;
  
         
 amsl:ERType  a owl:Class ;
-    owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage amsl:Metadata  ) .       
+    owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage amsl:Metadata amsl:PrintPlusOnlineBook amsl:PrintPlusOnlineJournal ) .       
 
 amsl:Database a amsl:ERType ;
     rdfs:label "Datenbank"@de,
@@ -1277,6 +1277,15 @@ amsl:EjournalPackage a amsl:ERType ;
 amsl:Metadata a amsl:ERType ;
     rdfs:label "Metadaten"@de,
         "metadata"@en .
+
+amsl:PrintPlusOnlineBook a amsl:ERType ;
+    rdfs:label "Print + Online (Buch)"@de,
+        "Print + Online (Book)"@en .
+
+amsl:PrintPlusOnlineJournal a amsl:ERType ;
+    rdfs:label "Print + Online (Zeitschrift)"@de,
+        "Print + Online (Journal)"@en .
+
  
 
 

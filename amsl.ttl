@@ -941,7 +941,8 @@ amsl:sourceID a owl:DatatypeProperty ;
         "Source ID"@en ;
     rdfs:comment "Verknüpft die Source ID einer Metadatenquelle"@de , 
         "Links the source ID of a metadata source"@en ;
-    rdfs:domain amsl:Source .
+    rdfs:domain amsl:Source ;
+    rdfs:range xsd:integer .
 
 amsl:terminationAlert a owl:DatatypeProperty ;
     rdfs:label "Letztmöglicher Kündigungstag"@de ,

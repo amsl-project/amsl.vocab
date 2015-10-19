@@ -584,7 +584,7 @@ amsl:internalContact a owl:ObjectProperty ;
 
 amsl:invoiceDate a owl:DatatypeProperty ;
     rdfs:label "Rechnungsbearbeitungs-Datum"@de ,
-        "Invoive processing date"@en ;
+        "Invoice processing date"@en ;
     rdfs:comment "Verknüpft den Tag, an dem die Rechnung bearbeitet wurde"@de ,
         "links the day the invoice was processed"@en ;
     rdfs:domain amsl:AnnualContractData ;

@@ -262,10 +262,9 @@ amsl:contractFile a owl:ObjectProperty ;
 amsl:contractItemOf a owl:ObjectProperty ;
     rdfs:label "ist Vertragsposition von"@de ,
         "is contract item of"@en ;
-    rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit den Vertragsjahresdaten bzw. dem  Lizenzpaket, in dem sie enthalten ist."@de ,
-        "Links a certain contract item with the annual contract data resp. the license package it is contained in."@en ;
-    rdfs:range [ a owl:Class ;
-        owl:unionOf (amsl:AnnualContractData  amsl:LicensePackage)] ;
+    rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit dem Lizenzpaket, in dem sie enthalten ist."@de ,
+        "Links a certain contract item with the license package it is contained in."@en ;
+    rdfs:range  amsl:LicensePackage ;
     rdfs:domain amsl:ContractItem  .
 
 amsl:costCenter a rdf:Property,

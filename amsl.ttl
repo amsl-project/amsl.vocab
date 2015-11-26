@@ -507,7 +507,7 @@ amsl:fiscalYear a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft das Haushaltsjahr eines Jahresbudgets."@de ,
         "Links the fiscal year of a budget."@en ;
     rdfs:domain amsl:AnnualBudget ;
-    rdfs:range xsd:gYear .
+    rdfs:range xsd:integer .
 
 amsl:hasRemoteAccess a rdf:Property,
         owl:ObjectProperty ;

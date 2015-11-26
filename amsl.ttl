@@ -1148,7 +1148,7 @@ amsl:ScientificInformationServicesLicense a amsl:AcqNote ;
         "scientific information services license"@en .              
         
 amsl:Unknown a amsl:AcqNote ;
-    rdfs:label "unbekannt"@de ,
+    rdfs:label "Unbekannt"@de ,
         "unknown"@en . 
 
 
@@ -1301,7 +1301,7 @@ amsl:ExtendedBoolean  a owl:Class ;
     owl:oneOf (  amsl:Yes amsl:No amsl:Undetermined ) .
         
 amsl:Undetermined a amsl:ExtendedBoolean ;
-    rdfs:label "nicht festgelegt"@de ,
+    rdfs:label "Nicht festgelegt"@de ,
         "undetermined"@en .
  
 
@@ -1311,27 +1311,27 @@ amsl:LicenseTerm a owl:Class ;
     owl:oneOf ( amsl:NotApplicable amsl:SilentUninterpreted amsl:ProhibitedInterpreted  amsl:ProhibitedExplicit amsl:PermittedInterpreted  amsl:PermittedExplicit ) .
         
 amsl:NotApplicable a amsl:LicenseTerm ;
-    rdfs:label "nicht zutreffend"@de ,
+    rdfs:label "Nicht zutreffend"@de ,
         "not applicable"@en .
  
 amsl:PermittedExplicit a amsl:LicenseTerm ;
-    rdfs:label "zulässig (explizit)"@de ,
+    rdfs:label "Zulässig (explizit)"@de ,
         "permitted (explicit)"@en .
                 
 amsl:PermittedInterpreted a amsl:LicenseTerm ;
-    rdfs:label "zulässig (Auslegung)"@de ,
+    rdfs:label "Zulässig (Auslegung)"@de ,
         "permitted (interpreted)"@en .
 
 amsl:ProhibitedExplicit a amsl:LicenseTerm ;
-    rdfs:label "verboten (explizit)"@de ,
+    rdfs:label "Verboten (explizit)"@de ,
         "prohibited (explicit)"@en .  
               
 amsl:ProhibitedInterpreted a amsl:LicenseTerm ;
-    rdfs:label "verboten (Auslegung)"@de ,
+    rdfs:label "Verboten (Auslegung)"@de ,
         "prohibited (interpreted)"@en .
         
 amsl:SilentUninterpreted a amsl:LicenseTerm ;
-    rdfs:label "unerwähnt"@de ,
+    rdfs:label "Unerwähnt"@de ,
         "unmentioned"@en .
           
  

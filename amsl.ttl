@@ -37,6 +37,11 @@ amsl: a owl:Ontology ;
 
 ######################## Classes #####################################
 
+amsl:AnnualBudget a rdfs:Class ;
+    rdfs:label "Jahresbudget"@de ,
+        "Annual Budget"@en ;
+    rdfs:comment "Ein auf bestimmtes Haushaltsjahr bezogenes Budget."@de ,
+        "A budget for a certain fiscal year."@en .
 
 amsl:AnnualContractData a rdfs:Class ;
     rdfs:label "Vertragsjahresdaten"@de ,
@@ -134,6 +139,14 @@ amsl:acqMethod a owl:ObjectProperty ;
     rdfs:domain amsl:BasicContractData ;    
     rdfs:range amsl:AcqNote .
 
+amsl:annualBudget a owl:ObjectProperty ;
+    rdfs:label "Jahresbudget"@de ,
+        "annual budget"@en ;
+    rdfs:comment "Verknüpft das Jahresbudget, aus dem ein Betrag finanziert wird."@de ,
+        "Links the annual budget a sum is financed from."@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range amsl:AnnualBudget .    
+
 amsl:annualPrice a owl:DatatypeProperty ;
     rdfs:label "Jahrespreis (EUR)"@de ,
         "annual price (EUR)"@en ;
@@ -196,7 +209,8 @@ amsl:budget a owl:ObjectProperty ;
         "budget"@en ;
     rdf:comment "Verknüpft das Budget, das mit den Kosten für einen Lizenzvertrag belastet wird."@de ,
     	"Links the budget charged with the costs of a license contract."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualBudget amsl:Subtotal ) ] ;
     rdfs:range amsl:Budget .
 
 amsl:budgetAbbr a owl:DataTypeProperty ;
@@ -414,7 +428,8 @@ amsl:expectedPrice a owl:DatatypeProperty ;
         "expected price (EUR)"@en ;
     rdfs:comment "Verknüpft den Preis, welcher für das laufende Jahr für den Vertrag geschätzt und eingeplant wurde."@de ,
         "Links the price that was expected and planned for the license for the current year."@en ;
-    rdfs:domain amsl:AnnualContractData .
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
     
 amsl:expectedPriceFollowingYear a owl:DatatypeProperty ;
     rdfs:label "Planpreis Folgejahr (EUR)"@de ,
@@ -485,6 +500,14 @@ amsl:file a owl:ObjectProperty ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument."@de , 
         "Links a resource of the type Document."@en   ;
     rdfs:range foaf:Document . 
+
+amsl:fiscalYear a owl:DatatypeProperty ;
+    rdfs:label "Haushaltsjahr"@de ,
+        "fiscal year"@en ;
+    rdfs:comment "Verknüpft das Haushaltsjahr eines Jahresbudgets."@de ,
+        "Links the fiscal year of a budget."@en ;
+    rdfs:domain amsl:AnnualBudget ;
+    rdfs:range xsd:gYear .
 
 amsl:hasRemoteAccess a rdf:Property,
         owl:ObjectProperty ;
@@ -607,42 +630,48 @@ amsl:invoicePriceGrossEUR  a owl:DatatypeProperty;
 		"invoice price gross (EUR)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in Euro."@de ,
 		"Links the invoice price gross in euro."@en ;
-	rdfs:domain amsl:AnnualContractData .
+	rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
 
 amsl:invoicePriceGrossGBP a owl:DatatypeProperty;
     rdfs:label "Rechnungspreis brutto (GBP)"@de ,
         "invoice price gross (GBP)"@en ;
     rdfs:comment "Verknüpft den brutto Rechnungspreis in Pfund Sterling."@de ,
         "Links the invoice price gross in pound sterling."@en ;
-    rdfs:domain amsl:AnnualContractData .
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
 
 amsl:invoicePriceGrossUSD a owl:DatatypeProperty;
 	rdfs:label "Rechnungspreis brutto (USD)"@de ,
 		"invoice price gross (USD)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in US-Dollar."@de ,
 		"Links the invoice price gross in US-Dollar."@en ;
-	rdfs:domain amsl:AnnualContractData .
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
 
 amsl:invoicePriceNetEUR a owl:DatatypeProperty;
     rdfs:label "Rechnungspreis netto (EUR)"@de ,
         "invoice price net (EUR)"@en ;
     rdfs:comment "Verknüpft den netto Rechnungspreis in Euro."@de ,
         "Links the invoice price net in euro."@en ;
-    rdfs:domain amsl:AnnualContractData .
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
 
 amsl:invoicePriceNetGBP  a owl:DatatypeProperty;
     rdfs:label "Rechnungspreis netto (GBP)"@de ,
         "invoice price net (GBP)"@en ;
     rdfs:comment "Verknüpft den netto Rechnungspreis in Pfund Sterling."@de ,
         "Links the invoice price net in pound sterling."@en ;
-    rdfs:domain amsl:AnnualContractData .
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
 
 amsl:invoicePriceNetUSD a owl:DatatypeProperty;
     rdfs:label "Rechnungspreis netto (USD)"@de ,
         "invoice price net (USD)"@en ;
     rdfs:comment "Verknüpft den netto Rechnungspreis in US-Dollar."@de ,
         "Links the invoice price net in US-Dollar."@en ;
-    rdfs:domain amsl:AnnualContractData .       
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .      
 
 amsl:invoicePriceSubtotal a owl:ObjectProperty ;
     rdfs:label "Rechnungspreis Teilsumme"@de ,

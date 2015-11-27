@@ -932,6 +932,14 @@ amsl:primaryAccessURI a  owl:DatatypeProperty ;
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( amsl:BasicContractData amsl:MetadataSource ) ] .
 
+amsl:productISIL a owl:DatatypeProperty ;
+    rdfs:label "Produkt-ISIL"@de ,
+        "product ISIL"@en ;
+    rdfs:comment "Verknüpft einen Produkt-ISIL für Pakete elektronischer Ressourcen mit deutschlandweitem Zuschnitt."@de ,
+        "Links a product ISIL for packages of electronic resources laid out for German organizations"@en ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:MetadataCollection amsl:LicensePackage ) ]  .    
+
 amsl:proprietaryID a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "Proprietäre ID"@de ,

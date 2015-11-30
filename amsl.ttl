@@ -476,7 +476,7 @@ amsl:facultyShare a owl:ObjectProperty ;
         "faculty share"@en ;
     rdfs:comment "Verknüpft den Anteil an einem Vertrag, der von einer bestimmten Fakultät getragen wird."@de ,
         "Links a certain faculty's share of a license contract."@en ;
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:AnnualContractData ;
     rdfs:range amsl:FacultyShare .
 
 amsl:feedbackDate a owl:DatatypeProperty ;

@@ -601,11 +601,19 @@ amsl:internalContact a owl:ObjectProperty ;
         owl:unionOf ( amsl:BasicContractData amsl:MetadataSource ) ] ;
     rdfs:range foaf:Person .
 
-amsl:invoiceDate a owl:DatatypeProperty ;
+amsl:invoiceProcessingDate a owl:DatatypeProperty ;
     rdfs:label "Rechnungsbearbeitungsdatum"@de ,
         "invoice processing date"@en ;
     rdfs:comment "Verknüpft den Tag, an dem die Rechnung bearbeitet wurde."@de ,
-        "links the day the invoice was processed."@en ;
+        "Links the day the invoice was processed."@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range xsd:date .
+
+amsl:invoiceDate a owl:DatatypeProperty ;
+    rdfs:label "Rechnungsdatum"@de ,
+        "invoice date"@en ;
+    rdfs:comment "Verknüpft das Datum, an dem die Rechnung erstellt wurde."@de ,
+        "Links the day the invoice was created."@en ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range xsd:date .
   

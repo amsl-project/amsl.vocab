@@ -542,29 +542,7 @@ amsl:illset a owl:ObjectProperty ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
-amsl:includedInMetadataSource a owl:ObjectProperty ;
-    rdfs:label "enthalten in Metadatenquelle"@de ,
-        "included in metadata source"@en ;
-    rdfs:comment "Verknüpft die die Kollektion enthaltende Metadatenquelle."@de ,
-        "Links the metadata source including the collection."@en ;
-    rdfs:domain amsl:MetadataCollection ;
-    rdfs:range amsl:MetadataSource .
 
-amsl:indexingLevel a owl:DatatypeProperty ;
-    rdfs:label "Indexierungsgrad"@de ,
-        "indexing level"@en ;
-    rdfs:comment "Verknüpft Angaben zum gebotenen Indexierungsgrad"@de ,
-        "Links information on the indexing level offered."@en ;
-    rdfs:domain amsl:MetadataSource .
-
-amsl:invoiceReceived a rdf:Property,
-        owl:ObjectProperty ;
-    rdfs:label "Rechnung vorhanden"@de ,
-        "invoice received"@en ;
-    rdfs:comment "Verknüpft die Information, ob die aktuelle Rechnung bereits eingegangen ist."@de ,
-    	"Links the information, if the current invoice has alreday been received."@en ;
-    rdfs:domain amsl:AnnualContractData ;
-    rdfs:range amsl:Boolean .
 
 amsl:illElectronic a owl:ObjectProperty ;
     rdfs:label "Fernleihe elektronisch"@de ,
@@ -581,6 +559,21 @@ amsl:illPrintOrFax a owl:ObjectProperty ;
         "Links information on the right to provide the licensed materials via interlibrary loan by way of print copies or facsimile transmission."@en ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
+
+amsl:includedInMetadataSource a owl:ObjectProperty ;
+    rdfs:label "enthalten in Metadatenquelle"@de ,
+        "included in metadata source"@en ;
+    rdfs:comment "Verknüpft die die Kollektion enthaltende Metadatenquelle."@de ,
+        "Links the metadata source including the collection."@en ;
+    rdfs:domain amsl:MetadataCollection ;
+    rdfs:range amsl:MetadataSource .
+
+amsl:indexingLevel a owl:DatatypeProperty ;
+    rdfs:label "Indexierungsgrad"@de ,
+        "indexing level"@en ;
+    rdfs:comment "Verknüpft Angaben zum gebotenen Indexierungsgrad"@de ,
+        "Links information on the indexing level offered."@en ;
+    rdfs:domain amsl:MetadataSource .
 
 amsl:individualContractItems a owl:ObjectProperty ;
     rdfs:label "Individuelle Vertragspositionen"@de ,
@@ -680,6 +673,15 @@ amsl:invoicePriceSubtotal a owl:ObjectProperty ;
         "Links the subtotal of an invoice price. The subtotal again may be linked with the amount due and the budget charged."@en ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range amsl:Subtotal .
+
+amsl:invoiceReceived a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "Rechnung vorhanden"@de ,
+        "invoice received"@en ;
+    rdfs:comment "Verknüpft die Information, ob die aktuelle Rechnung bereits eingegangen ist."@de ,
+        "Links the information, if the current invoice has alreday been received."@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range amsl:Boolean .
     
 amsl:isMemberOf a owl:ObjectProperty ;
     rdfs:label "ist Mitglied von"@de ,

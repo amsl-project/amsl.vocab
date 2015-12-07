@@ -277,8 +277,8 @@ amsl:contractFile a owl:ObjectProperty ;
     rdfs:range foaf:Document .
 
 amsl:contractItemOf a owl:ObjectProperty ;
-    rdfs:label "ist Vertragsposition von"@de ,
-        "is contract item of"@en ;
+    rdfs:label "Vertragsposition von"@de ,
+        "contract item of"@en ;
     rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit dem Lizenzpaket, in dem sie enthalten ist."@de ,
         "Links a certain contract item with the license package it is contained in."@en ;
     rdfs:range  amsl:LicensePackage ;
@@ -692,8 +692,8 @@ amsl:invoiceReceived a rdf:Property,
     rdfs:range amsl:Boolean .
     
 amsl:isMemberOf a owl:ObjectProperty ;
-    rdfs:label "ist Mitglied von"@de ,
-        "is member of"@en ;
+    rdfs:label "Mitglied von"@de ,
+        "member of"@en ;
     rdfs:comment "Verknüpft die Organisation, bei der eine Person Mitglied ist."@de ,
     	"Links the organization a person is a member of."@en ;    
     rdfs:domain [ a owl:Class ;
@@ -701,8 +701,8 @@ amsl:isMemberOf a owl:ObjectProperty ;
     rdfs:range foaf:Organization . 
 
 amsl:isRelatedTo a owl:ObjectProperty ;
-    rdfs:label "ist thematisch zugehörig zu"@de ,
-    	"is related to"@en ;
+    rdfs:label "thematisch zugehörig zu"@de ,
+    	"related to"@en ;
     rdfs:comment "Verknüpft eine elektronische Ressourcen über deren ISSN mit einer thematisch passend zum Inhalt der Ressource ausgerichteten Fakultät."@de ,
     	"Links an electronic resource via its ISSN with an thematically related faculty."@en ;    	
     rdfs:range aiiso:Faculty .
@@ -843,13 +843,30 @@ amsl:metadataUsedByLibrary a owl:ObjectProperty;
     rdfs:domain amsl:MetadataCollection ;
     rdfs:range foaf:Organization .
 
+amsl:metadataUsagePermittedForLibrary a owl:ObjectProperty ;
+    rdfs:label "Metadatennutzung erlaubt für"@de ,
+         "metadata usage permitted for" ;
+    rdfs:comment "Verknüpft eine Bibliothek, der die Nutzung einer an Metadatenkollektion mit eingeschränkter Nutzung erlaubt ist."@de , 
+        "Links a library that has the permission to use a usage-restricted metadata collection."@en ;
+    rdfs:domain amsl:MetadataCollection ;
+    rdfs:range foaf:Organization .
+
 amsl:metadataUsageProhibited a owl:ObjectProperty ;
     rdfs:label "Metadatennutzung untersagt"@de ,
          "metadata usage prohibited" ;
     rdfs:comment "Verknüpft eine Bibliothek, der die Nutzung einer bestimmten Metadatenkollektion z. B. aus lizenzrechtlichen Gründen untersagt ist."@de , 
         "Links a library that is prohibited from using a certain metadata collection due to e.g. licensing restrictions."@en ;
     rdfs:domain amsl:MetadataCollection ;
-    rdfs:range foaf:Organization .
+    rdfs:range foaf:Organization ;
+    owl:deprecated "true"^^xsd:boolean .
+
+amsl:metadataUsageRestricted a owl:ObjectProperty ;
+    rdfs:label "Metadatennutzung eingeschränkt"@de ,
+         "metadata usage restricted" ;
+    rdfs:comment "Gibt an, ob die Nutzung einer bestimmten Metadatenkollektion z. B. aus lizenzrechtlichen Gründen eingeschränkt ist."@de , 
+        "States if a certain metadata collection has restricted usage due to e.g. licensing reasons."@en ;
+    rdfs:domain amsl:MetadataCollection ;
+    rdfs:range amsl:Boolean .
 
 amsl:nextUpdateDate a owl:DatatypeProperty ;
     rdfs:label  "Datum des nächsten Updates"@de ,

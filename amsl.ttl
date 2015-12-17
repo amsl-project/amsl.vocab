@@ -161,8 +161,7 @@ amsl:archivingNote a owl:DataTypeProperty ;
          "Links additional information related to archiving rights, product, and format."@en ;
     rdfs:domain amsl:BasicContractData .     
 
-amsl:authMethod a rdf:Property,
-        owl:ObjectProperty ;
+amsl:authMethod a owl:ObjectProperty ;
     rdfs:label "Authentifizierungsmethode"@de ,
         "authentication method"@en ;
     rdfs:comment "Verknüpft die nötige Authentifizierungsmethode, um Zugang zu den lizenzierten elektronischen Ressourcen zu erhalten."@de ,
@@ -187,8 +186,7 @@ amsl:balanceFile a owl:ObjectProperty ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range foaf:Document .    
 
-amsl:basicContractData a rdf:Property,
-        owl:ObjectProperty ;
+amsl:basicContractData a owl:ObjectProperty ;
     rdfs:label "Zugehörige Vertragsbasisdaten"@de ,
         "associated basic contract data"@en ;
     rdfs:comment "Vernüpft die übergeordnteten Vertragsbasisdaten, zu denen bestimmte Vertragsjahresdaten gehören."@de ,
@@ -234,8 +232,7 @@ amsl:concUser a owl:DatatypeProperty ;
         "Links the number of concurrent users for an electronic resource licensed in a contract."@en ;
     rdfs:domain amsl:BasicContractData .
 
-amsl:consortium a rdf:Property,
-        owl:ObjectProperty ;
+amsl:consortium a owl:ObjectProperty ;
     rdfs:label "Beteiligtes Konsortium"@de ,
         "involved consortium"@en ;
     rdfs:comment "Verknüpft ein beteiligtes Bibliothekskonsortium (Zusammenschluss von Bibliotheken)"@de ,
@@ -284,8 +281,7 @@ amsl:contractItemOf a owl:ObjectProperty ;
     rdfs:range  amsl:LicensePackage ;
     rdfs:domain amsl:ContractItem  .
 
-amsl:costCenter a rdf:Property,
-        owl:DataTypeProperty ;
+amsl:costCenter a owl:DataTypeProperty ;
     rdfs:label "Kostenstelle"@de ,
         "cost center"@en ;
     rdfs:comment "Verknüpft eine Kostenstelle. Sie ist ein Kostenrechnungsobjekt mit der Aufgabe, die in einem Unternehmensteil, meist einer Abteilung, angefallenen Kosten zu sammeln."@de ,
@@ -361,22 +357,19 @@ amsl:digitallyCopy a owl:ObjectProperty ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
-amsl:doi a rdf:Property,
-        owl:ObjectProperty ; 
+amsl:doi a owl:ObjectProperty ; 
     rdfs:label "DOI"@de ,
         "DOI"@en ;
     rdfs:comment "Verknüpft den DOI eines Mediums."@de ,
         "Links the DOI of a medium."@en .
 
-amsl:eisbn a rdf:Property,
-        owl:ObjectProperty ;
+amsl:eisbn a owl:ObjectProperty ;
     rdfs:label "E-ISBN"@de ,
         "E-ISBN"@en ;
     rdfs:comment "Verknüpft die E-ISBN eines Mediums."@de ,
         "Links the E-ISBN of a medium."@en .
 
-amsl:eissn a rdf:Property,
-        owl:ObjectProperty ;
+amsl:eissn a owl:ObjectProperty ;
     rdfs:label "E-ISSN"@de ,
         "E-ISSN"@en ;
     rdfs:comment "Verknüpft die E-ISSN eines Mediums."@de ,
@@ -389,8 +382,7 @@ amsl:erAltTitle a owl:DatatypeProperty ;
         "Links a variation of the title of the resource, including acronyms, parallel titles, titles in other languages, etc."@en ;
     rdfs:domain amsl:BasicContractData .
 
-amsl:erStatus a rdf:Property,
-        owl:ObjectProperty ;
+amsl:erStatus a owl:ObjectProperty ;
     rdfs:label "Status der ER"@de ,
         "status of the ER"@en ;
     rdfs:comment "Verknüpft den Status der elektronischen Ressourcen bzw. des diese beinhaltenden Vertrages im Erwerbungsprozess"@de ,
@@ -463,8 +455,7 @@ amsl:faculty a owl:ObjectProperty ;
         "Links a certain faculty, e.g. in the context of faculty shares."@en ;
     rdfs:range aiiso:Faculty .   
 
-amsl:facultyAbbr a rdf:Property,
-        owl:DatatypeProperty ;
+amsl:facultyAbbr a owl:DatatypeProperty ;
     rdfs:label "Fakultätskürzel"@de ,
         "faculty abbreviation"@en ;
     rdfs:comment "Verknüpft die intern gebräuchliche Abkürzung einer Fakultätsbezeichnung."@de ,
@@ -509,8 +500,7 @@ amsl:fiscalYear a owl:DatatypeProperty ;
     rdfs:domain amsl:AnnualBudget ;
     rdfs:range xsd:integer .
 
-amsl:hasRemoteAccess a rdf:Property,
-        owl:ObjectProperty ;
+amsl:hasRemoteAccess a owl:ObjectProperty ;
     rdfs:label "Remote Access"@de ,
         "remote access"@en ;
     rdfs:comment "Verknüpft Informationen über das Recht eines autorisierten Nutzers, von außerhalb Zugang zu elektronischen Produkten zu erlangen."@de ,
@@ -583,8 +573,7 @@ amsl:individualContractItems a owl:ObjectProperty ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:Boolean .
 
-amsl:initialAcquisitionDate a rdf:Property,
-        owl:DatatypeProperty ;
+amsl:initialAcquisitionDate a owl:DatatypeProperty ;
     rdfs:label "Ersterwerbungsdatum"@de ,
         "initial acquisition date"@en ;
     rdfs:comment "Verknüpft das Datum, an welchem das Produkt zum ersten Mal erworben wurde."@de ,
@@ -682,8 +671,7 @@ amsl:invoicePriceSubtotal a owl:ObjectProperty ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range amsl:Subtotal .
 
-amsl:invoiceReceived a rdf:Property,
-        owl:ObjectProperty ;
+amsl:invoiceReceived a owl:ObjectProperty ;
     rdfs:label "Rechnung vorhanden"@de ,
         "invoice received"@en ;
     rdfs:comment "Verknüpft die Information, ob die aktuelle Rechnung bereits eingegangen ist."@de ,
@@ -714,8 +702,7 @@ amsl:itemPrice a owl:DatatypeProperty ;
         "Links the acquisition/usage price for a bibliographic resource."@en ;
     rdfs:domain amsl:ContractItem .
 
-amsl:licensee a rdf:Property,
-        owl:ObjectProperty ;
+amsl:licensee a owl:ObjectProperty ;
     rdfs:label "Lizenznehmer"@de ,
         "licensee"@en ;
     rdfs:comment "Verknüpft die Vertragspartei, die eine Lizenz erhält."@de ,
@@ -786,8 +773,7 @@ amsl:linkToContract a owl:DatatypeProperty ;
         "Links a url linking to a digital version of the original contract document the licensee received from the licensor."@en ;
     rdfs:domain amsl:AnnualContractData .
 
-amsl:linkToDescription a rdf:Property,
-        owl:DatatypeProperty ;
+amsl:linkToDescription a owl:DatatypeProperty ;
     rdfs:label "URL der Anbieterbeschreibung"@de ,
         "link to description "@en ;
     rdfs:comment "Verknüpft einen Link zur Beschreibung der ER des Anbieter.s"@de ,
@@ -808,8 +794,7 @@ amsl:linkToInvoice a owl:DatatypeProperty ;
         "Links a hyperlink to the invoice."@en ;    
     rdfs:domain amsl:AnnualContractData .
 
-amsl:localSystemNumber a rdf:Property,
-        owl:DatatypeProperty ;
+amsl:localSystemNumber a owl:DatatypeProperty ;
     rdfs:label "Nummer aus Lokalsystem"@de ,
         "local system number"@en ;
     rdfs:comment "Verknüpft eine Nummer, die das lokale Bibliotheksmanagementsystem (z.B. Libero) für die Ressource vergibt."@de ,
@@ -921,15 +906,13 @@ amsl:percentage a owl:DatatypeProperty ;
         "Links a percentage, e.g. in the context of faculty shares."@en ;
     rdfs:range xsd:decimal .
 
-amsl:pisbn a rdf:Property,
-        owl:ObjectProperty ;
+amsl:pisbn a owl:ObjectProperty ;
     rdfs:label "P-ISBN"@de ,
         "P-ISBN"@en ;
     rdfs:comment "Verknüpft die P-ISBN eines Mediums."@de ,
         "Links the P-ISBN of a medium."@en .   
         
-amsl:pissn a rdf:Property,
-        owl:ObjectProperty ;
+amsl:pissn a owl:ObjectProperty ;
     rdfs:label "P-ISSN"@de ,
         "P-ISSN"@en ;
     rdfs:comment "Verknüpft die P-ISSN eines Mediums."@de ,
@@ -967,8 +950,7 @@ amsl:productISIL a owl:DatatypeProperty ;
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( amsl:MetadataCollection amsl:LicensePackage ) ]  .    
 
-amsl:proprietaryID a rdf:Property,
-        owl:DatatypeProperty ;
+amsl:proprietaryID a owl:DatatypeProperty ;
     rdfs:label "Proprietäre ID"@de ,
         "proprietary ID"@en ;
     rdfs:comment "Verknüpft einen proprietären Identifier eines Mediums."@de ,

@@ -37,31 +37,31 @@ amsl: a owl:Ontology ;
 
 ######################## Classes #####################################
 
-amsl:AnnualBudget a rdfs:Class ;
+amsl:AnnualBudget a owl:Class ;
     rdfs:label "Jahresbudget"@de ,
         "Annual Budget"@en ;
     rdfs:comment "Ein auf bestimmtes Haushaltsjahr bezogenes Budget."@de ,
         "A budget for a certain fiscal year."@en .
 
-amsl:AnnualContractData a rdfs:Class ;
+amsl:AnnualContractData a owl:Class ;
     rdfs:label "Vertragsjahresdaten"@de ,
         "Annual Contract Data"@en ;
     rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Perteien. Dieser Vertragsteil beinhaltet die sich jährlich ändernden Eigenschaften eines Vertrags."@de ,
         "A class modeling a business contract between the library and one or more parties. This part of the contract contains the annual (dynamic) properties of a contract."@en .
 
-amsl:BasicContractData a rdfs:Class ;
+amsl:BasicContractData a owl:Class ;
     rdfs:label "Vertragsbasisdaten"@de ,
         "Basic Contract Data"@en ;
     rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Parteien. Dieser Vertragsteil beinhaltet die Basisinformationen (statische Daten) eines Vertrages."@de ,
         "A class modeling a business contract between the library and one or more parties. This one contains the basic (static) properties of a contract."@en .
 
-amsl:BranchOffice a rdfs:Class ;
+amsl:BranchOffice a owl:Class ;
     rdfs:label "Branch Office"@en ,
         "Zweigstelle"@de ;
     rdfs:comment "Eine Zweigstelle einer Organisation."@de ,
         "A branch office of an organisation."@en .
 
-amsl:Budget a rdfs:Class ;
+amsl:Budget a owl:Class ;
     rdfs:label "Budget"@de ,
         "Budget"@en ;
     rdfs:comment "Budgets für die Medienerwerbung."@de ,
@@ -73,13 +73,13 @@ amsl:Collection a owl:Class ;
     rdfs:comment "Eine Kollektion oder Sammlung, die nicht näher bestimmte zusammengehörige Daten umfasst. Detailliertere Beschreibungen sind über Unterklassen möglich."@de , 
         "A collection containing not further specified data. Subclasses are available or a more detailed description."@en .
 
-amsl:ContractItem a rdfs:Class ;
+amsl:ContractItem a owl:Class ;
     rdfs:label "Vertragsposition"@de ,
         "Contract Item"@en ;
     rdfs:comment "Die einzelnen elektronischen Ressourcen, die von einem Vetrag oder einem Lizenzpaket umfasst werden."@de ,
     	"Individual electronic resources that are contained in a license contract or package."@en .
 
-amsl:FacultyShare a rdfs:Class ;
+amsl:FacultyShare a owl:Class ;
     rdfs:label "Fakultätsanteil"@de ,
         "Faculty share"@en ;
     rdfs:comment "Der Anteil an einem Vertrag, den eine bestimmte Fakultät trägt."@de ,
@@ -99,14 +99,14 @@ amsl:MetadataSource a owl:Class;
     rdfs:comment "Eine Quelle, die (bibliographische) Metadaten anbietet."@de ,
         "A source providing (bibliographic) metadata"@en .
 
-amsl:LicensePackage a rdfs:Class ;
+amsl:LicensePackage a owl:Class ;
     rdfs:label "Paket"@de ,
         "License Package"@en ;
     rdfs:comment "Ein Lizenzvertrag kann aus mehreren Lizenzpaketen zusammengestellt sein."@de ,
         "A license contract can be made up by several license packages."@en .
 
 
-amsl:Platform a rdfs:Class ;
+amsl:Platform a owl:Class ;
     rdfs:label "Plattform"@de ,
         "Platform"@en ;
     rdfs:comment "Das Portal bzw. der Service, der die Inhalte bereitstellt und zugänglich macht."@de ,
@@ -119,7 +119,7 @@ rdfs:comment "Eine Quelle, die nicht näher bestimmte Daten anbietet. Detaillier
 "A source providing not further specified data. Subclasses are available or a more detailed description."@en .
 
 
-amsl:Subtotal a rdfs:Class ;
+amsl:Subtotal a owl:Class ;
     rdfs:label "Teilsumme"@de ,
         "Subtotal"@en ;
     rdfs:comment "Eine Teilsumme bspw. eines Rechnungs- oder Planpreises."@de ,

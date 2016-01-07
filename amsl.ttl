@@ -398,6 +398,14 @@ amsl:erType a owl:ObjectProperty ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:ERType .
 
+amsl:evaluateHoldingsFileFor a owl:ObjectProperty ;
+    rdfs:label "Holdings-File auswerten für"@de , 
+        "evaluate holdings file for"@en ;
+    rdfs:comment "Verknüpft eine Einrichtung, für die ein Holdings-File ausgewertet werden soll, um die in den Katalog einzubindenden Metadatenkollektionen zu filtern."@de ,
+        "Links an organizations, for which a holdings file has to be evaluated in order to filter the meta data collections, which are to be embedded in the catalogue."@en ;
+    rdfs:domain amsl:MetadataCollection ;
+    rdfs:range foaf:Organization .
+
 amsl:expectedInvoiceMonth a owl:DeprecatedProperty ;
     rdfs:label "Erwarteter Rechnungsmonat"@de ,
         "expected invoice month"@en ;

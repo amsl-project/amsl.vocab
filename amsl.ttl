@@ -47,13 +47,17 @@ amsl:AnnualContractData a owl:Class ;
     rdfs:label "Vertragsjahresdaten"@de ,
         "Annual Contract Data"@en ;
     rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Perteien. Dieser Vertragsteil beinhaltet die sich jährlich ändernden Eigenschaften eines Vertrags."@de ,
-        "A class modeling a business contract between the library and one or more parties. This part of the contract contains the annual (dynamic) properties of a contract."@en .
+        "A class modeling a business contract between the library and one or more parties. This part of the contract contains the annual (dynamic) properties of a contract."@en ;
+    rdfs:seeAlso "ERMI terms: _Acquisition Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 141)" ;
+    rdfs:seeAlso "ERMI terms: _License Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 144)" .
 
 amsl:BasicContractData a owl:Class ;
     rdfs:label "Vertragsbasisdaten"@de ,
         "Basic Contract Data"@en ;
     rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Parteien. Dieser Vertragsteil beinhaltet die Basisinformationen (statische Daten) eines Vertrages."@de ,
-        "A class modeling a business contract between the library and one or more parties. This one contains the basic (static) properties of a contract."@en .
+        "A class modeling a business contract between the library and one or more parties. This one contains the basic (static) properties of a contract."@en ;
+    rdfs:seeAlso "ERMI terms: _Acquisition Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 141)" ;
+    rdfs:seeAlso "ERMI terms: _License Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 144)" .
 
 amsl:BranchOffice a owl:Class ;
     rdfs:label "Branch Office"@en ,
@@ -77,7 +81,8 @@ amsl:ContractItem a owl:Class ;
     rdfs:label "Vertragsposition"@de ,
         "Contract Item"@en ;
     rdfs:comment "Die einzelnen elektronischen Ressourcen, die von einem Vetrag oder einem Lizenzpaket umfasst werden."@de ,
-    	"Individual electronic resources that are contained in a license contract or package."@en .
+    	"Individual electronic resources that are contained in a license contract or package."@en ;
+    rdfs:seeAlso "ERMI terms: _Electronic Resource Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 132)" .
 
 amsl:FacultyShare a owl:Class ;
     rdfs:label "Fakultätsanteil"@de ,
@@ -110,7 +115,8 @@ amsl:Platform a owl:Class ;
     rdfs:label "Plattform"@de ,
         "Platform"@en ;
     rdfs:comment "Das Portal bzw. der Service, der die Inhalte bereitstellt und zugänglich macht."@de ,
-        "The portal resp. service providing the electronic content and the access to it."@en .
+        "The portal resp. service providing the electronic content and the access to it."@en ;
+        rdfs:seeAlso "ERMI terms: _Interface Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 139)" .
 
 amsl:Source a owl:Class ;
 rdfs:label "Quelle"@de , 
@@ -135,8 +141,9 @@ amsl:acqMethod a owl:ObjectProperty ;
     rdfs:label "Erwerbungsart"@de ,
         "acquisition method"@en ;
     rdfs:comment "Verknüpft die Art, auf die in einem Vertrages beinhalteten Lizenzen erworben wurden."@de ,
-    	"Links the method of acquisition used to purchase the licenses of a contract."@en ;    
-    rdfs:domain amsl:BasicContractData ;    
+    	"Links the method of acquisition used to purchase the licenses of a contract."@en ; 
+    rdfs:seeAlso "ERMI terms: _License Type_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 145)" ;  
+    rdfs:domain amsl:BasicContractData ;  
     rdfs:range amsl:AcqNote .
 
 amsl:annualBudget a owl:ObjectProperty ;
@@ -159,6 +166,7 @@ amsl:archivingNote a owl:DataTypeProperty ;
         "availability after termination"@en ;
     rdfs:comment "Verknüpft Informationen zur Verfügbarkeite der elektronischen Ressourcen nach Vertragsende (Archivrecht, Format...)."@de ,
          "Links additional information related to archiving rights, product, and format."@en ;
+    rdfs:seeAlso "ERMI terms: _Archiving Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 159)" ; 
     rdfs:domain amsl:BasicContractData .     
 
 amsl:authMethod a owl:ObjectProperty ;
@@ -174,6 +182,7 @@ amsl:authorizedUser a owl:ObjectProperty ;
         "authorized users"@en ;
     rdfs:comment "Verknüpft eine oder mehrere Nutzergruppen, die für zur Nutzung der lizenzierten elektronischen Ressourcen autorisiert sind."@de ,
         "Links one or several usersgroups that are authorized to use the licensed electronic resources."@en ;
+    rdfs:seeAlso "ERMI terms: _Authorized User Definition_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 151)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:UserGroup .
 
@@ -230,6 +239,7 @@ amsl:concUser a owl:DatatypeProperty ;
         "concurrent users"@en ;
     rdfs:comment "Verknüpft die Anzahl der in den Lizenzbedingungen eines Vertrages angegeben Parallelzugriffe auf eine elektronische Ressource."@de ,
         "Links the number of concurrent users for an electronic resource licensed in a contract."@en ;
+    rdfs:seeAlso "ERMI terms: _Concurrent User_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 157)" ; 
     rdfs:domain amsl:BasicContractData .
 
 amsl:consortium a owl:ObjectProperty ;
@@ -269,6 +279,7 @@ amsl:contractFile a owl:ObjectProperty ;
      "contract file"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die eine Vertragsdatei beschreibt."@de , 
         "Links a resource of the type Document, describing a contract file."@en   ;
+    rdfs:seeAlso "ERMI terms: _License Uniform Resource Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 145)" ; 
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( amsl:BasicContractData amsl:AnnualContractData ) ] ;
     rdfs:range foaf:Document .
@@ -293,6 +304,7 @@ amsl:coursePackE a owl:ObjectProperty ;
         "course pack electronic"@en ;
     rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes, lizenziertes Material in Zusammnenstellungen in elektronischer Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de ,
         "Links information on the right to use licensed materials in collections or compilations of materials assembled in an electronic format by faculty members for use by students in a class for purposes of instruction."@en ;
+    rdfs:seeAlso "ERMI terms: _Course Pack Electronic_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 157)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
@@ -301,6 +313,7 @@ amsl:coursePackP a owl:ObjectProperty ;
         "course pack print"@en ;
     rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes lizenziertes Material in Zusammnenstellungen in gedruckter Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de ,
         "Links information on the right to use licensed materials in collections or compilations of materials assembled in a print format by faculty members for use by students in a class for purposes of instruction."@en ;
+    rdfs:seeAlso "ERMI terms: _Course Pack Print_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 156)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
@@ -309,6 +322,7 @@ amsl:courseReserveE a owl:ObjectProperty ;
         "course reserve electronic"@en ;
     rdfs:comment "Verknüpft Infomationen über das Recht digitale Kopien des lizenzierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de ,
         "Links information on the right to make electronic copies of the licensed materials and store them on a secure network."@en ;
+    rdfs:seeAlso "ERMI terms: _Course Reserve Electronic_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 156)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
@@ -317,6 +331,7 @@ amsl:courseReserveP a owl:ObjectProperty ;
         "course reserve print"@en ;
     rdfs:comment "Verknüpft Infomationen über das Recht gedruckte Kopien des lizenzierten Materials zu erstellen und sie in einem kontrollierten Bereich bereitzustellen."@de ,
         "Links information on the right to make print copies of the licensed materials and place them in a controlled circulation area of the library for reserve reading in conjunction with specific courses of instruction."@en ;
+    rdfs:seeAlso "ERMI terms: _Course Reserve Print_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 155)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .    
 
@@ -347,6 +362,7 @@ amsl:description a owl:DatatypeProperty ;
         "description"@en ;
     rdfs:comment "Verknüpft die Beschreibung des Inhalts. Es können Links zu weiteren relevanten Dokumenten (z. B. Inhaltsverzeichnis) enthalten sein."@de ,
         "Links an account of the content of the resource. It may include pointers to other relevant objects (e.g., tables of contents)."@en ;
+    rdfs:seeAlso "ERMI terms: _Description_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 136)" ;
     rdfs:domain amsl:BasicContractData .    
 
 amsl:digitallyCopy a owl:ObjectProperty ;
@@ -354,6 +370,7 @@ amsl:digitallyCopy a owl:ObjectProperty ;
         "digital copy "@en ;
     rdfs:comment "Verknüpft Infomationen über das Recht des Lizenznehmers und autorisierter Nutzer, eine digitale Kopie zu erstellen."@de ,
         "Links information on the right of the licensee and authorized users to download and digitally copy a reasonable portion of the licensed materials."@en ;
+    rdfs:seeAlso "ERMI terms: _Digitally Copy_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 153)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
@@ -361,25 +378,29 @@ amsl:doi a owl:ObjectProperty ;
     rdfs:label "DOI"@de ,
         "DOI"@en ;
     rdfs:comment "Verknüpft den DOI eines Mediums."@de ,
-        "Links the DOI of a medium."@en .
+        "Links the DOI of a medium."@en ;
+    rdfs:seeAlso "ERMI terms: _Digital Object Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" .
 
 amsl:eisbn a owl:ObjectProperty ;
     rdfs:label "E-ISBN"@de ,
         "E-ISBN"@en ;
     rdfs:comment "Verknüpft die E-ISBN eines Mediums."@de ,
-        "Links the E-ISBN of a medium."@en .
+        "Links the E-ISBN of a medium."@en ;
+    rdfs:seeAlso "ERMI terms: _Electronic International Standard Book Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" .
 
 amsl:eissn a owl:ObjectProperty ;
     rdfs:label "E-ISSN"@de ,
         "E-ISSN"@en ;
     rdfs:comment "Verknüpft die E-ISSN eines Mediums."@de ,
-        "Links the E-ISSN of a medium."@en .
+        "Links the E-ISSN of a medium."@en ;
+    rdfs:seeAlso "ERMI terms: _Electronic International Standard Serial Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" .
 
 amsl:erAltTitle a owl:DatatypeProperty ;
     rdfs:label "Alternativer Titel"@de ,
         "alternative title"@en ;
     rdfs:comment "Verknüpft eine Variation des Haupttitels der Ressource, z.B. Akronyme, Paralleltitel usw."@de ,
         "Links a variation of the title of the resource, including acronyms, parallel titles, titles in other languages, etc."@en ;
+    rdfs:seeAlso "ERMI terms: _Electronic Resource Alternate Title_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 134)" ;
     rdfs:domain amsl:BasicContractData .
 
 amsl:erStatus a owl:ObjectProperty ;
@@ -387,6 +408,7 @@ amsl:erStatus a owl:ObjectProperty ;
         "status of the ER"@en ;
     rdfs:comment "Verknüpft den Status der elektronischen Ressourcen bzw. des diese beinhaltenden Vertrages im Erwerbungsprozess"@de ,
     	"Links the status of the electronic resources resp. of the containing contract in the acquisition process."@en ;
+    rdfs:seeAlso "ERMI terms: _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" ;
     rdfs:domain amsl:BasicContractData ;    
     rdfs:range amsl:ERStatus .
 
@@ -394,7 +416,8 @@ amsl:erType a owl:ObjectProperty ;
     rdfs:label "Produktart"@de ,
         "product type"@en ;
     rdfs:comment "Verknüpft die Produktart der in einem Vertrag lizenzierten elektronischen Ressourcen."@de ,
-    	"Links the type of product of the electronic resources licensed in a contract."@en ; 
+    	"Links the type of product of the electronic resources licensed in a contract."@en ;
+    rdfs:seeAlso "ERMI terms: _Resource Type (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:ERType .
 
@@ -483,6 +506,7 @@ amsl:feedbackDate a owl:DatatypeProperty ;
         "feedback date"@en ;
     rdfs:comment "Verknüpft den letztmöglichen Tag, an welchem eine Rückmeldung an Zahlungsempfänger, Lizenzgeber etc. erfolgen muss."@de ,
         "Links the last possible date to give feedback to licensing agent, licensor etc."@en ;
+    rdfs:seeAlso "ERMI terms: _Purchase Renewal Date_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 142)" ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range xsd:date .
 
@@ -513,6 +537,7 @@ amsl:hasRemoteAccess a owl:ObjectProperty ;
         "remote access"@en ;
     rdfs:comment "Verknüpft Informationen über das Recht eines autorisierten Nutzers, von außerhalb Zugang zu elektronischen Produkten zu erlangen."@de ,
         "Links information on the right of an authorized user to gain access to an Electronic Product from an offsite location"@en ;
+    rdfs:seeAlso "ERMI terms: _Remote Access_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 157)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:ExtendedBoolean .
 
@@ -522,6 +547,7 @@ amsl:holdingsFile a owl:ObjectProperty ;
         "holdings file"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die das aktuelle Holdings-File einer Bibliothek darstellt."@de , 
         "Links a resource of the type Document which is a library's current holdings file."@en   ;
+    rdfs:seeAlso "ERMI terms: _HoldingsFile_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 137)" ;
     rdfs:domain foaf:Organization ;
     rdfs:range foaf:Document .     
 
@@ -530,23 +556,24 @@ amsl:illNote a owl:DatatypeProperty ;
         "interlibrary loan note"@en ;
     rdfs:comment "Verknüpft weitere Informationen über Fernleihbedingungen."@de ,
         "Links further information on terms concerning the interlibrary loan."@en ;
+    rdfs:seeAlso "ERMI terms: _Interlibrary Loan Term Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 155)" ; 
     rdfs:domain amsl:BasicContractData .
 
 amsl:illset a owl:ObjectProperty ;
     rdfs:label "Interlibrary Loan Secure Electronic Transmission"@de ,
         "interlibrary loan secure electronic transmission"@en ;
     rdfs:comment "Verknüpft Informationen über ILLSET."@de ,
-    	"Links information on ILLSET."@en ;        
+    	"Links information on ILLSET."@en ; 
+    rdfs:seeAlso "ERMI terms: _Interlibrary Loan Secure Electronic Transmission_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 154)" ;       
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
-
-
 
 amsl:illElectronic a owl:ObjectProperty ;
     rdfs:label "Fernleihe elektronisch"@de ,
         "interlibrary loan electronic"@en ;
     rdfs:comment "Verknüpft Informationen über das Recht lizenziertes Material in Form einer digitalen Kopie für die Fernleihe zur Verfügung zu stellen."@de ,
         "Links information on the right to provide the licensed materials via interlibrary loan by way of electronic copies."@en ;
+    rdfs:seeAlso "ERMI terms: _Interlibrary Loan Electronic_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 155)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
@@ -555,6 +582,7 @@ amsl:illPrintOrFax a owl:ObjectProperty ;
         "interlibrary loan print or fax"@en ;
     rdfs:comment "Verknüpft Informationen über das Recht lizenziertes Material in Form einer Print- oder Faxkopie für die Fernleihe zur Verfügung zu stellen."@de ,
         "Links information on the right to provide the licensed materials via interlibrary loan by way of print copies or facsimile transmission."@en ;
+    rdfs:seeAlso "ERMI terms: _Interlibrary Loan Print or Fax_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 154)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
@@ -621,9 +649,9 @@ amsl:invoiceFile a owl:ObjectProperty ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument."@de , 
         "Links a resource of the type Document."@en   ;
     rdfs:domain amsl:AnnualContractData ;
-    rdfs:range foaf:Document . 
+    rdfs:range foaf:Document .
 
-amsl:invoicePriceGrossEUR  a owl:DatatypeProperty;
+amsl:invoicePriceGrossEUR  a owl:DatatypeProperty ;
 	rdfs:label "Rechnungspreis brutto (EUR)"@de ,
 		"invoice price gross (EUR)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in Euro."@de ,
@@ -691,7 +719,8 @@ amsl:isMemberOf a owl:ObjectProperty ;
     rdfs:label "Mitglied von"@de ,
         "member of"@en ;
     rdfs:comment "Verknüpft die Organisation, bei der eine Person Mitglied ist."@de ,
-    	"Links the organization a person is a member of."@en ;    
+    	"Links the organization a person is a member of."@en ;
+    rdfs:seeAlso "ERMI terms: _Organization Represented_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 205)" ;
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( foaf:Person sioc:User ) ] ;
     rdfs:range foaf:Organization . 
@@ -715,6 +744,7 @@ amsl:licensee a owl:ObjectProperty ;
         "licensee"@en ;
     rdfs:comment "Verknüpft die Vertragspartei, die eine Lizenz erhält."@de ,
         "Links the contracting party obtaining the license."@en ;
+    rdfs:seeAlso "ERMI terms: _Licensee_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 148)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range foaf:Organization .    
 
@@ -723,6 +753,7 @@ amsl:licenseEndDate a owl:DatatypeProperty ;
         "license end date"@en ;
     rdfs:comment "Verknüpft das Datum, an welchem die Gültigkeit eines Lizenzvertrags endet"@de ,
         "Links the date on which a license agreement terminates"@en ;
+    rdfs:seeAlso "ERMI terms: _License End Date_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 147)" ; 
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range xsd:date .
 
@@ -731,6 +762,7 @@ amsl:licenseStartDate a owl:DatatypeProperty ;
         "license start date"@en ;
     rdfs:comment "Verknüpft das Datum, an welchem ein Lizenzvertrag in Kraft tritt."@de ,
         "Links the date on which a license agreement comes into effect."@en ;
+    rdfs:seeAlso "ERMI terms: _License Start Date_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 147)" ; 
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range xsd:date .
 
@@ -748,6 +780,7 @@ amsl:licensingAgent a owl:ObjectProperty ;
         "licensing agent"@en ;
     rdfs:comment "Verknüpft ein Unternehmen, das die Bezahlung einer ER abwickelt."@de ,
     "Links an organization (such as a subscription agent) that facilitates a licensing transaction on behalf of one or more parties."@en ;
+    rdfs:seeAlso "ERMI terms: _Licensing Agent_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 148)" ; 
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range foaf:Organization .
 
@@ -756,6 +789,7 @@ amsl:licensingNote a owl:DatatypeProperty ;
         "licensing note"@en ;
     rdfs:comment "Verknüpft zusätzliche Informationen, welche den Vertrag, die Lizenzverhandlungen, das Produkt etc. betreffen."@de ,
         "Links additional information regarding the license, the negotiation of the license, the product, etc."@en ;
+    rdfs:seeAlso "ERMI terms: _Licensing Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 147)" ; 
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( amsl:AnnualContractData amsl:MetadataSource ) ] .
 
@@ -764,6 +798,7 @@ amsl:licensor a owl:ObjectProperty ;
         "licensor"@en ;
     rdfs:comment "Verknüpft die Vertragspartei, die eine Lizenz zur Verfügung stellt."@de ,
         "Links the contracting party granting the license."@en ;
+    rdfs:seeAlso "ERMI terms: _Licensor_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 148)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range foaf:Organization .
 
@@ -779,6 +814,7 @@ amsl:linkToContract a owl:DatatypeProperty ;
         "link to contract"@en ;
     rdfs:comment "Verknüpft einen Link/eine URL, die auf die digitale Version das originalen Vertragsdokuments verweist, welches der Lizenznehmer vom Lizenzgeber enthält."@de ,
         "Links a url linking to a digital version of the original contract document the licensee received from the licensor."@en ;
+    rdfs:seeAlso "ERMI terms: _License Uniform Resource Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 145)" ;  
     rdfs:domain amsl:AnnualContractData .
 
 amsl:linkToDescription a owl:DatatypeProperty ;
@@ -807,6 +843,7 @@ amsl:localSystemNumber a owl:DatatypeProperty ;
         "local system number"@en ;
     rdfs:comment "Verknüpft eine Nummer, die das lokale Bibliotheksmanagementsystem (z.B. Libero) für die Ressource vergibt."@de ,
         "Links the record number that is assigned by a local integrated library system (ILS) to the bibliographic record for the resource."@en ;
+    rdfs:seeAlso "ERMI terms: _Local System Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" ;
     rdfs:domain [ a owl:Class ;
     	owl:unionOf ( amsl:AnnualContractData amsl:ContractItem  amsl:LicensePackage ) ] .
 
@@ -888,7 +925,8 @@ amsl:orgNote a  owl:DatatypeProperty ;
     rdfs:label "Notiz zur Organisation"@de ,
         "organization note"@en ;
     rdfs:comment "Verknüpft weitere Informationen zu einer Organisation."@de ,
-    	"Links further information on an organization."@en ;    
+    	"Links further information on an organization."@en ; 
+    rdfs:seeAlso "ERMI terms: _Organization Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 204)" ; 
     rdfs:domain foaf:Organization .
 
 amsl:paymentPeriod  a owl:ObjectProperty ;
@@ -904,6 +942,7 @@ amsl:pCopy a owl:ObjectProperty ;
         "print copy "@en ;
     rdfs:comment "Verknüpft Informationen üas Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte Kopie zu erstellen."@de ,
         "links information on the right of the licensee and authorized users to make a printed copy of the licensed resource."@en ;
+    rdfs:seeAlso "ERMI terms: _Print Copy_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 153)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
@@ -918,13 +957,15 @@ amsl:pisbn a owl:ObjectProperty ;
     rdfs:label "P-ISBN"@de ,
         "P-ISBN"@en ;
     rdfs:comment "Verknüpft die P-ISBN eines Mediums."@de ,
-        "Links the P-ISBN of a medium."@en .   
+        "Links the P-ISBN of a medium."@en ;
+    rdfs:seeAlso "ERMI terms: Print International Standard Book Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 209)" .  
         
 amsl:pissn a owl:ObjectProperty ;
     rdfs:label "P-ISSN"@de ,
         "P-ISSN"@en ;
     rdfs:comment "Verknüpft die P-ISSN eines Mediums."@de ,
-        "Links the P-ISSN of a medium."@en .         
+        "Links the P-ISSN of a medium."@en ;
+    rdfs:seeAlso "ERMI terms: _Print International Standard Serial Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 209)" .         
 
 amsl:platform a  owl:ObjectProperty ;
     rdfs:label "Plattform"@de ,
@@ -939,6 +980,7 @@ amsl:previousContract a owl:ObjectProperty ;
     	"previous contract"@en ;
     rdfs:comment "Verknüpft vorhergehende Vertragsbasisdaten, die mit den jetzigen in Beziehung stehen."@de ,
     	"Links previous basic cobtract data that are related to the current."@en ;
+    rdfs:seeAlso "ERMI terms: _License Replaces_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 149)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:BasicContractData .    
 
@@ -947,6 +989,7 @@ amsl:primaryAccessURI a  owl:DatatypeProperty ;
         "access URL"@en ;
     rdfs:comment "Verknüpft die URI, unter der die lizenzierten Pridukte primär zugänglich sind."@de ,
         "Links the URI under which the licensed products are primarily accessible."@en ;
+    rdfs:seeAlso "ERMI terms: _Primary Access Uniform Resource IDentifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 182)" ; 
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( amsl:BasicContractData amsl:MetadataSource ) ] .
 
@@ -969,6 +1012,7 @@ amsl:scholarlySharing a owl:ObjectProperty ;
         "scholarly sharing "@en ;
     rdfs:comment "Verknüpft Informationen über das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte oder digitale Kopie für Dritte zum persönlichen, wissenschaftlichen, bildendem oder beruflichen Gebrauch zu erstellen."@de ,
         "Links information on the right of authorized users and/or the licensee to transmit hard copy or an electronic copy of a portion of the licensed materials to a third party for personal, scholarly, educational, scientific or professional use."@en ;
+    rdfs:seeAlso "ERMI terms: _Scholarly Sharing_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 153)" ;         
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
@@ -1017,6 +1061,7 @@ amsl:terminationDate a owl:DatatypeProperty ;
         "termination date"@en ;
     rdfs:comment "Verknüpft das Datum, an welchem ein Vertrag/Abo gekündigt worden ist."@de ,
         "Links the date a contract/subscription has been terminated."@en ;
+    rdfs:seeAlso "ERMI terms: _Termination Date_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range xsd:date .
 
@@ -1025,6 +1070,7 @@ amsl:terminationReason a owl:DatatypeProperty ;
         "termination reason"@en ;
     rdfs:comment "Verknüpft den Grund für die Kündigung eines Vertrags."@de ,
         "Links the reason a subscription was terminated."@en ;
+    rdfs:seeAlso "ERMI terms: _Termination Reason_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" ;
     rdfs:domain amsl:BasicContractData .
 
 amsl:ticketURL a owl:ObjectProperty ;
@@ -1040,6 +1086,7 @@ amsl:updateRhythm a owl:DatatypeProperty ;
         "update rhythm"@en ;
     rdfs:comment "Verknüpft Angaben zum Aktualiserungsrhythmus der angebotenen Metadaten."@de , 
         "Links information on the update rhythm of the offered metadata."@en ;
+    rdfs:seeAlso "ERMI terms: _Update Frequency_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 136)" ;
     rdfs:domain amsl:Source .    
 
 amsl:usageStatsNote a owl:DatatypeProperty ;
@@ -1047,6 +1094,7 @@ amsl:usageStatsNote a owl:DatatypeProperty ;
         "usage statistics note"@en ;
     rdfs:comment "Verknüpft allgemeine Informationen zu Nutzungsstatistiken. Empfehlung: Angabe von Jahr, Reportform, Nutzungszahl und Link zur entsprechenden Tabelle."@de ,
         "Links general information regarding usage statistics."@en ;
+    rdfs:seeAlso "ERMI terms: _Usage Statistics Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 192)" ; 
     rdfs:domain amsl:AnnualContractData .
 
 amsl:workflowStatus a owl:ObjectProperty ;
@@ -1054,6 +1102,7 @@ amsl:workflowStatus a owl:ObjectProperty ;
         "workflow status"@en ;
     rdfs:comment "Verknüpft Informationen zu dem Status des Jahresvertrages im Geschäftsgang, ob ein Vertrag etwa bereits verlängert wurde oder ob die Verhandlungen dazu noch laufen."@de ,
         "Links information on the workflow status of an annual contract, e. g. that a contract has already been renewed or that the negotiations are still ongoing."@en ;
+    rdfs:seeAlso "ERMI terms: _Renewal Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range amsl:WorkflowStatus . 
 
@@ -1121,6 +1170,7 @@ amsl:embargoInfo a owl:DatatypeProperty ;
         "embargo"@en ;
     rdfs:comment "Verknüpft Embargo-Informationen in der KBART-Erfassungsweise."@de ,
         "Links embargo information in KBART style."@en ;
+    rdfs:seeAlso "ERMI terms: _Embargo Period_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 137)" ;
     rdfs:domain amsl:ContractItem .
 
 amsl:coverageDepth a owl:ObjectProperty ;
@@ -1163,7 +1213,9 @@ amsl:AbstractCoverage a amsl:CoverageDepth ;
 ######################## Collections & Individuals #####################################
     
 amsl:AcqNote a owl:Class ;
-    owl:oneOf ( amsl:AllianceLicense amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:ScientificInformationServicesLicense amsl:PDA amsl:PPV  amsl:Unknown ) . 
+    owl:oneOf ( amsl:AllianceLicense amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:ScientificInformationServicesLicense amsl:PDA amsl:PPV  amsl:Unknown ) ;
+    rdfs:seeAlso "ERMI terms: _Acquisition Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" ;
+    rdfs:seeAlso "ERMI terms: _License Type_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
 
 amsl:AllianceLicense a amsl:AcqNote ;
     rdfs:label "Allianzlizenz"@de ,
@@ -1479,7 +1531,8 @@ amsl:OrganizationType a owl:Class ;
 
 amsl:Consortium a amsl:OrganizationType ;
     rdfs:label "Konsortium"@de ,
-        "consortium"@en .
+        "consortium"@en ;
+    rdfs:seeAlso "ERMI terms: _Consortium Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 199)" .
 
 amsl:Enterprise a amsl:OrganizationType ;
     rdfs:label "Unternehmen"@de ,
@@ -1487,7 +1540,8 @@ amsl:Enterprise a amsl:OrganizationType ;
              
 amsl:Library a amsl:OrganizationType ;
     rdfs:label "Bibliothek"@de ,
-        "library"@en .
+        "library"@en ;
+    rdfs:seeAlso "ERMI terms: _Library Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 202)" .
         
  
 
@@ -1508,6 +1562,7 @@ amsl:SolrShard a owl:Class .
 
 
 amsl:UserGroup a owl:Class ;
+    rdfs:seeAlso "ERMI terms: _User Group Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 176)" ; 
     owl:oneOf ( amsl:TeachingHospitals  amsl:Staff amsl:Students  amsl:UniMember amsl:WalkIns ) .
     
 amsl:Staff a amsl:UserGroup ;
@@ -1540,16 +1595,19 @@ amsl:MetadataSourceImplStatus a owl:Class ;
     owl:oneOf   (amsl:Wish amsl:Inquired  amsl:InProcess amsl:Trial amsl:Active  amsl:Impossible ) .
 
 amsl:ERStatus a owl:Class ;
-    owl:oneOf ( amsl:Active amsl:Cancelled  amsl:Trial amsl:Wish  ) .  
+    owl:oneOf ( amsl:Active amsl:Cancelled  amsl:Trial amsl:Wish  ) ;
+    rdfs:seeAlso "ERMI terms: _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
 
 amsl:WorkflowStatus a owl:Class ;
-    owl:oneOf ( amsl:Inquired amsl:Renewed amsl:NotRenewed )   . 
+    owl:oneOf ( amsl:Inquired amsl:Renewed amsl:NotRenewed )   ;
+    rdfs:seeAlso "ERMI terms: _Renewal Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
 
 
 amsl:Active a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
     rdfs:label "Aktiv"@de ,
-        "active"@en .
-        
+        "active"@en ;
+    rdfs:seeAlso "ERMI terms value: _Active_ for term _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
+            
 amsl:CancellationNominee a amsl:ERStatus ;
     rdfs:label "Abbestellkandidat"@de ,
         "nominee for cancellation"@en ;
@@ -1557,20 +1615,24 @@ amsl:CancellationNominee a amsl:ERStatus ;
         
 amsl:Cancelled a amsl:ERStatus ;
     rdfs:label "Abbestellt / beendet"@de ,
-        "cancelled / terminated"@en .    
+        "cancelled / terminated"@en ;
+    rdfs:seeAlso "ERMI terms value: Retired for term _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .   
 
 amsl:Implemented a amsl:ShibbolethImplStatus ;
     rdfs:label "Implementiert"@de ,
-        "implemented"@en .
+        "implemented"@en ;
+    rdfs:seeAlso "ERMI terms value: _Done_ for term _Processing Workflow Entity In-Process Group_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 195 f.)" .
 
 amsl:Impossible a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus ;
     rdfs:label "Nicht möglich"@de ,
-        "not possible"@en .
+        "not possible"@en ;
+    rdfs:seeAlso "ERMI terms value: _Not Applicable_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 195 f.)" .
 
 amsl:InProcess a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus ;
     rdfs:label "In Bearbeitung (techn.)"@de ,
         "in process (techn.)"@en ;
-    rdfs:comment "Wird momentan technisch bearbeitet."@de , "Is being technically processed"@en .
+    rdfs:comment "Wird momentan technisch bearbeitet."@de , "Is being technically processed"@en ;
+    rdfs:seeAlso "ERMI terms value: _In Process_ for term _Processing Workflow Entity In-Process Group_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 195 f.)" .
 
 amsl:Inquired a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus , amsl:WorkflowStatus ;
     rdfs:label "Angefragt / In Verhandlung"@de ,
@@ -1578,7 +1640,8 @@ amsl:Inquired a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus , amsl
 
 amsl:NotRenewed a amsl:WorkflowStatus ;
     rdfs:label "Nicht Verlängert"@de ,
-        "not renewed"@en .
+        "not renewed"@en ;
+    rdfs:seeAlso "ERMI terms value: _Cancelled_ for term _Renewal Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" .
         
 amsl:Prospected a amsl:ShibbolethImplStatus  ;
     rdfs:label "In Aussicht"@de ,
@@ -1586,14 +1649,17 @@ amsl:Prospected a amsl:ShibbolethImplStatus  ;
 
 amsl:Renewed a amsl:WorkflowStatus ;
     rdfs:label "Verlängert"@de ,
-        "renewed"@en .
+        "renewed"@en ;
+    rdfs:seeAlso "ERMI terms value: _Renewed_ for term _Renewal Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" .
        
 amsl:Trial a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
     rdfs:label "Test"@de ,
-        "trial"@en .
+        "trial"@en ;
+    rdfs:seeAlso "ERMI terms value: _On Trial_ for term _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
 
 amsl:Wish a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
     rdfs:label "Wunsch"@de ,
-        "wish"@en .    
+        "wish"@en ;
+    rdfs:seeAlso "ERMI terms value: _New request_ for term _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .  
 
 

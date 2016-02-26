@@ -1183,6 +1183,43 @@ amsl:workflowStatus a owl:ObjectProperty ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range amsl:WorkflowStatus . 
 
+
+###  NEW: integration of EZB holdings import ###
+
+amsl:HoldingsItem a owl:Class;
+    rdfs:label "[Bestandsposition]"@de , 
+       "Holdings item"@en ;
+    rdfs:comment "Ein Teil des Bibliotheksbestandes, d.h. ein Medium, welches eine Bibliothek besitzt oder an welchem sie Nutzungsrechte innehat."@de ,
+        "An item of the library holdings, i.e. a medium which a library owns or holds usagage rights on."@en .
+
+amsl:ezbAnchor a owl:DatatypeProperty ;
+    rdfs:label "EZB-Anker"@de , 
+        "EZB anchor"@en ;
+    rdfs:comment "Verknüpft ein Paket mit dessen in der EZB vergebenem Anker."@de ,
+        "Links a license package with the corresponding ezb achor."@en ;
+    rdf:rdfs:domain amsl:LicensePackage .
+
+amsl:holdingsItemOf a owl:ObjectProperty ;
+    rdfs:label "Vertragsposition von"@de ,
+        "contract item of"@en ;
+    rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit dem Lizenzpaket, in dem sie enthalten ist."@de ,
+        "Links a certain contract item with the license package it is contained in."@en ;
+    rdf:rdfs:domain amsl:HoldingsItem .
+
+amsl:ezbTitleID a owl:DatatypeProperty ;
+    rdfs:label "EZB-Titel-ID"@de , 
+        "EZB title id"@en ;
+    rdfs:comment "Verknüpft eine [Bestandsposition] mit ihrer in der EZB vergebenen Titel-ID."@de ,
+        "Links a holdings item with the corresponding EZB title id."@en ;
+    rdf:rdfs:domain amsl:HoldingsItem .
+
+amsl:zdbID a owl:DatatypeProperty ;
+    rdfs:label "ZDB-ID"@de , 
+        "ZDB id"@en ;
+    rdfs:comment "Verknüpft eine [Bestandsposition] mit ihrer in der ZDB vergebenen ID."@de ,
+        "Links a holdings item with the corresponding ZDB id."@en ;
+    rdf:rdfs:domain amsl:HoldingsItem .
+
    
 ######################## Collections & Individuals #####################################
     

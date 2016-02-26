@@ -1187,7 +1187,7 @@ amsl:workflowStatus a owl:ObjectProperty ;
 ###  NEW: integration of EZB holdings import ###
 
 amsl:HoldingsItem a owl:Class;
-    rdfs:label "[Bestandsposition]"@de , 
+    rdfs:label "Bestandsposition"@de , 
        "Holdings item"@en ;
     rdfs:comment "Ein Teil des Bibliotheksbestandes, d.h. ein Medium, welches eine Bibliothek besitzt oder an welchem sie Nutzungsrechte innehat."@de ,
         "An item of the library holdings, i.e. a medium which a library owns or holds usagage rights on."@en .

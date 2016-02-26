@@ -81,8 +81,7 @@ amsl:ContractItem a owl:Class ;
     rdfs:label "Vertragsposition"@de ,
         "Contract Item"@en ;
     rdfs:comment "Die einzelnen elektronischen Ressourcen, die von einem Vetrag oder einem Lizenzpaket umfasst werden."@de ,
-    	"Individual electronic resources that are contained in a license contract or package."@en ;
-    rdfs:seeAlso "ERMI terms: _Electronic Resource Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 132)" .
+    	"Individual electronic resources that are contained in a license contract or package."@en .
 
 amsl:FacultyShare a owl:Class ;
     rdfs:label "Fakultätsanteil"@de ,
@@ -141,8 +140,7 @@ amsl:acqMethod a owl:ObjectProperty ;
     rdfs:label "Erwerbungsart"@de ,
         "acquisition method"@en ;
     rdfs:comment "Verknüpft die Art, auf die in einem Vertrages beinhalteten Lizenzen erworben wurden."@de ,
-    	"Links the method of acquisition used to purchase the licenses of a contract."@en ; 
-    rdfs:seeAlso "ERMI terms: _License Type_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 145)" ;  
+    	"Links the method of acquisition used to purchase the licenses of a contract."@en ;
     rdfs:domain amsl:BasicContractData ;  
     rdfs:range amsl:AcqNote .
 
@@ -417,7 +415,7 @@ amsl:erType a owl:ObjectProperty ;
         "product type"@en ;
     rdfs:comment "Verknüpft die Produktart der in einem Vertrag lizenzierten elektronischen Ressourcen."@de ,
     	"Links the type of product of the electronic resources licensed in a contract."@en ;
-    rdfs:seeAlso "ERMI terms: _Resource Type (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" ; 
+    rdfs:seeAlso "ERMI terms: _Resource Type (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 136)" ; 
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:ERType .
 
@@ -547,7 +545,7 @@ amsl:holdingsFile a owl:ObjectProperty ;
         "holdings file"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die das aktuelle Holdings-File einer Bibliothek darstellt."@de , 
         "Links a resource of the type Document which is a library's current holdings file."@en   ;
-    rdfs:seeAlso "ERMI terms: _HoldingsFile_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 137)" ;
+    rdfs:seeAlso "ERMI terms: _Electronic Holdings_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 137)" ;
     rdfs:domain foaf:Organization ;
     rdfs:range foaf:Document .     
 
@@ -789,7 +787,7 @@ amsl:licensingNote a owl:DatatypeProperty ;
         "licensing note"@en ;
     rdfs:comment "Verknüpft zusätzliche Informationen, welche den Vertrag, die Lizenzverhandlungen, das Produkt etc. betreffen."@de ,
         "Links additional information regarding the license, the negotiation of the license, the product, etc."@en ;
-    rdfs:seeAlso "ERMI terms: _Licensing Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 147)" ; 
+    rdfs:seeAlso "ERMI terms: _Licensing Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 146)" ; 
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( amsl:AnnualContractData amsl:MetadataSource ) ] .
 
@@ -989,7 +987,7 @@ amsl:primaryAccessURI a  owl:DatatypeProperty ;
         "access URL"@en ;
     rdfs:comment "Verknüpft die URI, unter der die lizenzierten Pridukte primär zugänglich sind."@de ,
         "Links the URI under which the licensed products are primarily accessible."@en ;
-    rdfs:seeAlso "ERMI terms: _Primary Access Uniform Resource IDentifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 182)" ; 
+    rdfs:seeAlso "ERMI terms: _Primary Access Uniform Resource Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 182)" ; 
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( amsl:BasicContractData amsl:MetadataSource ) ] .
 
@@ -1214,8 +1212,7 @@ amsl:AbstractCoverage a amsl:CoverageDepth ;
     
 amsl:AcqNote a owl:Class ;
     owl:oneOf ( amsl:AllianceLicense amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:ScientificInformationServicesLicense amsl:PDA amsl:PPV  amsl:Unknown ) ;
-    rdfs:seeAlso "ERMI terms: _Acquisition Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" ;
-    rdfs:seeAlso "ERMI terms: _License Type_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
+    rdfs:seeAlso "ERMI terms: _Acquisition Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
 
 amsl:AllianceLicense a amsl:AcqNote ;
     rdfs:label "Allianzlizenz"@de ,

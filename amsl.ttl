@@ -333,6 +333,21 @@ amsl:courseReserveP a owl:ObjectProperty ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .    
 
+amsl:coverageDepth a owl:ObjectProperty ;
+    rdfs:label "Abdeckungstiefe"@de ,
+        "coverage Depth"@en ;
+    rdfs:comment "Verknüpft Informationen über die Tiefe, in der der Inhalt abgedeckt wird."@de ,
+        "Links information on the extent to which content is covered."@en ;
+    rdfs:domain amsl:ContractItem ;
+    rdfs:range amsl:CoverageDepth .
+
+amsl:coverageNotes a owl:DatatypeProperty ;
+    rdfs:label "Abdeckungsnotiz"@de ,
+        "coverage Notes"@en ;
+    rdfs:comment "Verknüpft weiterführende Informationen über die Abdeckungstiefe."@de ,
+        "Links further information on the coverage depth."@en ;
+    rdfs:domain amsl:ContractItem .  
+
 amsl:coveredMediumID a owl:ObjectProperty ;
     rdfs:label "abgedeckte Medien (ID)"@de ,
         "covered media (ID)"@en ;
@@ -346,6 +361,26 @@ amsl:dataAvailability a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft Informationen über die Verfügbarkeit von Metadaten zu den lizenzierten elektronischen Ressourcen."@de ,
         "Links information on the availability of metadata for the licensed electronic resources."@en ;
     rdfs:domain amsl:BasicContractData .    
+
+amsl:dateFirstIssueOnline a owl:DatatypeProperty ;
+    rdfs:label "Datum erster online verfügbarer Ausgabe"@de ,
+        "date of first issue available online"@en ;
+    skos:prefLabel "Datum erste verf. Ausg."@de ,
+        "date first issue avail."@en ;
+    rdfs:comment "Verknüpft das Datum der ersten online verfügbaren Ausgabe eines E-Journals oder E-Books."@de ,
+        "Links the date of the first issue of an e-journal or e-book available online."@en ;
+    rdfs:domain amsl:ContractItem ;
+    rdfs:range xsd:date .   
+
+amsl:dateLastIssueOnline a owl:DatatypeProperty ;
+    rdfs:label "Datum letzter online verfügbarer Ausgabe"@de ,
+        "date of last issue available online"@en ;
+    skos:prefLabel "Datum letzte verf. Ausg."@de ,
+        "date last issue avail."@en ;
+    rdfs:comment "Verknüpft das Datum der letzten online verfügbaren Ausgabe eines E-Journals oder E-Books."@de ,
+        "Links the date of the last issue of an e-journal or e-book available online."@en ;
+    rdfs:domain amsl:ContractItem ;
+    rdfs:range xsd:date .   
 
 amsl:dbType a owl:ObjectProperty ;
     rdfs:label "Datenbanktyp"@de ,
@@ -392,6 +427,14 @@ amsl:eissn a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die E-ISSN eines Mediums."@de ,
         "Links the E-ISSN of a medium."@en ;
     rdfs:seeAlso "ERMI terms: _Electronic International Standard Serial Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" .
+
+amsl:embargoInfo a owl:DatatypeProperty ;
+    rdfs:label "Embargo"@de ,
+        "embargo"@en ;
+    rdfs:comment "Verknüpft Embargo-Informationen in der KBART-Erfassungsweise."@de ,
+        "Links embargo information in KBART style."@en ;
+    rdfs:seeAlso "ERMI terms: _Embargo Period_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 137)" ;
+    rdfs:domain amsl:ContractItem .
 
 amsl:erAltTitle a owl:DatatypeProperty ;
     rdfs:label "Alternativer Titel"@de ,
@@ -911,6 +954,42 @@ amsl:noticePeriod a owl:DatatypeProperty ;
         "Links the the notice period to be adhered. The notice period must be recorded if no exact date can be identified."@en ;
     rdfs:domain amsl:AnnualContractData .
 
+amsl:numberFirstIssueOnline a owl:DatatypeProperty ;
+   rdfs:label "Nummer erster online verfügbarer Ausgabe"@de ,
+        "number of first issue available online"@en ;
+    skos:prefLabel  "Nr. erste verf. Ausg."@de ,
+        "no. first issue avail."@en ;
+    rdfs:comment "Verknüpft die Nummer der ersten online verfügbaren Ausgabe eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Nr.' oder 'Heft')."@de ,
+        "Links the number of the first issue of an e-journal available online. Do not include any labels (e.g., 'no.' or 'n.') nor any supplement or part values."@en ;
+    rdfs:domain amsl:ContractItem  . 
+
+amsl:numberFirstVolumeOnline a owl:DatatypeProperty ;
+    rdfs:label "Nummer des ersten online verfügbaren Jahrganges"@de ,
+        "number of first volume available online"@en ;
+    skos:prefLabel  "Nr. erster verf. Jg."@de ,
+        "no. first vol. avail."@en ;
+    rdfs:comment "Verknüpft die Nummer des ersten online verfügbaren Jahrganges eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Bd.' oder 'Jg.')."@de ,
+        "Links the number of the first volume of an e-journal available online. Do not include any labels (e.g., 'vol.' or 'v.')."@en ;
+    rdfs:domain amsl:ContractItem  . 
+
+amsl:numberLastIssueOnline a owl:DatatypeProperty ;
+    rdfs:label "Nummer letzter online verfügbarer Ausgabe"@de ,
+        "number of last issue available online"@en ;
+    skos:prefLabel  "Nr. letzte verf. Ausg."@de ,
+        "no. last issue avail."@en ;
+    rdfs:comment "Verknüpft die Nummer der letzten online verfügbaren Ausgabe eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Nr.' oder 'Heft')."@de ,
+        "Links the number of the last issue of an e-journal available online. Do not include any labels (e.g., 'no.' or 'n.') nor any supplement or part values."@en ;
+    rdfs:domain amsl:ContractItem  . 
+
+amsl:numberLastVolumeOnline a owl:DatatypeProperty ;
+    rdfs:label "Nummer letzten online verfügbaren Jahrganges"@de ,
+        "number of last volume available online"@en ;
+    skos:prefLabel  "Nr. letzter verf. Jg."@de ,
+        "no. last vol. avail."@en ;
+    rdfs:comment "Verknüpft die Nummer des letzten online verfügbaren Jahrganges eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Bd.' oder 'Jg.')."@de ,
+        "Links the number of the last volume of an e-journal available online. Do not include any labels (e.g., 'vol.' or 'v.')."@en ;
+    rdfs:domain amsl:ContractItem  . 
+
 amsl:organizationType a owl:ObjectProperty ;
     rdfs:label "Kategorie"@de ,
         "organization type"@en ;
@@ -1104,110 +1183,7 @@ amsl:workflowStatus a owl:ObjectProperty ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range amsl:WorkflowStatus . 
 
-
-#### NEW: KBART support
-
-amsl:dateFirstIssueOnline a owl:DatatypeProperty ;
-    rdfs:label "Datum erster online verfügbarer Ausgabe"@de ,
-        "date of first issue available online"@en ;
-    skos:prefLabel "Datum erste verf. Ausg."@de ,
-        "date first issue avail."@en ;
-    rdfs:comment "Verknüpft das Datum der ersten online verfügbaren Ausgabe eines E-Journals oder E-Books."@de ,
-        "Links the date of the first issue of an e-journal or e-book available online."@en ;
-    rdfs:domain amsl:ContractItem ;
-    rdfs:range xsd:date .   
-
-amsl:dateLastIssueOnline a owl:DatatypeProperty ;
-    rdfs:label "Datum letzter online verfügbarer Ausgabe"@de ,
-        "date of last issue available online"@en ;
-    skos:prefLabel "Datum letzte verf. Ausg."@de ,
-        "date last issue avail."@en ;
-    rdfs:comment "Verknüpft das Datum der letzten online verfügbaren Ausgabe eines E-Journals oder E-Books."@de ,
-        "Links the date of the last issue of an e-journal or e-book available online."@en ;
-    rdfs:domain amsl:ContractItem ;
-    rdfs:range xsd:date .   
-
-amsl:numberFirstVolumeOnline a owl:DatatypeProperty ;
-    rdfs:label "Nummer des ersten online verfügbaren Jahrganges"@de ,
-        "number of first volume available online"@en ;
-    skos:prefLabel  "Nr. erster verf. Jg."@de ,
-        "no. first vol. avail."@en ;
-    rdfs:comment "Verknüpft die Nummer des ersten online verfügbaren Jahrganges eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Bd.' oder 'Jg.')."@de ,
-        "Links the number of the first volume of an e-journal available online. Do not include any labels (e.g., 'vol.' or 'v.')."@en ;
-    rdfs:domain amsl:ContractItem  . 
-
-amsl:numberFirstIssueOnline a owl:DatatypeProperty ;
-   rdfs:label "Nummer erster online verfügbarer Ausgabe"@de ,
-        "number of first issue available online"@en ;
-    skos:prefLabel  "Nr. erste verf. Ausg."@de ,
-        "no. first issue avail."@en ;
-    rdfs:comment "Verknüpft die Nummer der ersten online verfügbaren Ausgabe eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Nr.' oder 'Heft')."@de ,
-        "Links the number of the first issue of an e-journal available online. Do not include any labels (e.g., 'no.' or 'n.') nor any supplement or part values."@en ;
-    rdfs:domain amsl:ContractItem  . 
-
-amsl:numberLastVolumeOnline a owl:DatatypeProperty ;
-    rdfs:label "Nummer letzten online verfügbaren Jahrganges"@de ,
-        "number of last volume available online"@en ;
-    skos:prefLabel  "Nr. letzter verf. Jg."@de ,
-        "no. last vol. avail."@en ;
-    rdfs:comment "Verknüpft die Nummer des letzten online verfügbaren Jahrganges eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Bd.' oder 'Jg.')."@de ,
-        "Links the number of the last volume of an e-journal available online. Do not include any labels (e.g., 'vol.' or 'v.')."@en ;
-    rdfs:domain amsl:ContractItem  . 
-
-amsl:numberLastIssueOnline a owl:DatatypeProperty ;
-    rdfs:label "Nummer letzter online verfügbarer Ausgabe"@de ,
-        "number of last issue available online"@en ;
-    skos:prefLabel  "Nr. letzte verf. Ausg."@de ,
-        "no. last issue avail."@en ;
-    rdfs:comment "Verknüpft die Nummer der letzten online verfügbaren Ausgabe eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Nr.' oder 'Heft')."@de ,
-        "Links the number of the last issue of an e-journal available online. Do not include any labels (e.g., 'no.' or 'n.') nor any supplement or part values."@en ;
-    rdfs:domain amsl:ContractItem  . 
-
-amsl:embargoInfo a owl:DatatypeProperty ;
-    rdfs:label "Embargo"@de ,
-        "embargo"@en ;
-    rdfs:comment "Verknüpft Embargo-Informationen in der KBART-Erfassungsweise."@de ,
-        "Links embargo information in KBART style."@en ;
-    rdfs:seeAlso "ERMI terms: _Embargo Period_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 137)" ;
-    rdfs:domain amsl:ContractItem .
-
-amsl:coverageDepth a owl:ObjectProperty ;
-    rdfs:label "Abdeckungstiefe"@de ,
-        "coverage Depth"@en ;
-    rdfs:comment "Verknüpft Informationen über die Tiefe, in der der Inhalt abgedeckt wird."@de ,
-        "Links information on the extent to which content is covered."@en ;
-    rdfs:domain amsl:ContractItem ;
-    rdfs:range amsl:CoverageDepth .
-
-amsl:coverageNotes a owl:DatatypeProperty ;
-    rdfs:label "Abdeckungsnotiz"@de ,
-        "coverage Notes"@en ;
-    rdfs:comment "Verknüpft weiterführende Informationen über die Abdeckungstiefe."@de ,
-        "Links further information on the coverage depth."@en ;
-    rdfs:domain amsl:ContractItem .  
-
-
-amsl:CoverageDepth a owl:Class ;
-    owl:oneOf ( amsl:FulltextCoverage amsl:SelectedArticlesCoverage amsl:AbstractCoverage ) .
-
-
-amsl:FulltextCoverage a amsl:CoverageDepth ;
-    rdfs:label "Volltext"@de , 
-        "full text"@en .
-
-amsl:SelectedArticlesCoverage a amsl:CoverageDepth ;
-    rdfs:label "Ausgewählte Artikel"@de ,
-        "selected articles"@en .
-
-amsl:AbstractCoverage a amsl:CoverageDepth ;
-    rdfs:label "Abstracts"@de ,
-        "abstracts"@en .
-
-
-
-
-
-    
+   
 ######################## Collections & Individuals #####################################
     
 amsl:AcqNote a owl:Class ;
@@ -1319,6 +1295,25 @@ amsl:Yes a amsl:Boolean ;
 amsl:No a amsl:Boolean ;
     rdfs:label "Nein"@de ,
         "no"@en .	    
+
+
+
+
+amsl:CoverageDepth a owl:Class ;
+    owl:oneOf ( amsl:FulltextCoverage amsl:SelectedArticlesCoverage amsl:AbstractCoverage ) .
+
+
+amsl:FulltextCoverage a amsl:CoverageDepth ;
+    rdfs:label "Volltext"@de , 
+        "full text"@en .
+
+amsl:SelectedArticlesCoverage a amsl:CoverageDepth ;
+    rdfs:label "Ausgewählte Artikel"@de ,
+        "selected articles"@en .
+
+amsl:AbstractCoverage a amsl:CoverageDepth ;
+    rdfs:label "Abstracts"@de ,
+        "abstracts"@en .
 
 
 

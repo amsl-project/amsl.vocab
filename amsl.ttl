@@ -879,6 +879,14 @@ amsl:linkToInvoice a owl:DatatypeProperty ;
         "Links a hyperlink to the invoice."@en ;    
     rdfs:domain amsl:AnnualContractData .
 
+amsl:linkToTitleList a owl:DatatypeProperty ;
+    rdfs:label "Link zu Titelliste"@de ,
+        "link to title list"@en ;
+    rdfs:comment "Verknüpft den Downloadlink einer Titelliste."@de ,
+        "Links the download link to a ltitle list."@en ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:MetadataCollection amsl:LicensePackage ) ] .   
+
 amsl:localSystemNumber a owl:DatatypeProperty ;
     rdfs:label "Nummer aus Lokalsystem"@de ,
         "local system number"@en ;
@@ -1157,6 +1165,16 @@ amsl:ticketURL a owl:ObjectProperty ;
         "Links the URL of a corresponding ticket in an internal ticket system."@en ;
     rdfs:domain  [ a owl:Class ;
         owl:unionOf ( amsl:MetadataSource amsl:MetadataCollection ) ] .
+
+amsl:titleListFile a owl:ObjectProperty ;
+    rdfs:subPropertyOf amsl:file ;
+    rdfs:label "Titellistendatei"@de ,
+        "title list file"@en ;
+    rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die eine Titelliste darstellt."@de , 
+        "Links a resource of the type Document."@en   ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:MetadataCollection amsl:LicensePackage ) ] ;
+    rdfs:range foaf:Document .  
 
 amsl:updateRhythm a owl:DatatypeProperty ;
     rdfs:label  "Update-Rhythmus"@de ,

@@ -1242,13 +1242,19 @@ amsl:zdbID a owl:DatatypeProperty ;
 ######################## Collections & Individuals #####################################
     
 amsl:AcqNote a owl:Class ;
-    owl:oneOf ( amsl:AllianceLicense amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:ScientificInformationServicesLicense amsl:PDA amsl:PPV  amsl:Unknown ) ;
+    owl:oneOf ( amsl:AllianceLicense amsl:APC amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:ScientificInformationServicesLicense amsl:PDA amsl:PPV amsl:Unknown ) ;
     rdfs:seeAlso "ERMI terms: _Acquisition Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
 
 amsl:AllianceLicense a amsl:AcqNote ;
     rdfs:label "Allianzlizenz"@de ,
         "alliance license"@en .
-        
+
+amsl:APC a amsl:AcqNote ;
+    rdfs:label "APC"@de ,
+        "APC"@en ;
+    rdfs:comment "Open Access Publikationsgebühr"@de ,
+        "Article Processing Charge"@en .
+       
 amsl:ConsortialLicense a amsl:AcqNote ;
     rdfs:label "Konsortiallizenz"@de ,
         "consortial license"@en .  
@@ -1412,7 +1418,7 @@ amsl:StrucDB a amsl:DBType ;
  
         
 amsl:ERType  a owl:Class ;
-    owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage amsl:Metadata amsl:PrintPlusOnlineBook amsl:PrintPlusOnlineJournal ) .       
+    owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage amsl:Metadata amsl:OpenAccessAgreement amsl:PrintPlusOnlineBook amsl:PrintPlusOnlineJournal ) .       
 
 amsl:Database a amsl:ERType ;
     rdfs:label "Datenbank"@de ,
@@ -1438,6 +1444,12 @@ amsl:Metadata a amsl:ERType ;
     rdfs:label "Metadaten"@de ,
         "metadata"@en .
 
+amsl:OpenAccessAgreement a amsl:ERType ;
+    rdfs:label "OA Verlagsvereinbarung"@de ,
+        "OA Agreement"@en ;
+    rdfs:comment "Open Access Verlagsvereinbarung"@de ,
+        "Open Access Agreement"@en .
+        
 amsl:PrintPlusOnlineBook a amsl:ERType ;
     rdfs:label "Print + Online (Buch)"@de ,
         "print + online (book)"@en .

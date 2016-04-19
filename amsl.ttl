@@ -1651,7 +1651,7 @@ amsl:ShibbolethImplStatus a owl:Class ;
     owl:oneOf ( amsl:Inquired amsl:Prospected amsl:InProcess amsl:Implemented amsl:Impossible   ) .
 
 amsl:MetadataSourceImplStatus a owl:Class ;
-    owl:oneOf   (amsl:Wish amsl:Inquired  amsl:InProcess amsl:Trial amsl:Active  amsl:Impossible ) .
+    owl:oneOf   (amsl:Wish amsl:Inquired  amsl:InProcess amsl:Trial amsl:Active amsl:Cancelled amsl:Impossible ) .
 
 amsl:ERStatus a owl:Class ;
     owl:oneOf ( amsl:Active amsl:Cancelled  amsl:Trial amsl:Wish  ) ;
@@ -1672,7 +1672,7 @@ amsl:CancellationNominee a amsl:ERStatus ;
         "nominee for cancellation"@en ;
     owl:deprecated "true"^^xsd:boolean .
         
-amsl:Cancelled a amsl:ERStatus ;
+amsl:Cancelled a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
     rdfs:label "Abbestellt / beendet"@de ,
         "cancelled / terminated"@en ;
     rdfs:seeAlso "ERMI terms value: Retired for term _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .   

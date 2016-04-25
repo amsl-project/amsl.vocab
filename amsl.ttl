@@ -159,6 +159,13 @@ amsl:annualPrice a owl:DatatypeProperty ;
         "Links the annual price of a license contract in euro."@en ;
     rdfs:domain amsl:AnnualContractData .
 
+amsl:archivedAnnualContractDataLabel a owl:DatatypeProperty ;
+    rdfs:label "Archivierte Vertragsjahresdaten"@de ,
+        "archived annual contract data"@en ;
+    rdfs:comment "Verknüpft Vertragsbasisdaten mit dem Label solcher Vertragsjahresdaten, die im Zuge einer Archivierungsfunktion nicht mehr im aktuellen Datenbestand verfügbar ist. Auf diese Weise ist im aktuellen Datenbestand immer noch eine Historie sichtbar."@de ,
+        "Links basic contract data with the label of annual contract data that are no longer available in the current data set, due to an archiving functionality. This way the current data set does still provide a history of annual contract data."@en ;
+    rdfs:domain amsl:BasicContractData .
+
 amsl:archivingNote a owl:DataTypeProperty ;
     rdfs:label "Verfügbarkeit nach Vertragsende"@de ,
         "availability after termination"@en ;

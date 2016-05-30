@@ -157,7 +157,8 @@ amsl:annualPrice a owl:DatatypeProperty ;
         "annual price (EUR)"@en ;
     rdfs:comment "Verknüpft den jährlichen Preis eines Lizenzvertrages in Euro."@de ,
         "Links the annual price of a license contract in euro."@en ;
-    rdfs:domain amsl:AnnualContractData .
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range xsd:decimal .
 
 amsl:archivedAnnualContractDataLabel a owl:DatatypeProperty ;
     rdfs:label "Archivierte Vertragsjahresdaten"@de ,
@@ -510,7 +511,8 @@ amsl:expectedPrice a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft den Preis, welcher für das laufende Jahr für den Vertrag geschätzt und eingeplant wurde."@de ,
         "Links the price that was expected and planned for the license for the current year."@en ;
     rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+    rdfs:range xsd:decimal .
     
 amsl:expectedPriceFollowingYear a owl:DatatypeProperty ;
     rdfs:label "Planpreis Folgejahr (EUR)"@de ,
@@ -715,7 +717,8 @@ amsl:invoicePriceGrossEUR  a owl:DatatypeProperty ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in Euro."@de ,
 		"Links the invoice price gross in euro."@en ;
 	rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+    rdfs:range xsd:decimal .
 
 amsl:invoicePriceGrossGBP a owl:DatatypeProperty;
     rdfs:label "Rechnungspreis brutto (GBP)"@de ,
@@ -723,7 +726,8 @@ amsl:invoicePriceGrossGBP a owl:DatatypeProperty;
     rdfs:comment "Verknüpft den brutto Rechnungspreis in Pfund Sterling."@de ,
         "Links the invoice price gross in pound sterling."@en ;
     rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+    rdfs:range xsd:decimal .
 
 amsl:invoicePriceGrossUSD a owl:DatatypeProperty;
 	rdfs:label "Rechnungspreis brutto (USD)"@de ,
@@ -731,7 +735,8 @@ amsl:invoicePriceGrossUSD a owl:DatatypeProperty;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in US-Dollar."@de ,
 		"Links the invoice price gross in US-Dollar."@en ;
     rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+    rdfs:range xsd:decimal .
 
 amsl:invoicePriceNetEUR a owl:DatatypeProperty;
     rdfs:label "Rechnungspreis netto (EUR)"@de ,
@@ -739,7 +744,8 @@ amsl:invoicePriceNetEUR a owl:DatatypeProperty;
     rdfs:comment "Verknüpft den netto Rechnungspreis in Euro."@de ,
         "Links the invoice price net in euro."@en ;
     rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+    rdfs:range xsd:decimal .
 
 amsl:invoicePriceNetGBP  a owl:DatatypeProperty;
     rdfs:label "Rechnungspreis netto (GBP)"@de ,
@@ -747,7 +753,8 @@ amsl:invoicePriceNetGBP  a owl:DatatypeProperty;
     rdfs:comment "Verknüpft den netto Rechnungspreis in Pfund Sterling."@de ,
         "Links the invoice price net in pound sterling."@en ;
     rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+    rdfs:range xsd:decimal .
 
 amsl:invoicePriceNetUSD a owl:DatatypeProperty;
     rdfs:label "Rechnungspreis netto (USD)"@de ,
@@ -755,7 +762,8 @@ amsl:invoicePriceNetUSD a owl:DatatypeProperty;
     rdfs:comment "Verknüpft den netto Rechnungspreis in US-Dollar."@de ,
         "Links the invoice price net in US-Dollar."@en ;
     rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] .      
+        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+    rdfs:range xsd:decimal .      
 
 amsl:invoicePriceSubtotal a owl:ObjectProperty ;
     rdfs:label "Rechnungspreis Teilsumme"@de ,
@@ -795,7 +803,8 @@ amsl:itemPrice a owl:DatatypeProperty ;
         "price single title (EUR)"@en ;
     rdfs:comment "Verknüpft den Anschaffungs-/Nutzungspreis, den die Bibliothek für eine Bibliographische Ressource bezahlt."@de ,
         "Links the acquisition/usage price for a bibliographic resource."@en ;
-    rdfs:domain amsl:ContractItem .
+    rdfs:domain amsl:ContractItem ;
+    rdfs:range xsd:decimal .
 
 amsl:licensee a owl:ObjectProperty ;
     rdfs:label "Lizenznehmer"@de ,

@@ -834,7 +834,7 @@ amsl:licenseStartDate a owl:DatatypeProperty ;
     rdfs:range xsd:date .
 
 amsl:licenseType a owl:ObjectProperty,
-        owl:ObjectPropery ;
+        owl:ObjectProperty ;
     rdfs:label "Lizenzart"@de ,
         "license type"@en ;
     rdfs:comment "Verknüpft Informationen über die Art der Lizenz, welche den Zugang zu der elektronischen Ressource regelt."@de ,

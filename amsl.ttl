@@ -408,6 +408,14 @@ amsl:dbType a owl:ObjectProperty ;
     rdfs:domain amsl:BasicContractData ;    
     rdfs:range amsl:DBType .
 
+amsl:deduplicationInferiorTo a owl:ObjectProperty ;
+    rdfs:label "Untergeordnet unter (Deduplizierung)"@de ,
+        "inferior to (deduplication)"@en ;
+    rdfs:comment "Verknüpft eine Metadatenquelle, der die aktuelle Quelle bei einem Deduplizierungsvorgang untergeordnet ist. Das heißt, die Metadaten der verknüpften Quelle werden bevorzugt."@de ,
+        "Links a metadata source the current source is inferior to during a dedupliation process. That is, the metadata of the linked source are treated with priortity."@en ;
+    rdfs:domain amsl:MetadataSource ;
+    rdfs:range amsl:MetadataSource .
+
 amsl:description a owl:DatatypeProperty ;
     rdfs:label "Beschreibung"@de ,
         "description"@en ;

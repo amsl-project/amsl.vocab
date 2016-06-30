@@ -843,8 +843,8 @@ amsl:concUser a owl:DatatypeProperty ;
     rdfs:domain amsl:BasicContractData .
 
 amsl:consortium a owl:ObjectProperty ;
-    rdfs:label "Beteiligtes Konsortium"@de ,
-        "involved consortium"@en ;
+    rdfs:label "Konsortium"@de ,
+        "consortium"@en ;
     rdfs:comment "Verknüpft ein beteiligtes Bibliothekskonsortium (Zusammenschluss von Bibliotheken)"@de ,
     	"Links an involved library consortium (association of libraries)"@en ;
     rdfs:domain amsl:BasicContractData ;

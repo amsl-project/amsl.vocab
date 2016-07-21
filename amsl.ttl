@@ -65,6 +65,7 @@ amsl:AnnualContractData a owl:Class ;
     rdfs:label "Vertragsjahresdaten"@de ,
         "Annual Contract Data"@en ;
     rdfs:subClassOf 
+        amsl:ContractData ,
         [   a owl:restriction ;
             owl:onProperty amsl:annualBudget ;
             owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
@@ -196,6 +197,7 @@ amsl:BasicContractData a owl:Class ;
     rdfs:label "Vertragsbasisdaten"@de ,
         "Basic Contract Data"@en ;
     rdfs:subClassOf 
+        amsl:ContractData ,
         [   a owl:restriction ;
             owl:onProperty amsl:acqMethod ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
@@ -400,6 +402,12 @@ amsl:Collection a owl:Class ;
         "Collection"@en ;
     rdfs:comment "Eine Kollektion oder Sammlung, die nicht näher bestimmte zusammengehörige Daten umfasst. Detailliertere Beschreibungen sind über Unterklassen möglich."@de , 
         "A collection containing not further specified data. Subclasses are available or a more detailed description."@en .
+
+amsl:ContractData a owl:Class ;
+    rdfs:label "Vertragsdaten"@de ,
+        "ContractData"@en ;
+    rdfs:comment "Ein Geschäftsvertrag zwischen üblicherweise der Bibliothek und einer anderen Partei. Instanzen werden im Allgemeinen nur von den Unterklassen gebildet."@de ,
+        "A business contract between usually the library and another party. Generally, only the subclasses are instanciated."@en .
 
 amsl:ContractItem a owl:Class ;
     rdfs:label "Vertragsposition"@de ,
@@ -1719,6 +1727,14 @@ amsl:proprietaryID a owl:DatatypeProperty ;
         "proprietary ID"@en ;
     rdfs:comment "Verknüpft einen proprietären Identifier eines Mediums."@de ,
         "Links a proprietary identifier of a medium."@en .
+
+amsl:relatedContract a owl:ObjectProperty ;
+    rdfs:label "In Beziehung stehender Vertrag"@de ,
+        "related contract"@en ;
+    rdfs:comment "Verknüpft einen in Beziehung stehenden Vertrag, beispielsweise ein Vertrag einer anderen Organisation."@de ,
+        "Links a related contract, for example a contract of another organisation."@en ;
+    rdfs:domain amsl:ContractData ;
+    rdfs:range amsl:ContractData .
  
 amsl:scholarlySharing a owl:ObjectProperty ;
     rdfs:label "Scholarly Sharing "@de ,
@@ -1903,7 +1919,8 @@ amsl:Purchase a amsl:AcqNote ;
 
 amsl:ScientificInformationServicesLicense a amsl:AcqNote ;
     rdfs:label "FID-Lizenz"@de ,
-        "scientific information services license"@en .              
+        "scientific information services license"@en ;
+    rdfs:comment "Zur Kennzeichnung von Lizenzen, die durch einen FID erworben wurden und für andere Einrichtungen nachnutzbar sind."@de .              
         
 amsl:Unknown a amsl:AcqNote ;
     rdfs:label "Unbekannt"@de ,
@@ -2133,7 +2150,12 @@ amsl:CampusWithoutVPN a amsl:LicenseType ;
         
 amsl:Faculty a amsl:LicenseType ;
     rdfs:label "Fakultätslizenz (Class C Subnetz)"@de ,
-        "faculty license"@en .               
+        "faculty license"@en .     
+
+amsl:ScientificInformationServicesSpecific a amsl:LicenseType ;
+    rdfs:label "FID-spezifisch"@de ,
+        "Scientific Information Services specific"@en ;
+    rdfs:comment "Die Lizenz ist für den FID-spezifisch definierten Nutzerkreis gültig."@de .
 
 amsl:NetworkIndependent a amsl:LicenseType ;
     rdfs:label "netzunabhängig"@de ,

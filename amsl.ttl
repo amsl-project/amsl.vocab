@@ -2138,7 +2138,7 @@ amsl:SilentUninterpreted a amsl:LicenseTerm ;
 
 
 amsl:LicenseType a owl:Class ;
-    owl:oneOf ( amsl:Faculty amsl:CampusWithoutVPN amsl:Single amsl:Campus amsl:NetworkIndependent ) .               
+    owl:oneOf ( amsl:Faculty amsl:CampusWithoutVPN amsl:Single amsl:Campus amsl:NetworkIndependent amsl:ScientificInformationServicesSpecific ) .               
 
 amsl:Campus a amsl:LicenseType ;
     rdfs:label "Campuslizenz"@de ,

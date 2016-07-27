@@ -2078,12 +2078,6 @@ amsl:EjournalPackage a amsl:ERType ;
 amsl:Metadata a amsl:ERType ;
     rdfs:label "Metadaten"@de ,
         "metadata"@en .
-
-amsl:OpenAccessAgreement a amsl:ERType ;
-    rdfs:label "OA Verlagsvereinbarung"@de ,
-        "OA Agreement"@en ;
-    rdfs:comment "Open Access Verlagsvereinbarung"@de ,
-        "Open Access Agreement"@en .
         
 amsl:PrintPlusOnlineBook a amsl:ERType ;
     rdfs:label "Print + Online (Buch)"@de ,

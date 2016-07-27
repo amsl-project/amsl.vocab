@@ -1506,7 +1506,7 @@ amsl:linkToDescription a owl:DatatypeProperty ;
     rdfs:label "URL der Anbieterbeschreibung"@de ,
         "link to description "@en ;
     rdfs:comment "Verknüpft einen Link zur Beschreibung der ER des Anbieter.s"@de ,
-        "Links the URL to the description of the creator/privider of an Electronic Product."@en ;
+        "Links the URL to the description of the creator/provider of an Electronic Product."@en ;
     rdfs:domain amsl:BasicContractData .
 
 amsl:linkToHoldingsFile a owl:DatatypeProperty ;
@@ -1876,18 +1876,18 @@ amsl:zdbID a owl:DatatypeProperty ;
 ######################## Collections & Individuals #####################################
     
 amsl:AcqNote a owl:Class ;
-    owl:oneOf ( amsl:AllianceLicense amsl:APC amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:ScientificInformationServicesLicense amsl:PDA amsl:PPV amsl:Unknown ) ;
+    owl:oneOf ( amsl:AllianceLicense amsl:OACharges amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:ScientificInformationServicesLicense amsl:PDA amsl:PPV amsl:Unknown ) ;
     rdfs:seeAlso "ERMI terms: _Acquisition Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
 
 amsl:AllianceLicense a amsl:AcqNote ;
     rdfs:label "Allianzlizenz"@de ,
         "alliance license"@en .
 
-amsl:APC a amsl:AcqNote ;
-    rdfs:label "APC"@de ,
-        "APC"@en ;
-    rdfs:comment "Open Access Publikationsgebühr"@de ,
-        "Article Processing Charge"@en .
+amsl:OACharges a amsl:AcqNote ;
+    rdfs:label "OA-Kosten"@de ,
+        "OA charges"@en ;
+    rdfs:comment "Open Access-Kosten"@de ,
+        "Open Access Charges"@en .
        
 amsl:ConsortialLicense a amsl:AcqNote ;
     rdfs:label "Konsortiallizenz"@de ,

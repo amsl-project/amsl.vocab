@@ -499,7 +499,7 @@ amsl:ContractItem a owl:Class ;
             owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
         [   a owl:restriction ;
             owl:onProperty dct:issued  ;
-            owl:mainCardinality "0"^^xsd:nonNegativeInteger ] ,
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
         [   a owl:restriction ;
             owl:onProperty dct:language  ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,

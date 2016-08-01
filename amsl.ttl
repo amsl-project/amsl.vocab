@@ -769,7 +769,7 @@ amsl:archivedAnnualContractDataLabel a owl:DatatypeProperty ;
         "Links basic contract data with the label of annual contract data that are no longer available in the current data set, due to an archiving functionality. This way the current data set does still provide a history of annual contract data."@en ;
     rdfs:domain amsl:BasicContractData .
 
-amsl:archivingNote a owl:DataTypeProperty ;
+amsl:archivingNote a owl:DatatypeProperty ;
     rdfs:label "Verfügbarkeit nach Vertragsende"@de ,
         "availability after termination"@en ;
     rdfs:comment "Verknüpft Informationen zur Verfügbarkeite der elektronischen Ressourcen nach Vertragsende (Archivrecht, Format...)."@de ,
@@ -828,7 +828,7 @@ amsl:budget a owl:ObjectProperty ;
         owl:unionOf ( amsl:AnnualBudget amsl:Subtotal ) ] ;
     rdfs:range amsl:Budget .
 
-amsl:budgetAbbr a owl:DataTypeProperty ;
+amsl:budgetAbbr a owl:DatatypeProperty ;
     rdfs:label "Budgetkürzel"@de ,
         "budget abbreviation"@en ;
     rdfs:comment "Verknüpft die intern gebräuchliche Abkürzung eines Budets."@de ,
@@ -910,7 +910,7 @@ amsl:contractItemOf a owl:ObjectProperty ;
     rdfs:range  amsl:LicensePackage ;
     rdfs:domain amsl:ContractItem  .
 
-amsl:costCenter a owl:DataTypeProperty ;
+amsl:costCenter a owl:DatatypeProperty ;
     rdfs:label "Kostenstelle"@de ,
         "cost center"@en ;
     rdfs:comment "Verknüpft eine Kostenstelle. Sie ist ein Kostenrechnungsobjekt mit der Aufgabe, die in einem Unternehmensteil, meist einer Abteilung, angefallenen Kosten zu sammeln."@de ,

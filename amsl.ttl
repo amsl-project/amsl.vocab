@@ -1,5 +1,4 @@
 @prefix amsl: <http://vocab.ub.uni-leipzig.de/amsl/> .
-
 @prefix aiiso: <http://purl.org/vocab/aiiso/schema#> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix cc: <http://creativecommons.org/ns#> .
@@ -33,8 +32,8 @@ amsl: a owl:Ontology ;
     doap:homepage <http://amsl.technology> ;
     doap:maintainer <http://aksw.org/Partner/AnnikaDomin> ;
     foaf:maker 
-        <http://aksw.org/NatanaelArndt>,
-        <http://aksw.org/Partner/AnnikaDomin>,
+        <http://aksw.org/NatanaelArndt> ,
+        <http://aksw.org/Partner/AnnikaDomin> ,
         <http://aksw.org/Partner/BjoernMuschall>,
         <http://aksw.org/AndreasNareike> ,
         <http://aksw.org/SebastianNuck> ,
@@ -640,7 +639,7 @@ amsl:MetadataSource a owl:Class;
 amsl:LicensePackage a owl:Class ;
     rdfs:label "Paket"@de ,
         "License Package"@en ;
-    owl:rdfs:subClassOf
+    rdfs:subClassOf
         [   a owl:restriction ;
             owl:onProperty amsl:contractContainingPackage  ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
@@ -669,7 +668,7 @@ amsl:LicensePackage a owl:Class ;
 amsl:Platform a owl:Class ;
     rdfs:label "Plattform"@de ,
         "Platform"@en ;
-    owl:rdfs:subClassOf
+    rdfs:subClassOf
         [   a owl:restriction ;
             owl:onProperty amsl:shibbolethImplStatus  ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
@@ -697,7 +696,7 @@ amsl:Source a owl:Class ;
 amsl:Subtotal a owl:Class ;
     rdfs:label "Teilsumme"@de ,
         "Subtotal"@en ;
-    owl:rdfs:subClassOf
+    rdfs:subClassOf
         [   a owl:restriction ;
             owl:onProperty amsl:annualBudget  ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
@@ -1838,7 +1837,7 @@ amsl:workflowStatus a owl:ObjectProperty ;
 
 ###  NEW: integration of EZB holdings import ###
 
-amsl:HoldingsItem a owl:Class;
+amsl:HoldingsItem a owl:Class ;
     rdfs:label "Bestandsposition"@de , 
        "Holdings item"@en ;
     rdfs:comment "Ein Teil des Bibliotheksbestandes, d.h. ein Medium, welches eine Bibliothek besitzt oder an welchem sie Nutzungsrechte innehat."@de ,
@@ -1849,28 +1848,28 @@ amsl:ezbAnchor a owl:DatatypeProperty ;
         "EZB anchor"@en ;
     rdfs:comment "Verknüpft ein Paket mit dessen in der EZB vergebenem Anker."@de ,
         "Links a license package with the corresponding ezb achor."@en ;
-    rdf:rdfs:domain amsl:LicensePackage .
+    rdf:domain amsl:LicensePackage .
 
 amsl:holdingsItemOf a owl:ObjectProperty ;
     rdfs:label "Bestandsposition von"@de ,
         "holdings item of"@en ;
     rdfs:comment "Verknüpft eine bestimmte Bestandsposition mit dem Lizenzpaket, in dem sie enthalten ist."@de ,
         "Links a certain holdings item with the license package it is contained in."@en ;
-    rdf:rdfs:domain amsl:HoldingsItem .
+    rdf:domain amsl:HoldingsItem .
 
 amsl:ezbTitleID a owl:DatatypeProperty ;
     rdfs:label "EZB-Titel-ID"@de , 
         "EZB title id"@en ;
     rdfs:comment "Verknüpft eine Bestandsposition mit ihrer in der EZB vergebenen Titel-ID."@de ,
         "Links a holdings item with the corresponding EZB title id."@en ;
-    rdf:rdfs:domain amsl:HoldingsItem .
+    rdf:domain amsl:HoldingsItem .
 
 amsl:zdbID a owl:DatatypeProperty ;
     rdfs:label "ZDB-ID"@de , 
         "ZDB id"@en ;
     rdfs:comment "Verknüpft eine Bestandsposition mit ihrer in der ZDB vergebenen ID."@de ,
         "Links a holdings item with the corresponding ZDB id."@en ;
-    rdf:rdfs:domain amsl:HoldingsItem .
+    rdf:domain amsl:HoldingsItem .
 
    
 ######################## Collections & Individuals #####################################

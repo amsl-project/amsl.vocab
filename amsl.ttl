@@ -470,6 +470,9 @@ amsl:ContractItem a owl:Class ;
             owl:onProperty amsl:proprietaryID  ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
         [   a owl:restriction ;
+            owl:onProperty amsl:validityPeriod  ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
             owl:onProperty bibo:issn ;
             owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
         [   a owl:restriction ;
@@ -1824,6 +1827,14 @@ amsl:usageStatsNote a owl:DatatypeProperty ;
         "Links general information regarding usage statistics."@en ;
     rdfs:seeAlso "ERMI terms: _Usage Statistics Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 192)" ; 
     rdfs:domain amsl:AnnualContractData .
+
+amsl:validityPeriod a owl:DatatypeProperty ;
+    rdfs:label "Gültigkeitszeitraum"@de ,
+        "validity period"@en ;
+    rdfs:comment "Verknüpft den Zeitraum, hier: das Jahr, für das eine Vertragsposition gültig ist."@de ,
+        "Links the period of time, i.e. year, for which a contract item is valid."@en ;
+    rdfs:domain amsl:ContractItem ;
+    rdfs:range xsd:Integer .
 
 amsl:workflowStatus a owl:ObjectProperty ;
     rdfs:label "Status im Geschäftsgang"@de ,

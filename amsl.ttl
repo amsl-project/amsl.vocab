@@ -1829,8 +1829,8 @@ amsl:usageStatsNote a owl:DatatypeProperty ;
     rdfs:domain amsl:AnnualContractData .
 
 amsl:validityPeriod a owl:DatatypeProperty ;
-    rdfs:label "Gültigkeitszeitraum"@de ,
-        "validity period"@en ;
+    rdfs:label "Gültigkeitszeitraum (Jahr)"@de ,
+        "validity period (year)"@en ;
     rdfs:comment "Verknüpft den Zeitraum, hier: das Jahr, für das eine Vertragsposition gültig ist."@de ,
         "Links the period of time, i.e. year, for which a contract item is valid."@en ;
     rdfs:domain amsl:ContractItem ;

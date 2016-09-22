@@ -542,6 +542,9 @@ amsl:MetadataCollection a owl:Class ;
             owl:onProperty amsl:contentFile ;
             owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
         [   a owl:restriction ;
+            owl:onProperty amsl:amsl:metadataCollectionPreviewURL ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
             owl:onProperty amsl:coveredMediumID  ;
             owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
         [   a owl:restriction ;
@@ -836,6 +839,13 @@ amsl:budgetAbbr a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft die intern gebräuchliche Abkürzung eines Budets."@de ,
         "Links the internally common abbreviation of a budget name."@en ;
     rdfs:domain amsl:Budget .
+
+amsl:catalogBaseURL a owl:DatatypeProperty ;
+    rdfs:label "Base-URL des Katalogs"@de ,
+        "catalog base URL"@en ;
+    rdfs:comment "Verknüpft die Base-URL des Katalogs einer Bibliothek"@de ,
+        "Links the base URL of a library's catalog."@en ;
+    rdfs:domain foaf:Organization .
 
 amsl:collectionID a owl:DatatypeProperty ;
     rdfs:label "Collection ID"@de ,
@@ -1542,7 +1552,14 @@ amsl:mailFile a owl:ObjectProperty ;
         "Links a resource of the type Document."@en   ;
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( amsl:BasicContractData amsl:AnnualContractData ) ] ;
-    rdfs:range foaf:Document .        
+    rdfs:range foaf:Document .   
+
+amsl:metadataCollectionPreviewURL a owl:DatatypeProperty ;
+    rdfs:label "Kollektionsvorschau URL"@de ,
+        "collection preview URL"@en ;
+    rdfs:comment "Verknüpft die URL eines Bibliothekskataloges, der bereits Metadaten einer bestimmten Kollektion verzeichnet."@de ,
+        "Links the  URL of a library catalog that is already displaying etadata of a certain collection."@en ;
+    rdfs:domain amsl:MetadataCollection .     
 
 amsl:metadataSourceImplStatus a owl:ObjectProperty ;
     rdfs:label "Status der Metadaten-Implementierung"@de ,

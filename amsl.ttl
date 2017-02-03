@@ -24,8 +24,9 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 amsl: a owl:Ontology ;
-    rdfs:label "amsl Vocabulary for Library Electronic Resource Management"@en , "amsl-Vokabular für Electronic Resource Management in Bibliotheken"@de ;
-    cc:attributionName "AKSW & Universitätsbibliothek Leipzig" ;
+    rdfs:label "Vocabulary amsl : Adaptive Management of e-reSources in Libraries"@en ,
+     "Vokabular amsl : Adaptive Management of e-reSources in Libraries"@de ;
+    cc:attributionName "Universitätsbibliothek Leipzig & AKSW" ;
     vann:changes <https://github.com/amsl-project/amsl.vocab/commits/master> ;
     vann:preferredNamespacePrefix "amsl" ;
     vann:preferredNamespaceUri "http://vocab.ub.uni-leipzig.de/amsl/" ;
@@ -42,359 +43,109 @@ amsl: a owl:Ontology ;
         <http://aksw.org/Partner/LydiaUnterdoerfel> .
 
 
-######################## Classes #####################################
+######################## Classes amsl v2  #####################################
+
+
+amsl:Subscription a owl:Class ;
+    rdfs:label "Subscription"@en , "Vertrag"@de .
+
+amsl:Financial a owl:Class ;
+    rdfs:label "Financial"@en , "Kosten"@de .
+
+amsl:IssueEntitlement a owl:Class ;
+    rdfs:label "Issue Entitlement"@en , "Issue Entitlement"@de .
+# currently not in use
+
+amsl:TIPP a owl:Class ;
+    rdfs:label "TIPP"@en , "TIPP"@de .
+
+amsl:Title a owl:Class ;
+    rdfs:label "Title"@en , "Titel"@de .
+
+amsl:Package a owl:Class ;
+    rdfs:label "Package"@en , "Paket"@de .   
+
+amsl:Platform  a owl:Class ;
+    rdfs:label "Platform"@en , "Plattform"@de .
+
+amsl:License a owl:Class ;
+    rdfs:label "License"@en , "Lizenz"@de .
+
+
+########################  Properties amsl v2 #####################################
+
+amsl:financial a owl:ObjectProperty ;
+    rdfs:label "Kosten"@de ,
+        "Financial"@en ;    
+    rdfs:domain amsl:Subscription ;  
+    rdfs:range amsl:Financial .
+
+amsl:license a owl:ObjectProperty ;
+    rdfs:label "Lizenz"@de ,
+        "License"@en ;    
+    rdfs:domain amsl:Subscription ;  
+    rdfs:range amsl:License .
+
+amsl:subscribedPackage a owl:ObjectProperty ;
+    rdfs:label "umfasstes Paket"@de ,
+        "subscribed Package"@en ;    
+    rdfs:domain amsl:Subscription ;  
+    rdfs:range amsl:Package .
+
+amsl:issueEntitlement  a owl:ObjectProperty ;
+    rdfs:label "Issue Entitlement"@de ,
+        "Issue Entitlement"@en ;    
+    rdfs:domain amsl:Subscription ;  
+    rdfs:range amsl:IssueEntitlement .
+#currently not in use
+
+amsl:tipp  a owl:ObjectProperty ;
+    rdfs:label "TIPP"@de ,
+        "TIPP"@en ;   
+    rdfs:domain amsl:Subscription ; # originally to IssueEntitlement. Momentarily changed for simplification
+    rdfs:range amsl:TIPP .
+
+
+amsl:title  a owl:ObjectProperty ;
+    rdfs:label "Titel"@de ,
+        "Title"@en ;    
+    rdfs:domain amsl:TIPP ;  
+    rdfs:range bibo:Periodical .
+
+
+amsl:package  a owl:ObjectProperty ;
+    rdfs:label "Paket"@de ,
+        "Package"@en ;    
+    rdfs:domain amsl:TIPP ;  
+    rdfs:range amsl:Package .
+
+
+amsl:platform  a owl:ObjectProperty ;
+    rdfs:label "Plattform"@de ,
+        "Platform"@en ;    
+    rdfs:domain amsl:TIPP ;  
+    rdfs:range amsl:Platform .
+
+
+################ Classes ##############################
 
 amsl:AnnualBudget a owl:Class ;
     rdfs:label "Jahresbudget"@de ,
         "Annual Budget"@en ;
-    rdfs:subClassOf 
-        [   a owl:restriction ;
-            owl:onProperty amsl:budget ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:fiscalYear ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ;
     rdfs:comment "Ein auf bestimmtes Haushaltsjahr bezogenes Budget."@de ,
         "A budget for a certain fiscal year."@en .
-
-amsl:AnnualContractData a owl:Class ;
-    rdfs:label "Vertragsjahresdaten"@de ,
-        "Annual Contract Data"@en ;
-    rdfs:subClassOf 
-        amsl:ContractData ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:annualBudget ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:annualPrice ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:balanceFile ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:basicContractData ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger  ] ,
-        # amsl:budget nicht mit aufgenommen, da durch annual budget zu ersetzen.
-        [   a owl:restriction ;
-            owl:onProperty amsl:contractFile ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:expectedInvoiceDate  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:expectedPrice  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:expectedPriceSubtotal ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:externalContact ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:facultyShare ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:feedbackDate  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:file ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoiceDate  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoiceFile ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceGrossEUR  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceGrossGBP  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceGrossUSD  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceNetEUR  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceNetGBP  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceNetUSD  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceSubtotal ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoiceProcessingDate  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoiceReceived  ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:licenseEndDate  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:licenseStartDate ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:licenseType  ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:licensingAgent ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:licensingNote ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:linkToBalance ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:linkToContract ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:linkToInvoice ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:localSystemNumber ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:mailFile ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:noticePeriod ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:paymentPeriod ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:terminationAlert ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:usageStatsNote ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:workflowStatus ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:comment  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger  ] ;
-    rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Perteien. Dieser Vertragsteil beinhaltet die sich jährlich ändernden Eigenschaften eines Vertrags."@de ,
-        "A class modeling a business contract between the library and one or more parties. This part of the contract contains the annual (dynamic) properties of a contract."@en ;
-    rdfs:seeAlso "ERMI terms: _Acquisition Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 141)" ;
-    rdfs:seeAlso "ERMI terms: _License Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 144)" .
-
-amsl:BasicContractData a owl:Class ;
-    rdfs:label "Vertragsbasisdaten"@de ,
-        "Basic Contract Data"@en ;
-    rdfs:subClassOf 
-        amsl:ContractData ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:acqMethod ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:archivedAnnualContractDataLabel ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:archivingNote ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:authMethod ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:authorizedUser ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:concUser ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:consortium ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:consortiumLeader ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:contractFile ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:coursePackE ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:coursePackP ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:courseReserveE ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:courseReserveP ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:dataAvailability ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:dbType ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:description ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:digitallyCopy ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:erAltTitle ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:erStatus ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:erType ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:file ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:hasRemoteAccess ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:illNote ; # momentan nicht im Template
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:illset ; # momentan nicht im Template
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:illElectronic ; # momentan nicht im Template
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:illPrintOrFax ; # momentan nicht im Template
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,    
-        [   a owl:restriction ;
-            owl:onProperty amsl:individualContractItems ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:initialAcquisitionDate ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:internalContact ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:licensee ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:licensingNote ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger  ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:licensor ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:linkToDescription ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:localSystemNumber ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:mailFile ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:pCopy ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:platform ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:previousContract ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:primaryAccessURI ; # momentan nicht im Template
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:scholarlySharing ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:shutDownDate ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:terminationDate ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:terminationReason ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty dct:creator ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:comment ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ;
-    rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Parteien. Dieser Vertragsteil beinhaltet die Basisinformationen (statische Daten) eines Vertrages."@de ,
-        "A class modeling a business contract between the library and one or more parties. This one contains the basic (static) properties of a contract."@en ;
-    rdfs:seeAlso "ERMI terms: _Acquisition Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 141)" ;
-    rdfs:seeAlso "ERMI terms: _License Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 144)" .
 
 amsl:BranchOffice a owl:Class ;
     rdfs:label "Branch Office"@en ,
         "Zweigstelle"@de ;
-    rdfs:subClassOf 
-        [   a owl:restriction ;
-            owl:onProperty amsl:orgNote ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:comment  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label  ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty skos:altLabel   ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty vcard:country-name ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty vcard:hasEmail  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty vcard:hasTelephone ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty vcard:hasURL  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty vcard:locality  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty vcard:postal-code ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty vcard:street-address  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
     rdfs:comment "Eine Zweigstelle einer Organisation."@de ,
         "A branch office of an organisation."@en .
 
 amsl:Budget a owl:Class ;
     rdfs:label "Budget"@de ,
         "Budget"@en ;
-    rdfs:subClassOf 
-        [   a owl:restriction ;
-            owl:onProperty amsl:budgetAbbr  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:comment ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label  ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ;
     rdfs:comment "Budgets für die Medienerwerbung."@de ,
-    	 "Budgets for media acquisition."@en .
+         "Budgets for media acquisition."@en .
 
 amsl:Collection a owl:Class ;
     rdfs:label "Kollektion"@de , 
@@ -402,131 +153,9 @@ amsl:Collection a owl:Class ;
     rdfs:comment "Eine Kollektion oder Sammlung, die nicht näher bestimmte zusammengehörige Daten umfasst. Detailliertere Beschreibungen sind über Unterklassen möglich."@de , 
         "A collection containing not further specified data. Subclasses are available or a more detailed description."@en .
 
-amsl:ContractData a owl:Class ;
-    rdfs:label "Vertragsdaten"@de ,
-        "ContractData"@en ;
-    rdfs:comment "Ein Geschäftsvertrag zwischen üblicherweise der Bibliothek und einer anderen Partei. Instanzen werden im Allgemeinen nur von den Unterklassen gebildet."@de ,
-        "A business contract between usually the library and another party. Generally, only the subclasses are instanciated."@en .
-
-amsl:ContractItem a owl:Class ;
-    rdfs:label "Vertragsposition"@de ,
-        "Contract Item"@en ;
-    rdfs:subClassOf 
-        [   a owl:restriction ;
-            owl:onProperty amsl:contractItemOf  ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:coverageDepth  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:coverageNotes  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:dateFirstIssueOnline  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:dateLastIssueOnline  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:doi  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:eisbn  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:eissn  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:embargoInfo  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:itemPrice  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:localSystemNumber  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:numberFirstIssueOnline  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:numberFirstVolumeOnline  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:numberLastIssueOnline  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:numberLastVolumeOnline  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:pisbn  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:pissn  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:primaryAccessURI  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:proprietaryID  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:validityPeriod  ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty bibo:issn ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty bibo:shortTitle  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty count:hasItemDatatype   ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty count:hasPerformance   ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty count:isAccessibleVia ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty count:isContainedIn   ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty dc:creator   ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty dc:publisher  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty dc:title ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty dct:issued  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty dct:language  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:comment   ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ;
-    rdfs:comment "Die einzelnen elektronischen Ressourcen, die von einem Vetrag oder einem Lizenzpaket umfasst werden."@de ,
-    	"Individual electronic resources that are contained in a license contract or package."@en .
-
 amsl:FacultyShare a owl:Class ;
     rdfs:label "Fakultätsanteil"@de ,
         "Faculty share"@en ;
-    rdfs:subClassOf
-        [   a owl:restriction ;
-            owl:onProperty amsl:faculty   ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:percentage  ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:comment   ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label   ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ;
     rdfs:comment "Der Anteil an einem Vertrag, den eine bestimmte Fakultät trägt."@de ,
         "The share of a license contract a certain faculty bears."@en .
 
@@ -534,49 +163,6 @@ amsl:MetadataCollection a owl:Class ;
     rdfs:subClassOf amsl:Collection ;
     rdfs:label "Metadatenkollektion"@de ,
         "Metadata Collection"@en ;
-    rdfs:subClassOf 
-        [   a owl:restriction ;
-            owl:onProperty amsl:collectionID  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:contentFile ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:amsl:metadataCollectionPreviewURL ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:coveredMediumID  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:evaluateHoldingsFileFor ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:includedInMetadataSource  ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:linkToContentFile ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:metadataUsagePermittedForLibrary ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:metadataUsageRestricted ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty  amsl:metadataUsedByLibrary  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:productISIL ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:ticketURL  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:comment ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label  ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ;
     rdfs:comment "Eine Kollektion von Metadaten, die bspw. in einen Bibliothekskatalog eingespielt wird."@de ,
         "A collection of metadata that is to be integrated in e.g. a library catalog."@en .
 
@@ -584,113 +170,8 @@ amsl:MetadataSource a owl:Class;
     rdfs:subClassOf amsl:Source ;
     rdfs:label "Metadatenquelle"@de ,
         "Metadata Source"@en ;
-    rdfs:subClassOf
-        [   a owl:restriction ;
-            owl:onProperty  amsl:deduplicationInferiorTo  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty  amsl:externalContact  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty  amsl:indexingLevel  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty  amsl:internalContact  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:licensingNote ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:linkToContract  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:metadataSourceImplStatus  ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:nextUpdateDate  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:primaryAccessURI  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:solrShard  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:sourceID  ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:ticketURL  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:updateRhythm  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty dct:creator  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty dct:format   ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty gr:availableDeliveryMethods  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-       [   a owl:restriction ;
-            owl:onProperty rdfs:comment ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label  ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ;
     rdfs:comment "Eine Quelle, die (bibliographische) Metadaten anbietet."@de ,
         "A source providing (bibliographic) metadata"@en .
-
-amsl:LicensePackage a owl:Class ;
-    rdfs:label "Paket"@de ,
-        "License Package"@en ;
-    rdfs:subClassOf
-        [   a owl:restriction ;
-            owl:onProperty amsl:contractContainingPackage  ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:ezbAnchor  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:contentFile  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:linkToContentFile  ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:productISIL   ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:comment ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label  ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ;
-    rdfs:comment "Ein Lizenzvertrag kann aus mehreren Lizenzpaketen zusammengestellt sein."@de ,
-        "A license contract can be made up by several license packages."@en .
-
-
-amsl:Platform a owl:Class ;
-    rdfs:label "Plattform"@de ,
-        "Platform"@en ;
-    rdfs:subClassOf
-        [   a owl:restriction ;
-            owl:onProperty amsl:shibbolethImplStatus  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:comment ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label  ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty vcard:hasURL    ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
-    rdfs:comment "Das Portal bzw. der Service, der die Inhalte bereitstellt und zugänglich macht."@de ,
-        "The portal resp. service providing the electronic content and the access to it."@en ;
-        rdfs:seeAlso "ERMI terms: _Interface Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 139)" .
-
 
 amsl:Source a owl:Class ;
     rdfs:label "Quelle"@de , 
@@ -702,38 +183,6 @@ amsl:Source a owl:Class ;
 amsl:Subtotal a owl:Class ;
     rdfs:label "Teilsumme"@de ,
         "Subtotal"@en ;
-    rdfs:subClassOf
-        [   a owl:restriction ;
-            owl:onProperty amsl:annualBudget  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        #  amsl:budget 
-        [   a owl:restriction ;
-            owl:onProperty amsl:expectedPrice  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceGrossEUR  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceGrossGBP  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceGrossUSD  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceNetEUR  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceNetGBP  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty amsl:invoicePriceNetUSD  ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:comment ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
-        [   a owl:restriction ;
-            owl:onProperty rdfs:label  ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ;
     rdfs:comment "Eine Teilsumme bspw. eines Rechnungs- oder Planpreises."@de ,
         "A subtotal of e.g. an invoice or expected price." .
 
@@ -746,9 +195,9 @@ amsl:Subtotal a owl:Class ;
 amsl:acqMethod a owl:ObjectProperty ;
     rdfs:label "Erwerbungsart"@de ,
         "acquisition method"@en ;
-    rdfs:comment "Verknüpft die Art, auf die in einem Vertrages beinhalteten Lizenzen erworben wurden."@de ,
+    rdfs:comment "Verknüpft die Art, auf die in einem Vertrag beinhalteten Lizenzen erworben wurden."@de ,
     	"Links the method of acquisition used to purchase the licenses of a contract."@en ;
-    rdfs:domain amsl:BasicContractData ;  
+    rdfs:domain amsl:Financial ;  
     rdfs:range amsl:AcqNote .
 
 amsl:annualBudget a owl:ObjectProperty ;
@@ -756,7 +205,7 @@ amsl:annualBudget a owl:ObjectProperty ;
         "annual budget"@en ;
     rdfs:comment "Verknüpft das Jahresbudget, aus dem ein Betrag finanziert wird."@de ,
         "Links the annual budget a sum is financed from."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range amsl:AnnualBudget .    
 
 amsl:annualPrice a owl:DatatypeProperty ;
@@ -764,15 +213,17 @@ amsl:annualPrice a owl:DatatypeProperty ;
         "annual price (EUR)"@en ;
     rdfs:comment "Verknüpft den jährlichen Preis eines Lizenzvertrages in Euro."@de ,
         "Links the annual price of a license contract in euro."@en ;
-    rdfs:domain amsl:AnnualContractData ;
-    rdfs:range xsd:decimal .
+    rdfs:domain amsl:Financial ;
+    rdfs:range xsd:decimal ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:archivedAnnualContractDataLabel a owl:DatatypeProperty ;
     rdfs:label "Archivierte Vertragsjahresdaten"@de ,
         "archived annual contract data"@en ;
     rdfs:comment "Verknüpft Vertragsbasisdaten mit dem Label solcher Vertragsjahresdaten, die im Zuge einer Archivierungsfunktion nicht mehr im aktuellen Datenbestand verfügbar ist. Auf diese Weise ist im aktuellen Datenbestand immer noch eine Historie sichtbar."@de ,
         "Links basic contract data with the label of annual contract data that are no longer available in the current data set, due to an archiving functionality. This way the current data set does still provide a history of annual contract data."@en ;
-    rdfs:domain amsl:BasicContractData .
+    rdfs:domain amsl:BasicContractData ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:archivingNote a owl:DatatypeProperty ;
     rdfs:label "Verfügbarkeit nach Vertragsende"@de ,
@@ -780,14 +231,14 @@ amsl:archivingNote a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft Informationen zur Verfügbarkeite der elektronischen Ressourcen nach Vertragsende (Archivrecht, Format...)."@de ,
          "Links additional information related to archiving rights, product, and format."@en ;
     rdfs:seeAlso "ERMI terms: _Archiving Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 159)" ; 
-    rdfs:domain amsl:BasicContractData .     
+    rdfs:domain amsl:License .     
 
 amsl:authMethod a owl:ObjectProperty ;
     rdfs:label "Authentifizierungsmethode"@de ,
         "authentication method"@en ;
     rdfs:comment "Verknüpft die nötige Authentifizierungsmethode, um Zugang zu den lizenzierten elektronischen Ressourcen zu erhalten."@de ,
     	"Links the method of authentification required to gain access to the licensed electronic resources."@en ;        
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:AuthMethod .
 
 amsl:authorizedUser a owl:ObjectProperty ;
@@ -796,7 +247,7 @@ amsl:authorizedUser a owl:ObjectProperty ;
     rdfs:comment "Verknüpft eine oder mehrere Nutzergruppen, die für zur Nutzung der lizenzierten elektronischen Ressourcen autorisiert sind."@de ,
         "Links one or several usersgroups that are authorized to use the licensed electronic resources."@en ;
     rdfs:seeAlso "ERMI terms: _Authorized User Definition_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 151)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:UserGroup .
 
 amsl:balanceFile a owl:ObjectProperty ;
@@ -805,7 +256,7 @@ amsl:balanceFile a owl:ObjectProperty ;
         "balance file"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die eine Über-/Fehlbetragsrechnungsdatei beschreibt."@de , 
         "Links a resource of the type Document describing a balance file."@en   ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range foaf:Document .    
 
 amsl:basicContractData a owl:ObjectProperty ;
@@ -814,7 +265,8 @@ amsl:basicContractData a owl:ObjectProperty ;
     rdfs:comment "Vernüpft die übergeordnteten Vertragsbasisdaten, zu denen bestimmte Vertragsjahresdaten gehören."@de ,
         "Links the superordinated basic contract data, certain annual contract data are associated with."@en ;
     rdfs:domain amsl:AnnualContractData ;
-    rdfs:range amsl:BasicContractData .
+    rdfs:range amsl:BasicContractData ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:branchOffice a owl:ObjectProperty ;
     rdfs:label "Zweigstelle"@de ,
@@ -829,8 +281,8 @@ amsl:budget a owl:ObjectProperty ;
         "budget"@en ;
     rdf:comment "Verknüpft das Budget, das mit den Kosten für einen Lizenzvertrag belastet wird."@de ,
     	"Links the budget charged with the costs of a license contract."@en ;
-    rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualBudget amsl:Subtotal ) ] ;
+    #rdfs:domain  [ a owl:Class ;
+    #    owl:unionOf ( amsl:AnnualBudget amsl:Subtotal ) ] ;
     rdfs:range amsl:Budget .
 
 amsl:budgetAbbr a owl:DatatypeProperty ;
@@ -860,14 +312,14 @@ amsl:concUser a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft die Anzahl der in den Lizenzbedingungen eines Vertrages angegeben Parallelzugriffe auf eine elektronische Ressource."@de ,
         "Links the number of concurrent users for an electronic resource licensed in a contract."@en ;
     rdfs:seeAlso "ERMI terms: _Concurrent User_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 157)" ; 
-    rdfs:domain amsl:BasicContractData .
+    rdfs:domain amsl:License .
 
 amsl:consortium a owl:ObjectProperty ;
     rdfs:label "Konsortium"@de ,
         "consortium"@en ;
     rdfs:comment "Verknüpft ein beteiligtes Bibliothekskonsortium (Zusammenschluss von Bibliotheken)"@de ,
     	"Links an involved library consortium (association of libraries)"@en ;
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range foaf:Organization .
 
 amsl:consortiumLeader a owl:ObjectProperty ;
@@ -875,7 +327,7 @@ amsl:consortiumLeader a owl:ObjectProperty ;
         "consortium leader"@en ;
     rdfs:comment "Verknüpft die Organisation, die für einen bestimmten konsortialen Lizenzvertrag die Rolle des Konsortialführers innehat."@de ,
         "Links the organization operating as consortium leader for a certain consortial license contract."@en ;
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range foaf:Organization .
 
 amsl:contactNote a owl:DatatypeProperty ;
@@ -891,8 +343,8 @@ amsl:contentFile a owl:ObjectProperty ;
         "content file"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die ein Content-File darstellt."@de , 
         "Links a resource of the type Document."@en   ;
-    rdfs:domain [ a owl:Class ;
-        owl:unionOf ( amsl:MetadataCollection amsl:LicensePackage ) ] ;
+  #  rdfs:domain [ a owl:Class ;
+  #      owl:unionOf ( amsl:MetadataCollection amsl:Package ) ] ;
     rdfs:range foaf:Document .  
 
 amsl:contractContainingPackage a owl:ObjectProperty ;
@@ -901,7 +353,8 @@ amsl:contractContainingPackage a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Vertragsjahresdaten, zu denen ein bestimmtes Lizenzpaket gehört."@de ,
         "Links the the annual contact data a certain license package is associated with."@en ;        
     rdfs:domain amsl:LicensePackage ;
-    rdfs:range amsl:AnnualContractData .
+    rdfs:range amsl:AnnualContractData ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:contractFile a owl:ObjectProperty ;
     rdfs:subPropertyOf amsl:file ;
@@ -910,8 +363,7 @@ amsl:contractFile a owl:ObjectProperty ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die eine Vertragsdatei beschreibt."@de , 
         "Links a resource of the type Document, describing a contract file."@en   ;
     rdfs:seeAlso "ERMI terms: _License Uniform Resource Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 145)" ; 
-    rdfs:domain [ a owl:Class ;
-        owl:unionOf ( amsl:BasicContractData amsl:AnnualContractData ) ] ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range foaf:Document .
 
 amsl:contractItemOf a owl:ObjectProperty ;
@@ -920,7 +372,8 @@ amsl:contractItemOf a owl:ObjectProperty ;
     rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit dem Lizenzpaket, in dem sie enthalten ist."@de ,
         "Links a certain contract item with the license package it is contained in."@en ;
     rdfs:range  amsl:LicensePackage ;
-    rdfs:domain amsl:ContractItem  .
+    rdfs:domain amsl:ContractItem  ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:costCenter a owl:DatatypeProperty ;
     rdfs:label "Kostenstelle"@de ,
@@ -935,7 +388,7 @@ amsl:coursePackE a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes, lizenziertes Material in Zusammnenstellungen in elektronischer Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de ,
         "Links information on the right to use licensed materials in collections or compilations of materials assembled in an electronic format by faculty members for use by students in a class for purposes of instruction."@en ;
     rdfs:seeAlso "ERMI terms: _Course Pack Electronic_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 157)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
 
 amsl:coursePackP a owl:ObjectProperty ;
@@ -944,7 +397,7 @@ amsl:coursePackP a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes lizenziertes Material in Zusammnenstellungen in gedruckter Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de ,
         "Links information on the right to use licensed materials in collections or compilations of materials assembled in a print format by faculty members for use by students in a class for purposes of instruction."@en ;
     rdfs:seeAlso "ERMI terms: _Course Pack Print_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 156)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
 
 amsl:courseReserveE a owl:ObjectProperty ;
@@ -953,7 +406,7 @@ amsl:courseReserveE a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Infomationen über das Recht digitale Kopien des lizenzierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de ,
         "Links information on the right to make electronic copies of the licensed materials and store them on a secure network."@en ;
     rdfs:seeAlso "ERMI terms: _Course Reserve Electronic_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 156)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
 
 amsl:courseReserveP a owl:ObjectProperty ;
@@ -962,7 +415,7 @@ amsl:courseReserveP a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Infomationen über das Recht gedruckte Kopien des lizenzierten Materials zu erstellen und sie in einem kontrollierten Bereich bereitzustellen."@de ,
         "Links information on the right to make print copies of the licensed materials and place them in a controlled circulation area of the library for reserve reading in conjunction with specific courses of instruction."@en ;
     rdfs:seeAlso "ERMI terms: _Course Reserve Print_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 155)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .    
 
 amsl:coverageDepth a owl:ObjectProperty ;
@@ -970,7 +423,7 @@ amsl:coverageDepth a owl:ObjectProperty ;
         "coverage Depth"@en ;
     rdfs:comment "Verknüpft Informationen über die Tiefe, in der der Inhalt abgedeckt wird."@de ,
         "Links information on the extent to which content is covered."@en ;
-    rdfs:domain amsl:ContractItem ;
+    rdfs:domain amsl:TIPP ;
     rdfs:range amsl:CoverageDepth .
 
 amsl:coverageNotes a owl:DatatypeProperty ;
@@ -978,7 +431,7 @@ amsl:coverageNotes a owl:DatatypeProperty ;
         "coverage Notes"@en ;
     rdfs:comment "Verknüpft weiterführende Informationen über die Abdeckungstiefe."@de ,
         "Links further information on the coverage depth."@en ;
-    rdfs:domain amsl:ContractItem .  
+    rdfs:domain amsl:TIPP .  
 
 amsl:coveredMediumID a owl:ObjectProperty ;
     rdfs:label "abgedeckte Medien (ID)"@de ,
@@ -992,7 +445,7 @@ amsl:dataAvailability a owl:DatatypeProperty ;
         "(meta)data availability"@en ;
     rdfs:comment "Verknüpft Informationen über die Verfügbarkeit von Metadaten zu den lizenzierten elektronischen Ressourcen."@de ,
         "Links information on the availability of metadata for the licensed electronic resources."@en ;
-    rdfs:domain amsl:BasicContractData .    
+    rdfs:domain amsl:License .    
 
 amsl:dateFirstIssueOnline a owl:DatatypeProperty ;
     rdfs:label "Datum erster online verfügbarer Ausgabe"@de ,
@@ -1001,7 +454,7 @@ amsl:dateFirstIssueOnline a owl:DatatypeProperty ;
         "date first issue avail."@en ;
     rdfs:comment "Verknüpft das Datum der ersten online verfügbaren Ausgabe eines E-Journals oder E-Books."@de ,
         "Links the date of the first issue of an e-journal or e-book available online."@en ;
-    rdfs:domain amsl:ContractItem ;
+    rdfs:domain amsl:TIPP ;
     rdfs:range xsd:date .   
 
 amsl:dateLastIssueOnline a owl:DatatypeProperty ;
@@ -1011,16 +464,18 @@ amsl:dateLastIssueOnline a owl:DatatypeProperty ;
         "date last issue avail."@en ;
     rdfs:comment "Verknüpft das Datum der letzten online verfügbaren Ausgabe eines E-Journals oder E-Books."@de ,
         "Links the date of the last issue of an e-journal or e-book available online."@en ;
-    rdfs:domain amsl:ContractItem ;
+    rdfs:domain amsl:TIPP ;
     rdfs:range xsd:date .   
+
 
 amsl:dbType a owl:ObjectProperty ;
     rdfs:label "Datenbanktyp"@de ,
         "database type"@en ;
     rdfs:comment "Verknüpft den Typ einer Datenbank."@de ,
     	"Links the type of a database."@en ;    
-    rdfs:domain amsl:BasicContractData ;    
+    rdfs:domain amsl:Title ; 
     rdfs:range amsl:DBType .
+# currently not in use
 
 amsl:deduplicationInferiorTo a owl:ObjectProperty ;
     rdfs:label "Untergeordnet unter (Deduplizierung)"@de ,
@@ -1036,7 +491,7 @@ amsl:description a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft die Beschreibung des Inhalts. Es können Links zu weiteren relevanten Dokumenten (z. B. Inhaltsverzeichnis) enthalten sein."@de ,
         "Links an account of the content of the resource. It may include pointers to other relevant objects (e.g., tables of contents)."@en ;
     rdfs:seeAlso "ERMI terms: _Description_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 136)" ;
-    rdfs:domain amsl:BasicContractData .    
+    rdfs:domain amsl:License . # disputable: better at Subscription?    
 
 amsl:digitallyCopy a owl:ObjectProperty ;
     rdfs:label "Kopie digital"@de ,
@@ -1044,7 +499,7 @@ amsl:digitallyCopy a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Infomationen über das Recht des Lizenznehmers und autorisierter Nutzer, eine digitale Kopie zu erstellen."@de ,
         "Links information on the right of the licensee and authorized users to download and digitally copy a reasonable portion of the licensed materials."@en ;
     rdfs:seeAlso "ERMI terms: _Digitally Copy_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 153)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
 
 amsl:doi a owl:ObjectProperty ; 
@@ -1074,7 +529,7 @@ amsl:embargoInfo a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft Embargo-Informationen in der KBART-Erfassungsweise."@de ,
         "Links embargo information in KBART style."@en ;
     rdfs:seeAlso "ERMI terms: _Embargo Period_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 137)" ;
-    rdfs:domain amsl:ContractItem .
+    rdfs:domain amsl:TIPP .
 
 amsl:erAltTitle a owl:DatatypeProperty ;
     rdfs:label "Alternativer Titel"@de ,
@@ -1082,7 +537,7 @@ amsl:erAltTitle a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft eine Variation des Haupttitels der Ressource, z.B. Akronyme, Paralleltitel usw."@de ,
         "Links a variation of the title of the resource, including acronyms, parallel titles, titles in other languages, etc."@en ;
     rdfs:seeAlso "ERMI terms: _Electronic Resource Alternate Title_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 134)" ;
-    rdfs:domain amsl:BasicContractData .
+    rdfs:domain amsl:Subscription .
 
 amsl:erStatus a owl:ObjectProperty ;
     rdfs:label "Status der ER"@de ,
@@ -1090,7 +545,7 @@ amsl:erStatus a owl:ObjectProperty ;
     rdfs:comment "Verknüpft den Status der elektronischen Ressourcen bzw. des diese beinhaltenden Vertrages im Erwerbungsprozess"@de ,
     	"Links the status of the electronic resources resp. of the containing contract in the acquisition process."@en ;
     rdfs:seeAlso "ERMI terms: _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" ;
-    rdfs:domain amsl:BasicContractData ;    
+    rdfs:domain amsl:Subscription ;    
     rdfs:range amsl:ERStatus .
 
 amsl:erType a owl:ObjectProperty ;
@@ -1099,8 +554,9 @@ amsl:erType a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Produktart der in einem Vertrag lizenzierten elektronischen Ressourcen."@de ,
     	"Links the type of product of the electronic resources licensed in a contract."@en ;
     rdfs:seeAlso "ERMI terms: _Resource Type (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 136)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:Title ;
     rdfs:range amsl:ERType .
+# currently not in use
 
 amsl:evaluateHoldingsFileFor a owl:ObjectProperty ;
     rdfs:label "Holdings-File auswerten für"@de , 
@@ -1124,7 +580,7 @@ amsl:expectedInvoiceDate a owl:DatatypeProperty ;
         "expected invoice date"@en ;
     rdfs:comment "Verknüpft das Datum, zu dem der Eingang der Rechnung zu einem Vertrag erwartet wird."@de , 
     	"Línks the date the invoice receipt for a contract is expected."@en ;    
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range xsd:date .
 
 amsl:expectedPrice a owl:DatatypeProperty ;
@@ -1132,8 +588,8 @@ amsl:expectedPrice a owl:DatatypeProperty ;
         "expected price (EUR)"@en ;
     rdfs:comment "Verknüpft den Preis, welcher für das laufende Jahr für den Vertrag geschätzt und eingeplant wurde."@de ,
         "Links the price that was expected and planned for the license for the current year."@en ;
-    rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+   # rdfs:domain  [ a owl:Class ;
+   #     owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
     
 amsl:expectedPriceFollowingYear a owl:DatatypeProperty ;
@@ -1149,7 +605,7 @@ amsl:expectedPriceSubtotal a owl:ObjectProperty ;
         "expected price subtotal"@en ;
     rdfs:comment "Verknüpft die Teilsumme eines Planpreises. Dieser wiederum kann der Betrag sowie das belastete Budget zugeordnet werden."@de ,
         "Links the subtotal of an expected price. The subtotal again may be linked with the amount due and the budget charged."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range amsl:Subtotal .
 
 amsl:externalContact a owl:ObjectProperty ;
@@ -1157,8 +613,8 @@ amsl:externalContact a owl:ObjectProperty ;
         "external contact"@en ;
     rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten von Verlagen, Konsortien, Metadatenprovidern etc."@de ,
         "Links the responsible contact person from publisher, licensing agent, consortium etc."@en ;
-    rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:MetadataSource ) ] ;
+   # rdfs:domain  [ a owl:Class ;
+   #      owl:unionOf ( amsl:Subscription amsl:MetadataSource ) ] ;
     rdfs:range foaf:Person .
 
 amsl:faculty a owl:ObjectProperty ;
@@ -1180,7 +636,7 @@ amsl:facultyShare a owl:ObjectProperty ;
         "faculty share"@en ;
     rdfs:comment "Verknüpft den Anteil an einem Vertrag, der von einer bestimmten Fakultät getragen wird."@de ,
         "Links a certain faculty's share of a license contract."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range amsl:FacultyShare .
 
 amsl:feedbackDate a owl:DatatypeProperty ;
@@ -1189,7 +645,7 @@ amsl:feedbackDate a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft den letztmöglichen Tag, an welchem eine Rückmeldung an Zahlungsempfänger, Lizenzgeber etc. erfolgen muss."@de ,
         "Links the last possible date to give feedback to licensing agent, licensor etc."@en ;
     rdfs:seeAlso "ERMI terms: _Purchase Renewal Date_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 142)" ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range xsd:date .
 
 amsl:field a owl:DatatypeProperty ;
@@ -1220,7 +676,7 @@ amsl:hasRemoteAccess a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Informationen über das Recht eines autorisierten Nutzers, von außerhalb Zugang zu elektronischen Produkten zu erlangen."@de ,
         "Links information on the right of an authorized user to gain access to an Electronic Product from an offsite location"@en ;
     rdfs:seeAlso "ERMI terms: _Remote Access_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 157)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:ExtendedBoolean .
 
 amsl:holdingsFile a owl:ObjectProperty ;
@@ -1239,7 +695,9 @@ amsl:illNote a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft weitere Informationen über Fernleihbedingungen."@de ,
         "Links further information on terms concerning the interlibrary loan."@en ;
     rdfs:seeAlso "ERMI terms: _Interlibrary Loan Term Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 155)" ; 
-    rdfs:domain amsl:BasicContractData .
+    rdfs:domain amsl:License .
+# currently not in use - no ILL information
+
 
 amsl:illset a owl:ObjectProperty ;
     rdfs:label "Interlibrary Loan Secure Electronic Transmission"@de ,
@@ -1247,8 +705,10 @@ amsl:illset a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Informationen über ILLSET."@de ,
     	"Links information on ILLSET."@en ; 
     rdfs:seeAlso "ERMI terms: _Interlibrary Loan Secure Electronic Transmission_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 154)" ;       
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
+# currently not in use - no ILL information
+
 
 amsl:illElectronic a owl:ObjectProperty ;
     rdfs:label "Fernleihe elektronisch"@de ,
@@ -1256,8 +716,9 @@ amsl:illElectronic a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Informationen über das Recht lizenziertes Material in Form einer digitalen Kopie für die Fernleihe zur Verfügung zu stellen."@de ,
         "Links information on the right to provide the licensed materials via interlibrary loan by way of electronic copies."@en ;
     rdfs:seeAlso "ERMI terms: _Interlibrary Loan Electronic_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 155)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
+# currently not in use - no ILL information
 
 amsl:illPrintOrFax a owl:ObjectProperty ;
     rdfs:label "Fernleihe print / Fax"@de ,
@@ -1265,8 +726,9 @@ amsl:illPrintOrFax a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Informationen über das Recht lizenziertes Material in Form einer Print- oder Faxkopie für die Fernleihe zur Verfügung zu stellen."@de ,
         "Links information on the right to provide the licensed materials via interlibrary loan by way of print copies or facsimile transmission."@en ;
     rdfs:seeAlso "ERMI terms: _Interlibrary Loan Print or Fax_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 154)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
+# currently not in use - no ILL information
 
 amsl:includedInMetadataSource a owl:ObjectProperty ;
     rdfs:label "enthalten in Metadatenquelle"@de ,
@@ -1289,14 +751,15 @@ amsl:individualContractItems a owl:ObjectProperty ;
     rdfs:comment "Gibt an, ob ein konsortialer Vertrag unterschiedliche Vertragspositionen für verschiedene teilnehmende Bibliotheken umfassen kann. Falls dies der Fall ist, müssen Pakete und Vertragspositionen jeweils in der lokelen Wissensbasis jeder Bibliothek erfasst werden."@de ,
         "Indicates if a consortial contract can have individual contract items for different participating libraries. If this is the case, license packages and contract items need to be recorded in the local ERM knowledge base of each library."@en ;
     rdfs:domain amsl:BasicContractData ;
-    rdfs:range amsl:Boolean .
+    rdfs:range amsl:Boolean ;
+    owl:deprecated "true"^^xsd:boolean . 
 
 amsl:initialAcquisitionDate a owl:DatatypeProperty ;
     rdfs:label "Ersterwerbungsdatum"@de ,
         "initial acquisition date"@en ;
     rdfs:comment "Verknüpft das Datum, an welchem das Produkt zum ersten Mal erworben wurde."@de ,
         "Links the date the license was purchased by the licensee for the first time."@en ;
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range xsd:date .
 
 amsl:internalContact a owl:ObjectProperty ;
@@ -1304,8 +767,8 @@ amsl:internalContact a owl:ObjectProperty ;
         "inhouse contact"@en ;
     rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten des Lizenznehmers."@de ,
         "Links the responsible inhouse contact person for the contract."@en ;
-    rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:BasicContractData amsl:MetadataSource ) ] ;
+  #  rdfs:domain  [ a owl:Class ;
+  #      owl:unionOf ( amsl:Subscription amsl:MetadataSource ) ] ;
     rdfs:range foaf:Person .
 
 amsl:invoiceProcessingDate a owl:DatatypeProperty ;
@@ -1313,7 +776,7 @@ amsl:invoiceProcessingDate a owl:DatatypeProperty ;
         "invoice processing date"@en ;
     rdfs:comment "Verknüpft den Tag, an dem die Rechnung bearbeitet wurde."@de ,
         "Links the day the invoice was processed."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range xsd:date .
 
 amsl:invoiceDate a owl:DatatypeProperty ;
@@ -1321,7 +784,7 @@ amsl:invoiceDate a owl:DatatypeProperty ;
         "invoice date"@en ;
     rdfs:comment "Verknüpft das Datum, an dem die Rechnung erstellt wurde."@de ,
         "Links the day the invoice was created."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range xsd:date .
   
 amsl:invoiceFile a owl:ObjectProperty ;
@@ -1330,7 +793,7 @@ amsl:invoiceFile a owl:ObjectProperty ;
         "invoice file"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument."@de , 
         "Links a resource of the type Document."@en   ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range foaf:Document .
 
 amsl:invoicePriceGrossEUR  a owl:DatatypeProperty ;
@@ -1338,8 +801,8 @@ amsl:invoicePriceGrossEUR  a owl:DatatypeProperty ;
 		"invoice price gross (EUR)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in Euro."@de ,
 		"Links the invoice price gross in euro."@en ;
-	rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+#	rdfs:domain  [ a owl:Class ;
+ #       owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
 
 amsl:invoicePriceGrossGBP a owl:DatatypeProperty;
@@ -1347,8 +810,8 @@ amsl:invoicePriceGrossGBP a owl:DatatypeProperty;
         "invoice price gross (GBP)"@en ;
     rdfs:comment "Verknüpft den brutto Rechnungspreis in Pfund Sterling."@de ,
         "Links the invoice price gross in pound sterling."@en ;
-    rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+ #   rdfs:domain  [ a owl:Class ;
+ #       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
 
 amsl:invoicePriceGrossUSD a owl:DatatypeProperty;
@@ -1356,8 +819,8 @@ amsl:invoicePriceGrossUSD a owl:DatatypeProperty;
 		"invoice price gross (USD)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in US-Dollar."@de ,
 		"Links the invoice price gross in US-Dollar."@en ;
-    rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+ #   rdfs:domain  [ a owl:Class ;
+ #       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
 
 amsl:invoicePriceNetEUR a owl:DatatypeProperty;
@@ -1365,8 +828,8 @@ amsl:invoicePriceNetEUR a owl:DatatypeProperty;
         "invoice price net (EUR)"@en ;
     rdfs:comment "Verknüpft den netto Rechnungspreis in Euro."@de ,
         "Links the invoice price net in euro."@en ;
-    rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+ #   rdfs:domain  [ a owl:Class ;
+ #       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
 
 amsl:invoicePriceNetGBP  a owl:DatatypeProperty;
@@ -1374,8 +837,8 @@ amsl:invoicePriceNetGBP  a owl:DatatypeProperty;
         "invoice price net (GBP)"@en ;
     rdfs:comment "Verknüpft den netto Rechnungspreis in Pfund Sterling."@de ,
         "Links the invoice price net in pound sterling."@en ;
-    rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+ #   rdfs:domain  [ a owl:Class ;
+ #       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
 
 amsl:invoicePriceNetUSD a owl:DatatypeProperty;
@@ -1383,8 +846,8 @@ amsl:invoicePriceNetUSD a owl:DatatypeProperty;
         "invoice price net (USD)"@en ;
     rdfs:comment "Verknüpft den netto Rechnungspreis in US-Dollar."@de ,
         "Links the invoice price net in US-Dollar."@en ;
-    rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+ #   rdfs:domain  [ a owl:Class ;
+ #       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .      
 
 amsl:invoicePriceSubtotal a owl:ObjectProperty ;
@@ -1392,7 +855,7 @@ amsl:invoicePriceSubtotal a owl:ObjectProperty ;
         "invoice price subtotal"@en ;
     rdfs:comment "Verknüpft die Teilsumme eines Rechnungspreises. Dieser wiederum kann der Betrag sowie das belastete Budget zugeordnet werden."@de ,
         "Links the subtotal of an invoice price. The subtotal again may be linked with the amount due and the budget charged."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range amsl:Subtotal .
 
 amsl:invoiceReceived a owl:ObjectProperty ;
@@ -1400,7 +863,7 @@ amsl:invoiceReceived a owl:ObjectProperty ;
         "invoice received"@en ;
     rdfs:comment "Verknüpft die Information, ob die aktuelle Rechnung bereits eingegangen ist."@de ,
         "Links the information, if the current invoice has alreday been received."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range amsl:Boolean .
     
 amsl:isMemberOf a owl:ObjectProperty ;
@@ -1409,8 +872,8 @@ amsl:isMemberOf a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Organisation, bei der eine Person Mitglied ist."@de ,
     	"Links the organization a person is a member of."@en ;
     rdfs:seeAlso "ERMI terms: _Organization Represented_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 205)" ;
-    rdfs:domain [ a owl:Class ;
-        owl:unionOf ( foaf:Person sioc:User ) ] ;
+ #   rdfs:domain [ a owl:Class ;
+ #       owl:unionOf ( foaf:Person sioc:User ) ] ;
     rdfs:range foaf:Organization . 
 
 amsl:isRelatedTo a owl:ObjectProperty ;
@@ -1420,13 +883,25 @@ amsl:isRelatedTo a owl:ObjectProperty ;
     	"Links an electronic resource via its ISSN with an thematically related faculty."@en ;    	
     rdfs:range aiiso:Faculty .
 
+
 amsl:itemPrice a owl:DatatypeProperty ;
     rdfs:label "Preis einzelner Titel (EUR)"@de ,
         "price single title (EUR)"@en ;
     rdfs:comment "Verknüpft den Anschaffungs-/Nutzungspreis, den die Bibliothek für eine Bibliographische Ressource bezahlt."@de ,
         "Links the acquisition/usage price for a bibliographic resource."@en ;
-    rdfs:domain amsl:ContractItem ;
-    rdfs:range xsd:decimal .
+    rdfs:domain amsl:TIPP ; # originally to IssueEntitlement. Momentarily changed for simplification
+    rdfs:range xsd:decimal . 
+# currently not in use
+
+
+amsl:lastUpdateDate a owl:DatatypeProperty ;
+    rdfs:label  "Datum des letzten Updates"@de ,
+        "date of last update"@en ;
+    rdfs:comment "Verknüpft das Datum der letzten Aktualisierung der angebotenen Metadaten"@de , 
+        "Links the date of the last update of the offered metadata."@en ;
+    rdfs:domain amsl:MetadataSource ;
+    rdfs:range xsd:date .    
+
 
 amsl:licensee a owl:ObjectProperty ;
     rdfs:label "Lizenznehmer"@de ,
@@ -1434,7 +909,7 @@ amsl:licensee a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Vertragspartei, die eine Lizenz erhält."@de ,
         "Links the contracting party obtaining the license."@en ;
     rdfs:seeAlso "ERMI terms: _Licensee_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 148)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range foaf:Organization .    
 
 amsl:licenseEndDate a owl:DatatypeProperty ;
@@ -1443,8 +918,18 @@ amsl:licenseEndDate a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft das Datum, an welchem die Gültigkeit eines Lizenzvertrags endet"@de ,
         "Links the date on which a license agreement terminates"@en ;
     rdfs:seeAlso "ERMI terms: _License End Date_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 147)" ; 
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range xsd:date .
+
+amsl:licenseFile a owl:ObjectProperty ;
+    rdfs:subPropertyOf amsl:file ;
+    rdfs:label "Lizenzdatei"@de ,
+     "license file"@en ;
+    rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die eine Lizenzdatei beschreibt. Hierbei handelt es sich um einen Ausschnitt aus dem Lizenzvertrag, der ausschließlich die konkreten Lizenzbedingungen umfasst und datenschutzrechtlich unbedenklich ist."@de , 
+        "Links a resource of the type Document, describing a license file. This means a part of a license contract including only the actual licensing conditions, which therefore is unproblematic in terms of data protection."@en   ;
+    rdfs:seeAlso "ERMI terms: _License Uniform Resource Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 145)" ; 
+    rdfs:domain amsl:License ;
+    rdfs:range foaf:Document .
 
 amsl:licenseStartDate a owl:DatatypeProperty ;
     rdfs:label "Vertragsbeginn"@de ,
@@ -1452,7 +937,7 @@ amsl:licenseStartDate a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft das Datum, an welchem ein Lizenzvertrag in Kraft tritt."@de ,
         "Links the date on which a license agreement comes into effect."@en ;
     rdfs:seeAlso "ERMI terms: _License Start Date_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 147)" ; 
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range xsd:date .
 
 amsl:licenseType a owl:ObjectProperty,
@@ -1461,16 +946,16 @@ amsl:licenseType a owl:ObjectProperty,
         "license type"@en ;
     rdfs:comment "Verknüpft Informationen über die Art der Lizenz, welche den Zugang zu der elektronischen Ressource regelt."@de ,
         "Links information on the type of license that regulates access to the electronic resource."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseType .
 
 amsl:licensingAgent a owl:ObjectProperty ;
-    rdfs:label "Zahlungsempfänger"@de ,
+    rdfs:label "Agentur"@de ,
         "licensing agent"@en ;
     rdfs:comment "Verknüpft ein Unternehmen, das die Bezahlung einer ER abwickelt."@de ,
     "Links an organization (such as a subscription agent) that facilitates a licensing transaction on behalf of one or more parties."@en ;
     rdfs:seeAlso "ERMI terms: _Licensing Agent_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 148)" ; 
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Subscription ; 
     rdfs:range foaf:Organization .
 
 amsl:licensingNote a owl:DatatypeProperty ;
@@ -1479,8 +964,9 @@ amsl:licensingNote a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft zusätzliche Informationen, welche den Vertrag, die Lizenzverhandlungen, das Produkt etc. betreffen."@de ,
         "Links additional information regarding the license, the negotiation of the license, the product, etc."@en ;
     rdfs:seeAlso "ERMI terms: _Licensing Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 146)" ; 
-    rdfs:domain [ a owl:Class ;
-        owl:unionOf ( amsl:AnnualContractData amsl:MetadataSource ) ] .
+  #  rdfs:domain [ a owl:Class ;
+  #      owl:unionOf ( amsl:License amsl:MetadataSource ) ] 
+  .
 
 amsl:licensor a owl:ObjectProperty ;
     rdfs:label "Lizenzgeber"@de ,
@@ -1488,7 +974,7 @@ amsl:licensor a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Vertragspartei, die eine Lizenz zur Verfügung stellt."@de ,
         "Links the contracting party granting the license."@en ;
     rdfs:seeAlso "ERMI terms: _Licensor_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 148)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range foaf:Organization .
 
 amsl:linkToBalance a owl:DatatypeProperty ;
@@ -1496,15 +982,16 @@ amsl:linkToBalance a owl:DatatypeProperty ;
         "link to balance"@en ;
     rdfs:comment "Verknüpft einen Link zum Über-/Fehlbetrag."@de ,
         "Links a hyperlink to the balance."@en ;    
-    rdfs:domain amsl:AnnualContractData .
+    rdfs:domain amsl:Financial .
 
 amsl:linkToContentFile a owl:DatatypeProperty ;
     rdfs:label "Link zum Content-File"@de ,
         "link to content file"@en ;
     rdfs:comment "Verknüpft den Downloadlink eines Content-Files."@de ,
         "Links the download link to a content file."@en ;
-    rdfs:domain [ a owl:Class ;
-        owl:unionOf ( amsl:MetadataCollection amsl:LicensePackage ) ] .   
+   # rdfs:domain [ a owl:Class ;
+   #     owl:unionOf ( amsl:MetadataCollection amsl:Package ) ] 
+   .   
 
 amsl:linkToContract a owl:DatatypeProperty ;
     rdfs:label "Link zum Vertrag"@de ,
@@ -1512,14 +999,14 @@ amsl:linkToContract a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft einen Link/eine URL, die auf die digitale Version das originalen Vertragsdokuments verweist, welches der Lizenznehmer vom Lizenzgeber enthält."@de ,
         "Links a url linking to a digital version of the original contract document the licensee received from the licensor."@en ;
     rdfs:seeAlso "ERMI terms: _License Uniform Resource Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 145)" ;  
-    rdfs:domain amsl:AnnualContractData .
+    rdfs:domain amsl:Subscription .
 
 amsl:linkToDescription a owl:DatatypeProperty ;
     rdfs:label "URL der Anbieterbeschreibung"@de ,
         "link to description "@en ;
     rdfs:comment "Verknüpft einen Link zur Beschreibung der ER des Anbieter.s"@de ,
         "Links the URL to the description of the creator/provider of an Electronic Product."@en ;
-    rdfs:domain amsl:BasicContractData .
+    rdfs:domain amsl:License . # nicht evtl. eher zu Subscription?
 
 amsl:linkToHoldingsFile a owl:DatatypeProperty ;
     rdfs:label "Link zum Holdings-File"@de ,
@@ -1533,7 +1020,7 @@ amsl:linkToInvoice a owl:DatatypeProperty ;
         "link to invoice"@en ;
     rdfs:comment "Verknüpft einen Link zur Rechnung."@de ,
         "Links a hyperlink to the invoice."@en ;    
-    rdfs:domain amsl:AnnualContractData .
+    rdfs:domain amsl:Financial .
 
 amsl:localSystemNumber a owl:DatatypeProperty ;
     rdfs:label "Nummer aus Lokalsystem"@de ,
@@ -1541,8 +1028,9 @@ amsl:localSystemNumber a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft eine Nummer, die das lokale Bibliotheksmanagementsystem (z.B. Libero) für die Ressource vergibt."@de ,
         "Links the record number that is assigned by a local integrated library system (ILS) to the bibliographic record for the resource."@en ;
     rdfs:seeAlso "ERMI terms: _Local System Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" ;
-    rdfs:domain [ a owl:Class ;
-    	owl:unionOf ( amsl:AnnualContractData amsl:ContractItem  amsl:LicensePackage ) ] .
+   # rdfs:domain [ a owl:Class ;
+   # 	owl:unionOf ( amsl:Financial amsl:Subscription ) ] 
+   .
 
 amsl:mailFile a owl:ObjectProperty ;
     rdfs:subPropertyOf amsl:file ;
@@ -1550,8 +1038,7 @@ amsl:mailFile a owl:ObjectProperty ;
         "mail file"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die eine Schriftverkehrsdatei ."@de , 
         "Links a resource of the type Document."@en   ;
-    rdfs:domain [ a owl:Class ;
-        owl:unionOf ( amsl:BasicContractData amsl:AnnualContractData ) ] ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range foaf:Document .   
 
 amsl:metadataCollectionPreviewURL a owl:DatatypeProperty ;
@@ -1568,14 +1055,6 @@ amsl:metadataSourceImplStatus a owl:ObjectProperty ;
         "Links information on the implementation status of the metadata source in the article index."@en ;
     rdfs:domain amsl:MetadataSource ;
     rdfs:range amsl:MetadataSourceImplStatus .
-
-amsl:metadataUnavailable a owl:ObjectProperty ;
-    rdfs:label "Metadaten nicht verfügbar"@de ,
-        "metatadata unavailable"@en ;
-    rdfs:comment "Verknüpft ob Metadaten nicht bzw. nicht in ausreichender Qualität vorliegen."@de ,
-        "Links whether metadata is unavailable resp. not available in sufficient quality."@en ;
-    rdfs:domain amsl:MetadataCollection ;
-    rdfs:range amsl:Boolean .
 
 amsl:metadataUsedByLibrary a owl:ObjectProperty;
     rdfs:label "Metadaten nutzende Bibliothek"@de ,
@@ -1615,7 +1094,7 @@ amsl:nextUpdateDate a owl:DatatypeProperty ;
         "date of next update"@en ;
     rdfs:comment "Verknüpft das Datum der nächsten Aktualisierung der angebotenen Metadaten"@de , 
         "Links the date of the next update of the offered metadata."@en ;
-    rdfs:domain amsl:Source ;
+    rdfs:domain amsl:MetadataSource ;
     rdfs:range xsd:date .    
 
 amsl:noticePeriod a owl:DatatypeProperty ;
@@ -1623,7 +1102,7 @@ amsl:noticePeriod a owl:DatatypeProperty ;
         "notice period"@en ;
     rdfs:comment "Verknüpft die einzuhaltende Kündigungsfrist eines Vertrages. Die Kündigungsfrist ist zu verwenden, wenn die vorliegenden Angaben kein Datum darstellen oder nicht sinnvoll in ein solches umgerechnet werden können."@de ,
         "Links the the notice period to be adhered. The notice period must be recorded if no exact date can be identified."@en ;
-    rdfs:domain amsl:AnnualContractData .
+    rdfs:domain amsl:Subscription .
 
 amsl:numberFirstIssueOnline a owl:DatatypeProperty ;
    rdfs:label "Nummer erster online verfügbarer Ausgabe"@de ,
@@ -1632,7 +1111,7 @@ amsl:numberFirstIssueOnline a owl:DatatypeProperty ;
         "no. first issue avail."@en ;
     rdfs:comment "Verknüpft die Nummer der ersten online verfügbaren Ausgabe eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Nr.' oder 'Heft')."@de ,
         "Links the number of the first issue of an e-journal available online. Do not include any labels (e.g., 'no.' or 'n.') nor any supplement or part values."@en ;
-    rdfs:domain amsl:ContractItem  . 
+    rdfs:domain amsl:TIPP  . 
 
 amsl:numberFirstVolumeOnline a owl:DatatypeProperty ;
     rdfs:label "Nummer des ersten online verfügbaren Jahrganges"@de ,
@@ -1641,7 +1120,7 @@ amsl:numberFirstVolumeOnline a owl:DatatypeProperty ;
         "no. first vol. avail."@en ;
     rdfs:comment "Verknüpft die Nummer des ersten online verfügbaren Jahrganges eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Bd.' oder 'Jg.')."@de ,
         "Links the number of the first volume of an e-journal available online. Do not include any labels (e.g., 'vol.' or 'v.')."@en ;
-    rdfs:domain amsl:ContractItem  . 
+    rdfs:domain amsl:TIPP  . 
 
 amsl:numberLastIssueOnline a owl:DatatypeProperty ;
     rdfs:label "Nummer letzter online verfügbarer Ausgabe"@de ,
@@ -1650,7 +1129,7 @@ amsl:numberLastIssueOnline a owl:DatatypeProperty ;
         "no. last issue avail."@en ;
     rdfs:comment "Verknüpft die Nummer der letzten online verfügbaren Ausgabe eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Nr.' oder 'Heft')."@de ,
         "Links the number of the last issue of an e-journal available online. Do not include any labels (e.g., 'no.' or 'n.') nor any supplement or part values."@en ;
-    rdfs:domain amsl:ContractItem  . 
+    rdfs:domain amsl:TIPP  . 
 
 amsl:numberLastVolumeOnline a owl:DatatypeProperty ;
     rdfs:label "Nummer letzten online verfügbaren Jahrganges"@de ,
@@ -1659,7 +1138,7 @@ amsl:numberLastVolumeOnline a owl:DatatypeProperty ;
         "no. last vol. avail."@en ;
     rdfs:comment "Verknüpft die Nummer des letzten online verfügbaren Jahrganges eines E-Journals. Angabe ohne Bandbezeichnungen (z.B. 'Bd.' oder 'Jg.')."@de ,
         "Links the number of the last volume of an e-journal available online. Do not include any labels (e.g., 'vol.' or 'v.')."@en ;
-    rdfs:domain amsl:ContractItem  . 
+    rdfs:domain amsl:TIPP  . 
 
 amsl:organizationType a owl:ObjectProperty ;
     rdfs:label "Kategorie"@de ,
@@ -1677,12 +1156,20 @@ amsl:orgNote a  owl:DatatypeProperty ;
     rdfs:seeAlso "ERMI terms: _Organization Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 204)" ; 
     rdfs:domain foaf:Organization .
 
+amsl:payee a owl:ObjectProperty ;
+    rdfs:label "Zahlungsempfänger"@de ,
+        "payee"@en ;
+    rdfs:comment "Verknüpft den Zahlungsempfänger."@de ,
+        "Links the payee"@en ;
+    rdfs:domain amsl:Financial ;
+    rdfs:range foaf:Organization .
+
 amsl:paymentPeriod  a owl:ObjectProperty ;
     rdfs:label "Zahlungszeitraum"@de ,
         "payment period"@en ;
     rdfs:comment "Verknüpft den Zeitraum, in dem die Zahlung einer Rechnung fällig wird."@de ,
         "Línks the period the payment of an invoice is due."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Financial ;
     rdfs:range amsl:PaymentPeriod .       
 
 amsl:pCopy a owl:ObjectProperty ;
@@ -1691,7 +1178,7 @@ amsl:pCopy a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Informationen üas Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte Kopie zu erstellen."@de ,
         "links information on the right of the licensee and authorized users to make a printed copy of the licensed resource."@en ;
     rdfs:seeAlso "ERMI terms: _Print Copy_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 153)" ; 
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
 
 amsl:percentage a owl:DatatypeProperty ;
@@ -1715,39 +1202,33 @@ amsl:pissn a owl:ObjectProperty ;
         "Links the P-ISSN of a medium."@en ;
     rdfs:seeAlso "ERMI terms: _Print International Standard Serial Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 209)" .         
 
-amsl:platform a  owl:ObjectProperty ;
-    rdfs:label "Plattform"@de ,
-        "platform"@en ;
-    rdfs:comment "Verknüpft die Vertragsbasisdaten mit der Plattform, über die die Inhalte abrufbar sind."@de ,
-        "Links basic contract data with the associated platform."@en ;
-    rdfs:domain amsl:BasicContractData ;
-    rdfs:range amsl:Platform .
-    
 amsl:previousContract a owl:ObjectProperty ;
     rdfs:label "Vorgängervertrag"@de ,
     	"previous contract"@en ;
     rdfs:comment "Verknüpft vorhergehende Vertragsbasisdaten, die mit den jetzigen in Beziehung stehen."@de ,
     	"Links previous basic cobtract data that are related to the current."@en ;
     rdfs:seeAlso "ERMI terms: _License Replaces_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 149)" ; 
-    rdfs:domain amsl:BasicContractData ;
-    rdfs:range amsl:BasicContractData .    
+    rdfs:domain amsl:Subscription ;
+    rdfs:range amsl:Subscription  .    
 
 amsl:primaryAccessURI a  owl:DatatypeProperty ;
     rdfs:label "Zugangs-URL"@de ,
         "access URL"@en ;
-    rdfs:comment "Verknüpft die URI, unter der die lizenzierten Pridukte primär zugänglich sind."@de ,
+    rdfs:comment "Verknüpft die URI, unter der die lizenzierten Produkte primär zugänglich sind."@de ,
         "Links the URI under which the licensed products are primarily accessible."@en ;
     rdfs:seeAlso "ERMI terms: _Primary Access Uniform Resource Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 182)" ; 
-    rdfs:domain [ a owl:Class ;
-        owl:unionOf ( amsl:BasicContractData amsl:MetadataSource ) ] .
+  #  rdfs:domain [ a owl:Class ;
+  #      owl:unionOf ( amsl:TIPP amsl:MetadataSource ) ] # originally to IssueEntitlement. Momentarily changed for simplification
+    .
 
 amsl:productISIL a owl:DatatypeProperty ;
     rdfs:label "Produkt-ISIL"@de ,
         "product ISIL"@en ;
     rdfs:comment "Verknüpft einen Produkt-ISIL für Pakete elektronischer Ressourcen mit deutschlandweitem Zuschnitt."@de ,
         "Links a product ISIL for packages of electronic resources laid out for German organizations"@en ;
-    rdfs:domain [ a owl:Class ;
-        owl:unionOf ( amsl:MetadataCollection amsl:LicensePackage ) ]  .    
+   # rdfs:domain [ a owl:Class ;
+   #     owl:unionOf ( amsl:MetadataCollection amsl:Package ) ]
+     .    
 
 amsl:proprietaryID a owl:DatatypeProperty ;
     rdfs:label "Proprietäre ID"@de ,
@@ -1760,8 +1241,8 @@ amsl:relatedContract a owl:ObjectProperty ;
         "related contract"@en ;
     rdfs:comment "Verknüpft einen in Beziehung stehenden Vertrag, beispielsweise ein Vertrag einer anderen Organisation."@de ,
         "Links a related contract, for example a contract of another organisation."@en ;
-    rdfs:domain amsl:ContractData ;
-    rdfs:range amsl:ContractData .
+    rdfs:domain amsl:Subscription ;
+    rdfs:range amsl:Subscription .
  
 amsl:scholarlySharing a owl:ObjectProperty ;
     rdfs:label "Scholarly Sharing "@de ,
@@ -1769,7 +1250,7 @@ amsl:scholarlySharing a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Informationen über das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte oder digitale Kopie für Dritte zum persönlichen, wissenschaftlichen, bildendem oder beruflichen Gebrauch zu erstellen."@de ,
         "Links information on the right of authorized users and/or the licensee to transmit hard copy or an electronic copy of a portion of the licensed materials to a third party for personal, scholarly, educational, scientific or professional use."@en ;
     rdfs:seeAlso "ERMI terms: _Scholarly Sharing_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 153)" ;         
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
 
 amsl:shibbolethImplStatus a owl:ObjectProperty ;
@@ -1785,7 +1266,7 @@ amsl:shutDownDate a owl:DatatypeProperty ;
         "shutdown date"@en ;
     rdfs:comment "Verknüpft das Datum, an dem der technische Zugang zum elektronischen Produkt endet."@de ,
         "Links the date the access to the ER shuts down."@en ;
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range xsd:date .
 
 amsl:solrShard a owl:ObjectProperty ;
@@ -1801,7 +1282,7 @@ amsl:sourceID a owl:DatatypeProperty ;
         "source ID"@en ;
     rdfs:comment "Verknüpft die Source ID einer Metadatenquelle."@de , 
         "Links the source ID of a metadata source."@en ;
-    rdfs:domain amsl:Source ;
+    rdfs:domain amsl:MetadataSource ;
     rdfs:range xsd:integer .
 
 amsl:terminationAlert a owl:DatatypeProperty ;
@@ -1809,7 +1290,7 @@ amsl:terminationAlert a owl:DatatypeProperty ;
         "last possible termination date"@en ;
     rdfs:comment "Verknüpft das letztmögliche Datum, an welchem ein Vertrag/Abo gekündigt werden kann"@de ,
         "Links the last possible date on which a contract/subscription can be terminated"@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range xsd:date .
 
 amsl:terminationDate a owl:DatatypeProperty ;
@@ -1818,7 +1299,7 @@ amsl:terminationDate a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft das Datum, an welchem ein Vertrag/Abo gekündigt worden ist."@de ,
         "Links the date a contract/subscription has been terminated."@en ;
     rdfs:seeAlso "ERMI terms: _Termination Date_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" ;
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range xsd:date .
 
 amsl:terminationReason a owl:DatatypeProperty ;
@@ -1827,15 +1308,16 @@ amsl:terminationReason a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft den Grund für die Kündigung eines Vertrags."@de ,
         "Links the reason a subscription was terminated."@en ;
     rdfs:seeAlso "ERMI terms: _Termination Reason_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" ;
-    rdfs:domain amsl:BasicContractData .
+    rdfs:domain amsl:Subscription .
 
 amsl:ticketURL a owl:ObjectProperty ;
     rdfs:label "Ticket-URL"@de ,
         "ticket URL"@en ;
     rdfs:comment "Verknüpft die URL des korrespondierenden Tickets in einem internen Ticketsystem."@de ,
         "Links the URL of a corresponding ticket in an internal ticket system."@en ;
-    rdfs:domain  [ a owl:Class ;
-        owl:unionOf ( amsl:MetadataSource amsl:MetadataCollection ) ] .
+  #  rdfs:domain  [ a owl:Class ;
+  #      owl:unionOf ( amsl:MetadataSource amsl:MetadataCollection ) ]
+   .
 
 amsl:updateRhythm a owl:DatatypeProperty ;
     rdfs:label  "Update-Rhythmus"@de ,
@@ -1843,7 +1325,7 @@ amsl:updateRhythm a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft Angaben zum Aktualiserungsrhythmus der angebotenen Metadaten."@de , 
         "Links information on the update rhythm of the offered metadata."@en ;
     rdfs:seeAlso "ERMI terms: _Update Frequency_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 136)" ;
-    rdfs:domain amsl:Source .    
+    rdfs:domain amsl:MetadataSource .    
 
 amsl:usageStatsNote a owl:DatatypeProperty ;
     rdfs:label "Nutzungsstatistik Notiz"@de ,
@@ -1851,14 +1333,14 @@ amsl:usageStatsNote a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft allgemeine Informationen zu Nutzungsstatistiken. Empfehlung: Angabe von Jahr, Reportform, Nutzungszahl und Link zur entsprechenden Tabelle."@de ,
         "Links general information regarding usage statistics."@en ;
     rdfs:seeAlso "ERMI terms: _Usage Statistics Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 192)" ; 
-    rdfs:domain amsl:AnnualContractData .
+    rdfs:domain amsl:Subscription .
 
 amsl:validityPeriod a owl:DatatypeProperty ;
     rdfs:label "Gültigkeitszeitraum (Jahr)"@de ,
         "validity period (year)"@en ;
     rdfs:comment "Verknüpft den Zeitraum, hier: das Jahr, für das eine Vertragsposition gültig ist."@de ,
         "Links the period of time, i.e. year, for which a contract item is valid."@en ;
-    rdfs:domain amsl:ContractItem ;
+    rdfs:domain amsl:TIPP ;
     rdfs:range xsd:Integer .
 
 amsl:workflowStatus a owl:ObjectProperty ;
@@ -1867,45 +1349,45 @@ amsl:workflowStatus a owl:ObjectProperty ;
     rdfs:comment "Verknüpft Informationen zu dem Status des Jahresvertrages im Geschäftsgang, ob ein Vertrag etwa bereits verlängert wurde oder ob die Verhandlungen dazu noch laufen."@de ,
         "Links information on the workflow status of an annual contract, e. g. that a contract has already been renewed or that the negotiations are still ongoing."@en ;
     rdfs:seeAlso "ERMI terms: _Renewal Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range amsl:WorkflowStatus . 
 
 
 ###  NEW: integration of EZB holdings import ###
 
-amsl:HoldingsItem a owl:Class ;
-    rdfs:label "Bestandsposition"@de , 
-       "Holdings item"@en ;
-    rdfs:comment "Ein Teil des Bibliotheksbestandes, d.h. ein Medium, welches eine Bibliothek besitzt oder an welchem sie Nutzungsrechte innehat."@de ,
-        "An item of the library holdings, i.e. a medium which a library owns or holds usagage rights on."@en .
+#amsl:HoldingsItem a owl:Class ;
+#    rdfs:label "Bestandsposition"@de , 
+#       "Holdings item"@en ;
+#    rdfs:comment "Ein Teil des Bibliotheksbestandes, d.h. ein Medium, welches eine Bibliothek besitzt oder an welchem sie Nutzungsrechte innehat."@de ,
+#        "An item of the library holdings, i.e. a medium which a library owns or holds usagage rights on."@en .
 
 amsl:ezbAnchor a owl:DatatypeProperty ;
     rdfs:label "EZB-Anker"@de , 
         "EZB anchor"@en ;
     rdfs:comment "Verknüpft ein Paket mit dessen in der EZB vergebenem Anker."@de ,
         "Links a license package with the corresponding ezb achor."@en ;
-    rdf:domain amsl:LicensePackage .
+    rdf:domain amsl:Package .
 
-amsl:holdingsItemOf a owl:ObjectProperty ;
-    rdfs:label "Bestandsposition von"@de ,
-        "holdings item of"@en ;
-    rdfs:comment "Verknüpft eine bestimmte Bestandsposition mit dem Lizenzpaket, in dem sie enthalten ist."@de ,
-        "Links a certain holdings item with the license package it is contained in."@en ;
-    rdf:domain amsl:HoldingsItem .
+#amsl:holdingsItemOf a owl:ObjectProperty ;
+#    rdfs:label "Bestandsposition von"@de ,
+#        "holdings item of"@en ;
+#    rdfs:comment "Verknüpft eine bestimmte Bestandsposition mit dem Lizenzpaket, in dem sie enthalten ist."@de ,
+#        "Links a certain holdings item with the license package it is contained in."@en ;
+#    rdf:domain amsl:HoldingsItem .
 
-amsl:ezbTitleID a owl:DatatypeProperty ;
-    rdfs:label "EZB-Titel-ID"@de , 
-        "EZB title id"@en ;
-    rdfs:comment "Verknüpft eine Bestandsposition mit ihrer in der EZB vergebenen Titel-ID."@de ,
-        "Links a holdings item with the corresponding EZB title id."@en ;
-    rdf:domain amsl:HoldingsItem .
+#amsl:ezbTitleID a owl:DatatypeProperty ;
+#    rdfs:label "EZB-Titel-ID"@de , 
+#        "EZB title id"@en ;
+#    rdfs:comment "Verknüpft eine Bestandsposition mit ihrer in der EZB vergebenen Titel-ID."@de ,
+#        "Links a holdings item with the corresponding EZB title id."@en ;
+#    rdf:domain amsl:HoldingsItem .
 
-amsl:zdbID a owl:DatatypeProperty ;
-    rdfs:label "ZDB-ID"@de , 
-        "ZDB id"@en ;
-    rdfs:comment "Verknüpft eine Bestandsposition mit ihrer in der ZDB vergebenen ID."@de ,
-        "Links a holdings item with the corresponding ZDB id."@en ;
-    rdf:domain amsl:HoldingsItem .
+#amsl:zdbID a owl:DatatypeProperty ;
+#    rdfs:label "ZDB-ID"@de , 
+#        "ZDB id"@en ;
+#    rdfs:comment "Verknüpft eine Bestandsposition mit ihrer in der ZDB vergebenen ID."@de ,
+#        "Links a holdings item with the corresponding ZDB id."@en ;
+#    rdf:domain amsl:HoldingsItem .
 
    
 ######################## Collections & Individuals #####################################

@@ -1277,6 +1277,13 @@ amsl:shutDownDate a owl:DatatypeProperty ;
     rdfs:domain amsl:Subscription ;
     rdfs:range xsd:date .
 
+amsl:solrMegaCollection a owl:ObjectProperty ;
+    rdfs:label "Solr mega_collection"@de ,
+        "solr mega_collection"@en ;
+    rdfs:comment "Verknüpft die Bezeichnung der mega_collection im solr."@de ,
+        "Links the solr mega_collection name."@en ;
+    rdfs:domain amsl:MetadataCollection .
+
 amsl:solrShard a owl:ObjectProperty ;
     rdfs:label "Solr-Shard"@de ,
         "solr shard"@en ;

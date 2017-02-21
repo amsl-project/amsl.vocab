@@ -1056,6 +1056,14 @@ amsl:metadataSourceImplStatus a owl:ObjectProperty ;
     rdfs:domain amsl:MetadataSource ;
     rdfs:range amsl:MetadataSourceImplStatus .
 
+amsl:metadataAvailable a owl:ObjectProperty ;
+    rdfs:label "Metadaten verfügbar"@de ,
+        "metatadata available"@en ;
+    rdfs:comment "Verknüpft ob Metadaten überhaupt bzw. in ausreichender Qualität vorliegen."@de ,
+        "Links whether metadata is available resp. available in sufficient quality."@en ;
+    rdfs:domain amsl:MetadataCollection ;
+    rdfs:range amsl:Boolean .
+
 amsl:metadataUsedByLibrary a owl:ObjectProperty;
     rdfs:label "Metadaten nutzende Bibliothek"@de ,
         "metadata used by library"@en ;

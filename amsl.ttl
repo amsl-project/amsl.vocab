@@ -74,6 +74,12 @@ amsl:License a owl:Class ;
 
 ########################  Properties amsl v2 #####################################
 
+amsl:agreementTerm a owl:ObjectProperty ;
+    rdfs:label "Vertragslaufzeit"@de ,
+        "Agreement term"@en ;    
+    rdfs:domain amsl:License ;  
+    rdfs:range amsl:AgreementTerm .
+
 amsl:financial a owl:ObjectProperty ;
     rdfs:label "Kosten"@de ,
         "Financial"@en ;    

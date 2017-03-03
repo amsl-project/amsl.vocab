@@ -129,7 +129,7 @@ amsl:package  a owl:ObjectProperty ;
 amsl:platform  a owl:ObjectProperty ;
     rdfs:label "Plattform"@de ,
         "Platform"@en ;    
-    rdfs:domain amsl:TIPP ;  
+    rdfs:domain amsl:Subscription ;  # orginally to TIPP, but due to import problems momentarily moved to subscription
     rdfs:range amsl:Platform .
 
 

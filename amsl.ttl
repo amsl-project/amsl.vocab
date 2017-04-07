@@ -901,10 +901,10 @@ amsl:itemPrice a owl:DatatypeProperty ;
 
 
 amsl:lastUpdateDate a owl:DatatypeProperty ;
-    rdfs:label  "Datum des letzten Updates"@de ,
-        "date of last update"@en ;
-    rdfs:comment "Verknüpft das Datum der letzten Aktualisierung der angebotenen Metadaten"@de , 
-        "Links the date of the last update of the offered metadata."@en ;
+    rdfs:label  "Datum der letzten Prozessierung"@de ,
+        "date of last processing"@en ;
+    rdfs:comment "Verknüpft das Datum der letzten Aktualisierung d. h. Prozessierung der angebotenen Metadaten"@de , 
+        "Links the date of the last update i.e. processing of the offered metadata."@en ;
     rdfs:domain amsl:MetadataSource ;
     rdfs:range xsd:date .    
 

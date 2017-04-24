@@ -1109,7 +1109,8 @@ amsl:nextUpdateDate a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft das Datum der nächsten Aktualisierung der angebotenen Metadaten"@de , 
         "Links the date of the next update of the offered metadata."@en ;
     rdfs:domain amsl:MetadataSource ;
-    rdfs:range xsd:date .    
+    rdfs:range xsd:date ;
+	owl:deprecated "true"^^xsd:boolean .
 
 amsl:noticePeriod a owl:DatatypeProperty ;
     rdfs:label "Kündigungsfrist"@de ,

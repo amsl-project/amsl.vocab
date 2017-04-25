@@ -675,6 +675,14 @@ amsl:fiscalYear a owl:DatatypeProperty ;
         "Links the fiscal year of a budget."@en ;
     rdfs:domain amsl:AnnualBudget ;
     rdfs:range xsd:integer .
+	
+amsl:freeContent a owl:ObjectProperty ;
+    rdfs:label "Inhalte frei verfügbar"@de ,
+     "free Content"@en ;
+    rdfs:comment "Verknüpft die Aussage, ob die Inhalte hinter den Daten einer Metadatenkollektion im Sinne von OpenAccess frei zugänglich sind."@de , 
+        "Links whether the contents associated with the data of a metadata collection are free."@en   ;
+    rdfs:domain amsl:MetadataCollection ;
+	rdfs:range amsl:Boolean . 
 
 amsl:hasRemoteAccess a owl:ObjectProperty ;
     rdfs:label "Remote Access"@de ,

@@ -1506,23 +1506,28 @@ amsl:Shibboleth a amsl:AuthMethod ;
 
 amsl:BibliographicMimeType a owl:Class ;
     rdfs:subClassOf dct:MediaTypeOrExtent ;
-    owl:oneOf (<urn:mimetype:application/marc> <urn:mimetype:application/marcxml+xml>) .
+    owl:oneOf (<urn:mimetype:application/marc> <urn:mimetype:application/marcxml+xml>) ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:DownloadHTTP a gr:DeliveryMethod ;
     rdfs:label "HTTP Download"@de ,
-        "HTTP download"@en .
+        "HTTP download"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:DownloadFTP a gr:DeliveryMethod ;
     rdfs:label "FTP Download"@de ,
-        "FTP download"@en .
+        "FTP download"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:DownloadOAI a gr:DeliveryMethod ;
     rdfs:label "OAI Download"@de ,
-        "OAI download"@en .
+        "OAI download"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:DownloadAPI a gr:DeliveryMethod ;
     rdfs:label "API Download"@de ,
-        "API download"@en .
+        "API download"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 
 

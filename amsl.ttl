@@ -1322,6 +1322,21 @@ amsl:subscribedPackage a owl:ObjectProperty ;
         "subscribed Package"@en ;    
     rdfs:domain amsl:Subscription ;  
     rdfs:range amsl:Package .
+	
+amsl:tdm a owl:ObjectProperty ;
+    rdfs:label "Text & Data Mining"@de ,
+        "text & data mining"@en ;
+    rdfs:comment "Verknüpft Informationen über das Recht des Lizenznehmers und autorisierter Nutzer, Text und Data Mining (TDM) auf den lizenzierten Volltexten zu betreiben."@de ,
+        "Links information on the right of the licensee and authorized users to perform text and data mining (TDM) on the licensed resources."@en ;
+    rdfs:domain amsl:License ;
+    rdfs:range amsl:LicenseTerm .
+	
+amsl:tdmConditions a owl:DatatypeProperty ;
+    rdfs:label "Text & Data Mining Bedingungen"@de ,
+        "text & data mining conditions"@en ;
+    rdfs:comment "Verknüpft Informationen über eventuelle Bedingungen, unter denen Text und Data Mining (TDM) auf den lizenzierten Volltexten betrieben werden darf."@de ,
+        "Links information on possible conditions for performing text and data mining (TDM) on the licensed resources."@en ;
+    rdfs:domain amsl:License  .
 
 amsl:terminationAlert a owl:DatatypeProperty ;
     rdfs:label "Letztmöglicher Kündigungstag"@de ,
@@ -1625,7 +1640,7 @@ amsl:Undetermined a amsl:ExtendedBoolean ;
 
  
 amsl:LicenseTerm a owl:Class ;
-    owl:oneOf ( amsl:NotApplicable amsl:SilentUninterpreted amsl:ProhibitedInterpreted  amsl:ProhibitedExplicit amsl:PermittedInterpreted  amsl:PermittedExplicit ) .
+    owl:oneOf ( amsl:NotApplicable amsl:SilentUninterpreted amsl:ProhibitedInterpreted  amsl:ProhibitedExplicit amsl:PermittedInterpreted  amsl:PermittedExplicitConditions amsl:PermittedExplicit ) .
         
 amsl:NotApplicable a amsl:LicenseTerm ;
     rdfs:label "Nicht zutreffend"@de ,
@@ -1634,6 +1649,10 @@ amsl:NotApplicable a amsl:LicenseTerm ;
 amsl:PermittedExplicit a amsl:LicenseTerm ;
     rdfs:label "Zulässig (explizit)"@de ,
         "permitted (explicit)"@en .
+
+amsl:PermittedExplicitConditions a amsl:LicenseTerm ;
+    rdfs:label "Zulässig (explizit) unter Bedingungen"@de ,
+        "permitted (explicit) under conditions"@en .
                 
 amsl:PermittedInterpreted a amsl:LicenseTerm ;
     rdfs:label "Zulässig (Auslegung)"@de ,

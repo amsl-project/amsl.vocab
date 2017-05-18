@@ -107,6 +107,17 @@ amsl:MetadataSource a owl:Class;
     rdfs:comment "Eine Quelle, die (bibliographische) Metadaten anbietet."@de ,
         "A source providing (bibliographic) metadata"@en .
 		
+amsl:Package a owl:Class ;
+	rdfs:subClassOf amsl:Collection ;
+    rdfs:label "Package"@en , "Paket"@de ;
+	rdfs:comment "Ein Paket ist ein Lizenzpaket, im Sinne eine meist durch den Anbieter definierten Sammlung lizenzierter Ressourcen."@de ,
+		"A package is a license package, i. e. a collection of licensed ressources, mostly defined by the vendor."@en .
+
+amsl:Platform  a owl:Class ;
+    rdfs:label "Platform"@en , "Plattform"@de ;
+	rdfs:comment "Eine Plattform ist eine überblicherweise durch den Anbieter zur Verfügung gestellte elektronische Zugriffsmöglichkeit für die lizenzierten Ressourcen."@de ,
+		"A platform is an electronic access point to the licensed resources, normally provided by the vendor."@en .
+		
 amsl:Source a owl:Class ;
     rdfs:label "Quelle"@de , 
         "Source"@en ;
@@ -134,16 +145,6 @@ amsl:Title a owl:Class ;
 	rdfs:comment "Ein Titel ist die elektronische Ressource auf bibliographischer Ebene, d.h. eine einzelne Zeitschrift oder Datenbank."@de ,
 		"A title is the electronic resource on a bibliographic level, i.e. a single Journal or database."@en .
 
-amsl:Package a owl:Class ;
-	rdfs:subClassOf amsl:Collection ;
-    rdfs:label "Package"@en , "Paket"@de ;
-	rdfs:comment "Ein Paket ist ein Lizenzpaket, im Sinne eine meist durch den Anbieter definierten Sammlung lizenzierter Ressourcen."@de ,
-		"A package is a license package, i. e. a collection of licensed ressources, mostly defined by the vendor."@en .
-
-amsl:Platform  a owl:Class ;
-    rdfs:label "Platform"@en , "Plattform"@de ;
-	rdfs:comment "Eine Plattform ist eine überblicherweise durch den Anbieter zur Verfügung gestellte elektronische Zugriffsmöglichkeit für die lizenzierten Ressourcen."@de ,
-		"A platform is an electronic access point to the licensed resources, normally provided by the vendor."@en .
 
 
 

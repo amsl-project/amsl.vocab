@@ -43,94 +43,6 @@ amsl: a owl:Ontology ;
         <http://aksw.org/Partner/LydiaUnterdoerfel> .
 
 
-######################## Classes amsl v2  #####################################
-
-
-amsl:Subscription a owl:Class ;
-    rdfs:label "Subscription"@en , "Vertrag"@de .
-
-amsl:Financial a owl:Class ;
-    rdfs:label "Financial"@en , "Kosten"@de .
-
-amsl:IssueEntitlement a owl:Class ;
-    rdfs:label "Issue Entitlement"@en , "Issue Entitlement"@de .
-# currently not in use
-
-amsl:TIPP a owl:Class ;
-    rdfs:label "TIPP"@en , "TIPP"@de .
-
-amsl:Title a owl:Class ;
-    rdfs:label "Title"@en , "Titel"@de .
-
-amsl:Package a owl:Class ;
-    rdfs:label "Package"@en , "Paket"@de .   
-
-amsl:Platform  a owl:Class ;
-    rdfs:label "Platform"@en , "Plattform"@de .
-
-amsl:License a owl:Class ;
-    rdfs:label "License"@en , "Lizenz"@de .
-
-
-########################  Properties amsl v2 #####################################
-
-amsl:agreementTerm a owl:ObjectProperty ;
-    rdfs:label "Vertragslaufzeit"@de ,
-        "Agreement term"@en ;    
-    rdfs:domain amsl:License ;  
-    rdfs:range amsl:AgreementTerm .
-
-amsl:financial a owl:ObjectProperty ;
-    rdfs:label "Kosten"@de ,
-        "Financial"@en ;    
-    rdfs:domain amsl:Subscription ;  
-    rdfs:range amsl:Financial .
-
-amsl:license a owl:ObjectProperty ;
-    rdfs:label "Lizenz"@de ,
-        "License"@en ;    
-    rdfs:domain amsl:Subscription ;  
-    rdfs:range amsl:License .
-
-amsl:subscribedPackage a owl:ObjectProperty ;
-    rdfs:label "umfasstes Paket"@de ,
-        "subscribed Package"@en ;    
-    rdfs:domain amsl:Subscription ;  
-    rdfs:range amsl:Package .
-
-amsl:issueEntitlement  a owl:ObjectProperty ;
-    rdfs:label "Issue Entitlement"@de ,
-        "Issue Entitlement"@en ;    
-    rdfs:domain amsl:Subscription ;  
-    rdfs:range amsl:IssueEntitlement .
-#currently not in use
-
-amsl:tipp  a owl:ObjectProperty ;
-    rdfs:label "TIPP"@de ,
-        "TIPP"@en ;   
-    rdfs:domain amsl:Subscription ; # originally to IssueEntitlement. Momentarily changed for simplification
-    rdfs:range amsl:TIPP .
-
-
-amsl:title  a owl:ObjectProperty ;
-    rdfs:label "Titel"@de ,
-        "Title"@en ;    
-    rdfs:domain amsl:TIPP ;  
-    rdfs:range bibo:Periodical .
-
-
-amsl:package  a owl:ObjectProperty ;
-    rdfs:label "Paket"@de ,
-        "Package"@en ;    
-    rdfs:domain amsl:TIPP ;  
-    rdfs:range amsl:Package .
-
-
-amsl:platform  a owl:ObjectProperty ;
-    rdfs:label "Plattform"@de ,
-        "Platform"@en ;    
-    rdfs:domain amsl:Subscription ;  # orginally to TIPP, but due to import problems momentarily moved to subscription
-    rdfs:range amsl:Platform .
 
 
 ################ Classes ##############################
@@ -165,6 +77,22 @@ amsl:FacultyShare a owl:Class ;
     rdfs:comment "Der Anteil an einem Vertrag, den eine bestimmte Fakultät trägt."@de ,
         "The share of a license contract a certain faculty bears."@en .
 
+amsl:Financial a owl:Class ;
+    rdfs:label "Financial"@en , "Kosten"@de ;
+	rdfs:comment "Kosten bündeln die für einen Lizenzvertrag anfallenden finanziellen Aspekte."@de ,
+		"Financial resources aggregate all financial aspects of a licence subscription."@en .
+
+amsl:IssueEntitlement a owl:Class ;
+    rdfs:label "Issue Entitlement"@en , "Issue Entitlement"@de ;
+	rdfs:comment "Issue Entitlements bilden die insitutionsspezifische Verbindung von TIPPs und Verträgen."@de ,
+		"Issue Entitlements are the insitution specific connection between TIPPs and Subscriptions."@en .
+# currently not in use
+
+amsl:License a owl:Class ;
+    rdfs:label "License"@en , "Lizenz"@de ;
+	rdfs:comment "Eine Lizenz stellt die konkret vertraglich festgehaltenen Lizenzbedingungen für die Nutzung der lizenzierten Ressourcen dar."@de ,
+		"A license aggregates the licence terms agreed in in the contract."@en .
+
 amsl:MetadataCollection a owl:Class ;
     rdfs:subClassOf amsl:Collection ;
     rdfs:label "Metadatenkollektion"@de ,
@@ -178,21 +106,44 @@ amsl:MetadataSource a owl:Class;
         "Metadata Source"@en ;
     rdfs:comment "Eine Quelle, die (bibliographische) Metadaten anbietet."@de ,
         "A source providing (bibliographic) metadata"@en .
-
+		
 amsl:Source a owl:Class ;
     rdfs:label "Quelle"@de , 
         "Source"@en ;
     rdfs:comment "Eine Quelle, die nicht näher bestimmte Daten anbietet. Detailliertere Beschreibungen sind über Unterklassen möglich."@de , 
-        "A source providing not further specified data. Subclasses are available or a more detailed description."@en .
+        "A source providing not further specified data. Subclasses are available or a more detailed description."@en .		
 
+amsl:Subscription a owl:Class ;
+    rdfs:label "Subscription"@en , "Vertrag"@de ;
+	rdfs:comment "Ein Vertrag ist ein Lizenzvertrag, der zwischen zwei Vertragspartnern für einen bestimmten Vertragszeitraum gecshlossen wird. Mit ihm assozieiert sind Lizenzbedingungen, Kosten und Paketinhalte."@de ,
+		"A Subscription is a license subscription between two contracting parties, agreed for a specific period. Associated with a subscription are license terms, fincanial conditions and package contents."@en .
 
 amsl:Subtotal a owl:Class ;
     rdfs:label "Teilsumme"@de ,
         "Subtotal"@en ;
     rdfs:comment "Eine Teilsumme bspw. eines Rechnungs- oder Planpreises."@de ,
         "A subtotal of e.g. an invoice or expected price." .
+		
+amsl:TIPP a owl:Class ;
+    rdfs:label "TIPP"@en , "TIPP"@de ;
+	rdfs:comment "Ein TIPP (Title Instance - Package - Platform) ist ein Titel im Kontext seines Pakets und seiner Plattform. Eine Zeitschrift, die über verschiedene Pakete lizenziert ist, wird alos von zwei TIPPs repräsentiert."@de ,
+		"A TIPP (Title Instance - Package - Platform) is a title in the context of its package and platform. One journal licensed via two different packages will therefore be represented by two TIPPs."@en .
 
-  
+amsl:Title a owl:Class ;
+    rdfs:label "Title"@en , "Titel"@de ;
+	rdfs:comment "Ein Titel ist die elektronische Ressource auf bibliographischer Ebene, d.h. eine einzelne Zeitschrift oder Datenbank."@de ,
+		"A title is the electronic resource on a bibliographic level, i.e. a single Journal or database."@en .
+
+amsl:Package a owl:Class ;
+	rdfs:subClassOf amsl:Collection ;
+    rdfs:label "Package"@en , "Paket"@de ;
+	rdfs:comment "Ein Paket ist ein Lizenzpaket, im Sinne eine meist durch den Anbieter definierten Sammlung lizenzierter Ressourcen."@de ,
+		"A package is a license package, i. e. a collection of licensed ressources, mostly defined by the vendor."@en .
+
+amsl:Platform  a owl:Class ;
+    rdfs:label "Platform"@en , "Plattform"@de ;
+	rdfs:comment "Eine Plattform ist eine überblicherweise durch den Anbieter zur Verfügung gestellte elektronische Zugriffsmöglichkeit für die lizenzierten Ressourcen."@de ,
+		"A platform is an electronic access point to the licensed resources, normally provided by the vendor."@en .
 
 
 
@@ -205,6 +156,12 @@ amsl:acqMethod a owl:ObjectProperty ;
     	"Links the method of acquisition used to purchase the licenses of a contract."@en ;
     rdfs:domain amsl:Financial ;  
     rdfs:range amsl:AcqNote .
+	
+amsl:agreementTerm a owl:ObjectProperty ;
+    rdfs:label "Vertragslaufzeit"@de ,
+        "Agreement term"@en ;    
+    rdfs:domain amsl:License ;  
+    rdfs:range amsl:AgreementTerm .
 
 amsl:annualBudget a owl:ObjectProperty ;
     rdfs:label "Jahresbudget"@de ,
@@ -667,6 +624,12 @@ amsl:file a owl:ObjectProperty ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument."@de , 
         "Links a resource of the type Document."@en   ;
     rdfs:range foaf:Document . 
+	
+amsl:financial a owl:ObjectProperty ;
+    rdfs:label "Kosten"@de ,
+        "Financial"@en ;    
+    rdfs:domain amsl:Subscription ;  
+    rdfs:range amsl:Financial .
 
 amsl:fiscalYear a owl:DatatypeProperty ;
     rdfs:label "Haushaltsjahr"@de ,
@@ -897,6 +860,12 @@ amsl:isRelatedTo a owl:ObjectProperty ;
     	"Links an electronic resource via its ISSN with an thematically related faculty."@en ;    	
     rdfs:range aiiso:Faculty .
 
+amsl:issueEntitlement  a owl:ObjectProperty ;
+    rdfs:label "Issue Entitlement"@de ,
+        "Issue Entitlement"@en ;    
+    rdfs:domain amsl:Subscription ;  
+    rdfs:range amsl:IssueEntitlement .
+#currently not in use
 
 amsl:itemPrice a owl:DatatypeProperty ;
     rdfs:label "Preis einzelner Titel (EUR)"@de ,
@@ -916,6 +885,11 @@ amsl:lastUpdateDate a owl:DatatypeProperty ;
     rdfs:domain amsl:MetadataSource ;
     rdfs:range xsd:date .    
 
+amsl:license a owl:ObjectProperty ;
+    rdfs:label "Lizenz"@de ,
+        "License"@en ;    
+    rdfs:domain amsl:Subscription ;  
+    rdfs:range amsl:License .
 
 amsl:licensee a owl:ObjectProperty ;
     rdfs:label "Lizenznehmer"@de ,
@@ -1179,6 +1153,12 @@ amsl:orgNote a  owl:DatatypeProperty ;
     rdfs:seeAlso "ERMI terms: _Organization Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 204)" ; 
     rdfs:domain foaf:Organization .
 
+amsl:package  a owl:ObjectProperty ;
+    rdfs:label "Paket"@de ,
+        "Package"@en ;    
+    rdfs:domain amsl:TIPP ;  
+    rdfs:range amsl:Package .
+	
 amsl:payee a owl:ObjectProperty ;
     rdfs:label "Zahlungsempfänger"@de ,
         "payee"@en ;
@@ -1223,7 +1203,14 @@ amsl:pissn a owl:ObjectProperty ;
         "P-ISSN"@en ;
     rdfs:comment "Verknüpft die P-ISSN eines Mediums."@de ,
         "Links the P-ISSN of a medium."@en ;
-    rdfs:seeAlso "ERMI terms: _Print International Standard Serial Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 209)" .         
+    rdfs:seeAlso "ERMI terms: _Print International Standard Serial Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 209)" .
+
+amsl:platform  a owl:ObjectProperty ;
+    rdfs:label "Plattform"@de ,
+        "Platform"@en ;    
+    rdfs:domain amsl:Subscription ;  # orginally to TIPP, but due to import problems momentarily moved to subscription
+    rdfs:range amsl:Platform .
+
 
 amsl:previousContract a owl:ObjectProperty ;
     rdfs:label "Vorgängervertrag"@de ,
@@ -1315,6 +1302,12 @@ amsl:sourceID a owl:DatatypeProperty ;
     rdfs:domain amsl:MetadataSource ;
     rdfs:range xsd:integer .
 
+amsl:subscribedPackage a owl:ObjectProperty ;
+    rdfs:label "umfasstes Paket"@de ,
+        "subscribed Package"@en ;    
+    rdfs:domain amsl:Subscription ;  
+    rdfs:range amsl:Package .
+
 amsl:terminationAlert a owl:DatatypeProperty ;
     rdfs:label "Letztmöglicher Kündigungstag"@de ,
         "last possible termination date"@en ;
@@ -1348,6 +1341,18 @@ amsl:ticketURL a owl:ObjectProperty ;
   #  rdfs:domain  [ a owl:Class ;
   #      owl:unionOf ( amsl:MetadataSource amsl:MetadataCollection ) ]
    .
+   
+amsl:tipp  a owl:ObjectProperty ;
+    rdfs:label "TIPP"@de ,
+        "TIPP"@en ;   
+    rdfs:domain amsl:Subscription ; # originally to IssueEntitlement. Momentarily changed for simplification
+    rdfs:range amsl:TIPP .
+	
+amsl:title  a owl:ObjectProperty ;
+    rdfs:label "Titel"@de ,
+        "Title"@en ;    
+    rdfs:domain amsl:TIPP ;  
+    rdfs:range bibo:Periodical .
 
 amsl:updateRhythm a owl:DatatypeProperty ;
     rdfs:label  "Update-Rhythmus"@de ,

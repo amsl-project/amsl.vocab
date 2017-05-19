@@ -47,6 +47,12 @@ amsl: a owl:Ontology ;
 
 ################ Classes ##############################
 
+amsl:AgreementTerm a owl:Class ;
+    rdfs:label "Vertragslaufzeit"@de ,
+        "Agreement Term"@en ;
+    rdfs:comment "Die Laufzeit eines Vertrages bzw. einer Lizenz."@de ,
+        "The term of agreement."@en .
+		
 amsl:AnnualBudget a owl:Class ;
     rdfs:label "Jahresbudget"@de ,
         "Annual Budget"@en ;

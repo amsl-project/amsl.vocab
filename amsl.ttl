@@ -479,6 +479,13 @@ amsl:doi a owl:ObjectProperty ;
         "Links the DOI of a medium."@en ;
     rdfs:seeAlso "ERMI terms: _Digital Object Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" .
 
+amsl:ebsAcqRecommendation a owl:DatatypeProperty ;
+    rdfs:label "EBS Erwerbungsvorschlag"@de ,
+        "ebs acquisition recommendation"@en ;
+    rdfs:comment "Verknüpft einen Titel eines evidence based selection-Vertrages, der zur Erwerbung vorgeschlagen wird."@de ,
+        "Links a title from an evidence based selection subscription recommended for acquisition."@en ;
+   rdfs:domain amsl:Subscription .
+	
 amsl:eisbn a owl:ObjectProperty ;
     rdfs:label "E-ISBN"@de ,
         "E-ISBN"@en ;

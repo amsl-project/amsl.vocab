@@ -54,12 +54,14 @@ amsl:AgreementTerm a owl:Class ;
         "The term of agreement."@en .
 		
 amsl:AnnualBudget a owl:Class ;
+	rdfs:subClassOf amsl:Budget ;
     rdfs:label "Jahresbudget"@de ,
         "Annual Budget"@en ;
     rdfs:comment "Ein auf bestimmtes Haushaltsjahr bezogenes Budget."@de ,
         "A budget for a certain fiscal year."@en .
 
 amsl:BranchOffice a owl:Class ;
+	rdfs:subClassOf foaf:Organization ;
     rdfs:label "Branch Office"@en ,
         "Zweigstelle"@de ;
     rdfs:comment "Eine Zweigstelle einer Organisation."@de ,
@@ -121,7 +123,7 @@ amsl:Package a owl:Class ;
 
 amsl:Platform  a owl:Class ;
     rdfs:label "Platform"@en , "Plattform"@de ;
-	rdfs:comment "Eine Plattform ist eine überblicherweise durch den Anbieter zur Verfügung gestellte elektronische Zugriffsmöglichkeit für die lizenzierten Ressourcen."@de ,
+	rdfs:comment "Eine Plattform ist eine üblicherweise durch den Anbieter zur Verfügung gestellte elektronische Zugriffsmöglichkeit für die lizenzierten Ressourcen."@de ,
 		"A platform is an electronic access point to the licensed resources, normally provided by the vendor."@en .
 		
 amsl:Source a owl:Class ;

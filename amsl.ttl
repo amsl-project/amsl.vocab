@@ -1506,78 +1506,122 @@ amsl:AbstractCoverage a amsl:CoverageDepth ;
 
 
 
+# Metaclass for OntoWiki dropdown support
 amsl:DBType a owl:Class ;
     owl:oneOf ( amsl:EmpirDB amsl:FactDB amsl:IndexDB amsl:RealtimeDB amsl:StrucDB amsl:FulltextDB amsl:AbstrDB amsl:PicDB ) . 
 
-amsl:AbstrDB  a amsl:DBType ;
+# Metaclass for OntoWiki dropdown support	
+amsl:ERType  a owl:Class ;
+    owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage amsl:Metadata amsl:PrintPlusOnlineBook amsl:PrintPlusOnlineJournal ) .     	
+
+              
+
+
+amsl:Product a owl:Class ;
+	rdfs:label "Produkt"@de ,
+		"Product"@en ;
+	rdfs:comment "Ein erwerb- bzw. lizenzierbares Produkt."@de ,
+		"A product to be purchased or licensed."@en .
+		
+
+
+
+amsl:Ebook a owl:Class ;
+	rdfs:subClassOf amsl:Product ,
+		amsl:TitleInstance ; 
+    rdfs:label "E-Book"@de ,
+        "e-book"@en .
+		
+amsl:Ejournal a owl:Class ;
+	rdfs:subClassOf amsl:Product ,
+		amsl:TitleInstance ;
+    rdfs:label "E-Journal"@de ,
+        "e-journal"@en .
+		
+amsl:Database a owl:Class ;
+	rdfs:subClassOf amsl:Product ,
+		amsl:TitleInstance ;
+    rdfs:label "Datenbank"@de ,
+        "database"@en .        
+		
+		
+	
+amsl:AbstrDB  a owl:Class ;
+	rdfs:subClassOf amsl:Database ;
     rdfs:label "Abstractdatenbank"@de ,
         "abstracts database"@en .
         
-amsl:EmpirDB a amsl:DBType ;
+amsl:EmpirDB a owl:Class ;
+	rdfs:subClassOf amsl:Database ;
     rdfs:label "empirische Datenbank"@de ,
         "empiric database"@en .
 
-amsl:FactDB a amsl:DBType ;
+amsl:FactDB a owl:Class ;
+	rdfs:subClassOf amsl:Database ;
     rdfs:label "Faktendatenbank"@de ,
         "facts database"@en .
                 
-amsl:FulltextDB a amsl:DBType ;
+amsl:FulltextDB a owl:Class ;
+	rdfs:subClassOf amsl:Database ;
     rdfs:label "Volltextdatenbank"@de ,
         "fulltext database"@en .
 
-amsl:IndexDB a amsl:DBType ;
+amsl:IndexDB a owl:Class ;
+	rdfs:subClassOf amsl:Database ;
     rdfs:label "Indexdatenbank"@de ,
         "index database"@en .
         
-amsl:PicDB a amsl:DBType ;
+amsl:PicDB a owl:Class ;
+	rdfs:subClassOf amsl:Database ;
     rdfs:label "Bilddatenbank"@de ,
         "picture database"@en .
         
-amsl:RealtimeDB a amsl:DBType ;
+amsl:RealtimeDB a owl:Class ;
+	rdfs:subClassOf amsl:Database ;
     rdfs:label "Realtime Datenbank"@de ,
         "realtime database"@en .
         
-amsl:StrucDB a amsl:DBType ;
+amsl:StrucDB a owl:Class ;
+	rdfs:subClassOf amsl:Database ;
     rdfs:label "Strukturdatenbank"@de ,
         "structure database"@en .  
-              
 
- 
-        
-amsl:ERType  a owl:Class ;
-    owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage amsl:Metadata amsl:PrintPlusOnlineBook amsl:PrintPlusOnlineJournal ) .       
+		
 
-amsl:Database a amsl:ERType ;
-    rdfs:label "Datenbank"@de ,
-        "database"@en .        
+amsl:Metadata a owl:Class ;
+	rdfs:subClassOf amsl:Product ;
+    rdfs:label "Metadaten"@de ,
+        "metadata"@en .
 
-amsl:Ebook a amsl:ERType ;
-    rdfs:label "E-Book"@de ,
-        "e-book"@en .
+   
 
-amsl:EbookPackage a amsl:ERType ;
+
+amsl:EbookPackage a owl:Class ;
+	rdfs:subClassOf amsl:Product ,
+		amsl:Collection ;
     rdfs:label "E-Book Paket"@de ,
         "e-book package"@en . 
         
-amsl:Ejournal a amsl:ERType ;
-    rdfs:label "E-Journal"@de ,
-        "e-journal"@en .
-        
-amsl:EjournalPackage a amsl:ERType ;
+amsl:EjournalPackage a owl:Class ;
+	rdfs:subClassOf amsl:Product ,
+		amsl:Collection ;
     rdfs:label "E-Journals-Paket"@de ,
         "e-journal package"@en .
 
-amsl:Metadata a amsl:ERType ;
-    rdfs:label "Metadaten"@de ,
-        "metadata"@en .
+
         
-amsl:PrintPlusOnlineBook a amsl:ERType ;
+amsl:PrintPlusOnlineBook a owl:Class ;
+	rdfs:subClassOf amsl:Product ,
+		amsl:Collection ;
     rdfs:label "Print + Online (Buch)"@de ,
         "print + online (book)"@en .
 
-amsl:PrintPlusOnlineJournal a amsl:ERType ;
+amsl:PrintPlusOnlineJournal a owl:Class ;
+	rdfs:subClassOf amsl:Product ,
+		amsl:Collection ;
     rdfs:label "Print + Online (Zeitschrift)"@de ,
         "print + online (journal)"@en .
+
 
  
 

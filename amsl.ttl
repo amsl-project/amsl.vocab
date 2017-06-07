@@ -477,7 +477,9 @@ amsl:doi a owl:ObjectProperty ;
         "DOI"@en ;
     rdfs:comment "Verknüpft den DOI eines Mediums."@de ,
         "Links the DOI of a medium."@en ;
-    rdfs:seeAlso "ERMI terms: _Digital Object Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" .
+    rdfs:seeAlso "ERMI terms: _Digital Object Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" ;
+	rdfs:domain  [ a owl:Class ;
+			owl:unionOf ( amsl:TIPP amsl:Title ) ]  .
 
 amsl:ebsAcqRecommendation a owl:DatatypeProperty ;
     rdfs:label "EBS Erwerbungsvorschlag"@de ,
@@ -491,14 +493,18 @@ amsl:eisbn a owl:ObjectProperty ;
         "E-ISBN"@en ;
     rdfs:comment "Verknüpft die E-ISBN eines Mediums."@de ,
         "Links the E-ISBN of a medium."@en ;
-    rdfs:seeAlso "ERMI terms: _Electronic International Standard Book Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" .
+    rdfs:seeAlso "ERMI terms: _Electronic International Standard Book Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" ;
+	rdfs:domain  [ a owl:Class ;
+			owl:unionOf ( amsl:TIPP amsl:Title ) ]  .
 
 amsl:eissn a owl:ObjectProperty ;
     rdfs:label "E-ISSN"@de ,
         "E-ISSN"@en ;
     rdfs:comment "Verknüpft die E-ISSN eines Mediums."@de ,
         "Links the E-ISSN of a medium."@en ;
-    rdfs:seeAlso "ERMI terms: _Electronic International Standard Serial Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" .
+    rdfs:seeAlso "ERMI terms: _Electronic International Standard Serial Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" ;
+	rdfs:domain  [ a owl:Class ;
+			owl:unionOf ( amsl:TIPP amsl:Title ) ]  .
 
 amsl:embargoInfo a owl:DatatypeProperty ;
     rdfs:label "Embargo"@de ,
@@ -561,12 +567,13 @@ amsl:expectedInvoiceDate a owl:DatatypeProperty ;
     rdfs:range xsd:date .
 
 amsl:expectedPrice a owl:DatatypeProperty ;
+	rdfs:subPropertyOf amsl:price ;
     rdfs:label "Planpreis (EUR)"@de ,
         "expected price (EUR)"@en ;
     rdfs:comment "Verknüpft den Preis, welcher für das laufende Jahr für den Vertrag geschätzt und eingeplant wurde."@de ,
         "Links the price that was expected and planned for the license for the current year."@en ;
-   # rdfs:domain  [ a owl:Class ;
-   #     owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
     
 amsl:expectedPriceFollowingYear a owl:DatatypeProperty ;
@@ -578,6 +585,7 @@ amsl:expectedPriceFollowingYear a owl:DatatypeProperty ;
     owl:deprecated "true"^^xsd:boolean . 
 
 amsl:expectedPriceSubtotal a owl:ObjectProperty ;
+	rdfs:subPropertyOf amsl:price ;
     rdfs:label "Planpreis Teilsumme"@de ,
         "expected price subtotal"@en ;
     rdfs:comment "Verknüpft die Teilsumme eines Planpreises. Dieser wiederum kann der Betrag sowie das belastete Budget zugeordnet werden."@de ,
@@ -590,8 +598,8 @@ amsl:externalContact a owl:ObjectProperty ;
         "external contact"@en ;
     rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten von Verlagen, Konsortien, Metadatenprovidern etc."@de ,
         "Links the responsible contact person from publisher, licensing agent, consortium etc."@en ;
-   # rdfs:domain  [ a owl:Class ;
-   #      owl:unionOf ( amsl:Subscription amsl:MetadataSource ) ] ;
+    rdfs:domain  [ a owl:Class ;
+         owl:unionOf ( amsl:Subscription amsl:MetadataSource ) ] ;
     rdfs:range foaf:Person .
 
 amsl:ezbAnchor a owl:DatatypeProperty ;
@@ -613,6 +621,7 @@ amsl:faculty a owl:ObjectProperty ;
         "faculty"@en ;
     rdfs:comment "Verknüpft eine bestimmte Fakultät, etwa bei Fakultätsanteilen."@de ,
         "Links a certain faculty, e.g. in the context of faculty shares."@en ;
+	rdfs:domain amsl:FacultyShare ;
     rdfs:range aiiso:Faculty .   
 
 amsl:facultyAbbr a owl:DatatypeProperty ;
@@ -772,8 +781,8 @@ amsl:internalContact a owl:ObjectProperty ;
         "inhouse contact"@en ;
     rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten des Lizenznehmers."@de ,
         "Links the responsible inhouse contact person for the contract."@en ;
-  #  rdfs:domain  [ a owl:Class ;
-  #      owl:unionOf ( amsl:Subscription amsl:MetadataSource ) ] ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:Subscription amsl:MetadataSource ) ] ;
     rdfs:range foaf:Person .
 
 amsl:invoiceProcessingDate a owl:DatatypeProperty ;
@@ -802,60 +811,67 @@ amsl:invoiceFile a owl:ObjectProperty ;
     rdfs:range foaf:Document .
 
 amsl:invoicePriceGrossEUR  a owl:DatatypeProperty ;
+	rdfs:subPropertyOf amsl:price ;
 	rdfs:label "Rechnungspreis brutto (EUR)"@de ,
 		"invoice price gross (EUR)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in Euro."@de ,
 		"Links the invoice price gross in euro."@en ;
-#	rdfs:domain  [ a owl:Class ;
- #       owl:unionOf ( amsl:AnnualContractData amsl:Subtotal ) ] ;
+	rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
 
 amsl:invoicePriceGrossGBP a owl:DatatypeProperty;
+	rdfs:subPropertyOf amsl:price ;
     rdfs:label "Rechnungspreis brutto (GBP)"@de ,
         "invoice price gross (GBP)"@en ;
     rdfs:comment "Verknüpft den brutto Rechnungspreis in Pfund Sterling."@de ,
         "Links the invoice price gross in pound sterling."@en ;
- #   rdfs:domain  [ a owl:Class ;
- #       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
 
 amsl:invoicePriceGrossUSD a owl:DatatypeProperty;
+	rdfs:subPropertyOf amsl:price ;
 	rdfs:label "Rechnungspreis brutto (USD)"@de ,
 		"invoice price gross (USD)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in US-Dollar."@de ,
 		"Links the invoice price gross in US-Dollar."@en ;
- #   rdfs:domain  [ a owl:Class ;
- #       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
 
 amsl:invoicePriceNetEUR a owl:DatatypeProperty;
+	rdfs:subPropertyOf amsl:price ;
     rdfs:label "Rechnungspreis netto (EUR)"@de ,
         "invoice price net (EUR)"@en ;
     rdfs:comment "Verknüpft den netto Rechnungspreis in Euro."@de ,
         "Links the invoice price net in euro."@en ;
- #   rdfs:domain  [ a owl:Class ;
- #       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
 
 amsl:invoicePriceNetGBP  a owl:DatatypeProperty;
+	rdfs:subPropertyOf amsl:price ;
     rdfs:label "Rechnungspreis netto (GBP)"@de ,
         "invoice price net (GBP)"@en ;
     rdfs:comment "Verknüpft den netto Rechnungspreis in Pfund Sterling."@de ,
         "Links the invoice price net in pound sterling."@en ;
- #   rdfs:domain  [ a owl:Class ;
- #       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
 
 amsl:invoicePriceNetUSD a owl:DatatypeProperty;
+	rdfs:subPropertyOf amsl:price ;
     rdfs:label "Rechnungspreis netto (USD)"@de ,
         "invoice price net (USD)"@en ;
     rdfs:comment "Verknüpft den netto Rechnungspreis in US-Dollar."@de ,
         "Links the invoice price net in US-Dollar."@en ;
- #   rdfs:domain  [ a owl:Class ;
- #       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .      
 
 amsl:invoicePriceSubtotal a owl:ObjectProperty ;
+	rdfs:subPropertyOf amsl:price ;
     rdfs:label "Rechnungspreis Teilsumme"@de ,
         "invoice price subtotal"@en ;
     rdfs:comment "Verknüpft die Teilsumme eines Rechnungspreises. Dieser wiederum kann der Betrag sowie das belastete Budget zugeordnet werden."@de ,
@@ -877,8 +893,8 @@ amsl:isMemberOf a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Organisation, bei der eine Person Mitglied ist."@de ,
     	"Links the organization a person is a member of."@en ;
     rdfs:seeAlso "ERMI terms: _Organization Represented_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 205)" ;
- #   rdfs:domain [ a owl:Class ;
- #       owl:unionOf ( foaf:Person sioc:User ) ] ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( foaf:Person sioc:User ) ] ;
     rdfs:range foaf:Organization . 
 
 amsl:isRelatedTo a owl:ObjectProperty ;
@@ -980,8 +996,8 @@ amsl:licensingNote a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft zusätzliche Informationen, welche den Vertrag, die Lizenzverhandlungen, das Produkt etc. betreffen."@de ,
         "Links additional information regarding the license, the negotiation of the license, the product, etc."@en ;
     rdfs:seeAlso "ERMI terms: _Licensing Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 146)" ; 
-  #  rdfs:domain [ a owl:Class ;
-  #      owl:unionOf ( amsl:License amsl:MetadataSource ) ] 
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:License amsl:MetadataSource ) ] 
   .
 
 amsl:licensor a owl:ObjectProperty ;
@@ -1005,8 +1021,8 @@ amsl:linkToContentFile a owl:DatatypeProperty ;
         "link to content file"@en ;
     rdfs:comment "Verknüpft den Downloadlink eines Content-Files."@de ,
         "Links the download link to a content file."@en ;
-   # rdfs:domain [ a owl:Class ;
-   #     owl:unionOf ( amsl:MetadataCollection amsl:Package ) ] 
+   rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:MetadataCollection amsl:Package ) ] 
    .   
 
 amsl:linkToContract a owl:DatatypeProperty ;
@@ -1044,8 +1060,8 @@ amsl:localSystemNumber a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft eine Nummer, die das lokale Bibliotheksmanagementsystem (z.B. Libero) für die Ressource vergibt."@de ,
         "Links the record number that is assigned by a local integrated library system (ILS) to the bibliographic record for the resource."@en ;
     rdfs:seeAlso "ERMI terms: _Local System Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 133)" ;
-   # rdfs:domain [ a owl:Class ;
-   # 	owl:unionOf ( amsl:Financial amsl:Subscription ) ] 
+    rdfs:domain [ a owl:Class ;
+    	owl:unionOf ( amsl:Financial amsl:Subscription ) ] 
    .
 
 amsl:mailFile a owl:ObjectProperty ;
@@ -1217,6 +1233,7 @@ amsl:percentage a owl:DatatypeProperty ;
         "percentage"@en ;
     rdfs:comment "Verknüpft einen prozetualen Anteil, etwa bei Fakultätsanteilen."@de ,
         "Links a percentage, e.g. in the context of faculty shares."@en ;
+	rdfs:domain amsl:FacultyShare ;
     rdfs:range xsd:decimal .
 
 amsl:pisbn a owl:ObjectProperty ;
@@ -1224,14 +1241,18 @@ amsl:pisbn a owl:ObjectProperty ;
         "P-ISBN"@en ;
     rdfs:comment "Verknüpft die P-ISBN eines Mediums."@de ,
         "Links the P-ISBN of a medium."@en ;
-    rdfs:seeAlso "ERMI terms: Print International Standard Book Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 209)" .  
+    rdfs:seeAlso "ERMI terms: Print International Standard Book Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 209)" ;
+	rdfs:domain  [ a owl:Class ;
+		owl:unionOf ( amsl:TIPP amsl:Title ) ]  .  
         
 amsl:pissn a owl:ObjectProperty ;
     rdfs:label "P-ISSN"@de ,
         "P-ISSN"@en ;
     rdfs:comment "Verknüpft die P-ISSN eines Mediums."@de ,
         "Links the P-ISSN of a medium."@en ;
-    rdfs:seeAlso "ERMI terms: _Print International Standard Serial Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 209)" .
+    rdfs:seeAlso "ERMI terms: _Print International Standard Serial Number_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 209)" ;
+	rdfs:domain  [ a owl:Class ;
+		owl:unionOf ( amsl:TIPP amsl:Title ) ]  .
 
 amsl:platform  a owl:ObjectProperty ;
     rdfs:label "Plattform"@de ,
@@ -1248,6 +1269,15 @@ amsl:previousContract a owl:ObjectProperty ;
     rdfs:seeAlso "ERMI terms: _License Replaces_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 149)" ; 
     rdfs:domain amsl:Subscription ;
     rdfs:range amsl:Subscription  .    
+	
+amsl:price a owl:DatatypeProperty ;
+	rdfs:label "Preis"@de ,
+		"price"@en ;
+	rdfs:comment "Übergeordnete Preiseigenschaft. Nicht direkt zu nutzen."@de ,
+		"Superordinate price property. Not to be used directly."@en ;
+	rdfs:domain  [ a owl:Class ;
+       owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
+	rdfs:range xsd:decimal .
 
 amsl:primaryAccessURI a  owl:DatatypeProperty ;
     rdfs:label "Zugangs-URL"@de ,
@@ -1255,8 +1285,8 @@ amsl:primaryAccessURI a  owl:DatatypeProperty ;
     rdfs:comment "Verknüpft die URI, unter der die lizenzierten Produkte primär zugänglich sind."@de ,
         "Links the URI under which the licensed products are primarily accessible."@en ;
     rdfs:seeAlso "ERMI terms: _Primary Access Uniform Resource Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 182)" ; 
-  #  rdfs:domain [ a owl:Class ;
-  #      owl:unionOf ( amsl:TIPP amsl:MetadataSource ) ] # originally to IssueEntitlement. Momentarily changed for simplification
+    rdfs:domain [ a owl:Class ;
+      owl:unionOf ( amsl:TIPP amsl:MetadataSource ) ] # originally to IssueEntitlement. Momentarily changed for simplification
     .
 
 amsl:productISIL a owl:DatatypeProperty ;
@@ -1264,15 +1294,17 @@ amsl:productISIL a owl:DatatypeProperty ;
         "product ISIL"@en ;
     rdfs:comment "Verknüpft einen Produkt-ISIL für Pakete elektronischer Ressourcen mit deutschlandweitem Zuschnitt."@de ,
         "Links a product ISIL for packages of electronic resources laid out for German organizations"@en ;
-   # rdfs:domain [ a owl:Class ;
-   #     owl:unionOf ( amsl:MetadataCollection amsl:Package ) ]
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:MetadataCollection amsl:Package ) ]
      .    
 
 amsl:proprietaryID a owl:DatatypeProperty ;
     rdfs:label "Proprietäre ID"@de ,
         "proprietary ID"@en ;
     rdfs:comment "Verknüpft einen proprietären Identifier eines Mediums."@de ,
-        "Links a proprietary identifier of a medium."@en .
+        "Links a proprietary identifier of a medium."@en ;
+	rdfs:domain  [ a owl:Class ;
+		owl:unionOf ( amsl:TIPP amsl:Title ) ]  .
 
 amsl:relatedContract a owl:ObjectProperty ;
     rdfs:label "In Beziehung stehender Vertrag"@de ,
@@ -1381,8 +1413,8 @@ amsl:ticketURL a owl:ObjectProperty ;
         "ticket URL"@en ;
     rdfs:comment "Verknüpft die URL des korrespondierenden Tickets in einem internen Ticketsystem."@de ,
         "Links the URL of a corresponding ticket in an internal ticket system."@en ;
-  #  rdfs:domain  [ a owl:Class ;
-  #      owl:unionOf ( amsl:MetadataSource amsl:MetadataCollection ) ]
+    rdfs:domain  [ a owl:Class ;
+       owl:unionOf ( amsl:MetadataSource amsl:MetadataCollection ) ]
    .
    
 amsl:tipp  a owl:ObjectProperty ;

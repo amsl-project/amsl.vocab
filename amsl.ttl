@@ -164,7 +164,7 @@ amsl:acqMethod a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Art, auf die in einem Vertrag beinhalteten Lizenzen erworben wurden."@de ,
     	"Links the method of acquisition used to purchase the licenses of a contract."@en ;
     rdfs:domain amsl:Financial ;  
-    rdfs:range amsl:AcqNote .
+    rdfs:range amsl:AcqType .
 	
 amsl:agreementTerm a owl:ObjectProperty ;
     rdfs:label "Vertragslaufzeit"@de ,
@@ -195,6 +195,14 @@ amsl:authMethod a owl:ObjectProperty ;
     	"Links the method of authentification required to gain access to the licensed electronic resources."@en ;        
     rdfs:domain amsl:License ;
     rdfs:range amsl:AuthMethod .
+	
+amsl:authorizedSites a owl:ObjectProperty ;
+    rdfs:label "Authorized Sites"@de ,
+        "authotized sites"@en ;
+    rdfs:comment "Verknüpft die Orte (physisch oder im Netz/IP-Ranges), von denen aus der Zugriff auf das Produkt gestattet ist."@de ,
+    	"Links the phyical or network (i.e. IP range) sites that are authorized for access to the licensed material."@en ;        
+    rdfs:domain amsl:License ;
+    rdfs:range amsl:AuthorizedSites .
 
 amsl:authorizedUser a owl:ObjectProperty ;
     rdfs:label "Autorisierte Nutzer"@de ,
@@ -904,15 +912,6 @@ amsl:licenseStartDate a owl:DatatypeProperty ;
     rdfs:domain amsl:Subscription ;
     rdfs:range xsd:date .
 
-amsl:licenseType a owl:ObjectProperty,
-        owl:ObjectProperty ;
-    rdfs:label "Lizenzart"@de ,
-        "license type"@en ;
-    rdfs:comment "Verknüpft Informationen über die Art der Lizenz, welche den Zugang zu der elektronischen Ressource regelt."@de ,
-        "Links information on the type of license that regulates access to the electronic resource."@en ;
-    rdfs:domain amsl:License ;
-    rdfs:range amsl:LicenseType .
-
 amsl:licensingAgent a owl:ObjectProperty ;
     rdfs:label "Agentur"@de ,
         "licensing agent"@en ;
@@ -1283,6 +1282,15 @@ amsl:subscribedPackage a owl:ObjectProperty ;
     rdfs:domain amsl:Subscription ;  
     rdfs:range amsl:Package .
 	
+amsl:subscriptionType a owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "Lizenzart"@de ,
+        "license type"@en ;
+    rdfs:comment "Verknüpft Informationen über die Art der Lizenz, welche den Zugang zu der elektronischen Ressource regelt."@de ,
+        "Links information on the type of license that regulates access to the electronic resource."@en ;
+    rdfs:domain amsl:Subscription ;
+    rdfs:range amsl:SubscriptionType .
+	
 amsl:tdm a owl:ObjectProperty ;
     rdfs:label "Text & Data Mining"@de ,
         "text & data mining"@en ;
@@ -1389,57 +1397,120 @@ amsl:zdbID a owl:DatatypeProperty ;
 
    
 ######################## Collections & Individuals #####################################
-    
-amsl:AcqNote a owl:Class ;
-    owl:oneOf ( amsl:AllianceLicense amsl:OACharges amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:ScientificInformationServicesLicense amsl:PDA amsl:PPV amsl:Unknown ) ;
-    rdfs:seeAlso "ERMI terms: _Acquisition Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
 
-amsl:AllianceLicense a amsl:AcqNote ;
-    rdfs:label "Allianzlizenz"@de ,
-        "alliance license"@en .
 
-amsl:OACharges a amsl:AcqNote ;
+
+
+
+amsl:AcqType  a owl:Class ;
+    owl:oneOf ( amsl:PurchaseSingle amsl:PurchaseSubscription amsl:PPV amsl:PDA amsl:EBS amsl:Gift amsl:OACharges amsl:FreeOfCharge  ) ;
+	rdfs:label "Erwerbungsart"@de ,
+		"Acquisiton type"@en .
+
+
+amsl:PurchaseSingle a amsl:AcqType ;
+    rdfs:label "Kauf (einzeln)"@de ,
+        "purchase (single)"@en . 
+
+amsl:PurchaseSubscription a amsl:AcqType ;
+    rdfs:label "Kauf (Abo)"@de ,
+        "purchase (subscription)"@en .   		
+		
+amsl:PPV a amsl:AcqType ;
+    rdfs:label "Pay per view / use"@de ,
+        "pay per view / use"@en .    
+
+
+amsl:PDA a amsl:AcqType ;
+    rdfs:label "Patron Driven Acquisiton"@de ,
+        "patron driven acquisiton"@en .		
+        
+amsl:EBS a amsl:AcqType ;
+    rdfs:label "Evidence based selection"@de ,
+        "evidence based selection"@en .    
+ 
+amsl:Gift a amsl:AcqType ;
+    rdfs:label "Geschenk"@de ,
+        "gift"@en .        
+        		
+amsl:OACharges a amsl:AcqType ;
     rdfs:label "OA-Kosten"@de ,
         "OA charges"@en ;
     rdfs:comment "Open Access-Kosten"@de ,
         "Open Access Charges"@en .
-       
-amsl:ConsortialLicense a amsl:AcqNote ;
-    rdfs:label "Konsortiallizenz"@de ,
-        "consortial license"@en .  
+
+amsl:FreeOfCharge a amsl:AcqType ;
+    rdfs:label "Kostenfrei"@de ,
+        "free of charge"@en .   
         
-amsl:DedicatedLicense a amsl:AcqNote ;
-    rdfs:label "Eigene Lizenz"@de ,
-        "dedicated license"@en .
-                
-amsl:Gift a amsl:AcqNote ;
-    rdfs:label "Geschenk"@de ,
-        "gift"@en .        
-        
-amsl:NationalLicense a amsl:AcqNote ;
+
+
+	
+
+amsl:SubscriptionType a owl:Class ;
+    owl:oneOf ( amsl:NationalLicense amsl:AllianceLicense amsl:ConsortialLicense amsl:DedicatedLicense amsl:ScientificInformationServicesLicense  ) ;
+	rdfs:label "Vertragsart"@de ,
+		"Subscription type"@en .
+		
+
+amsl:NationalLicense a amsl:SubscriptionType ;
     rdfs:label "Nationallizenz"@de ,
         "National license"@en .
 
-amsl:PDA a amsl:AcqNote ;
-    rdfs:label "Patron Driven Acquisiton"@de ,
-        "patron driven acquisiton"@en .
-        
-amsl:PPV a amsl:AcqNote ;
-    rdfs:label "Pay per view / use"@de ,
-        "pay per view / use"@en .          
-        
-amsl:Purchase a amsl:AcqNote ;
-    rdfs:label "Kauf"@de ,
-        "purchase"@en .       
-
-amsl:ScientificInformationServicesLicense a amsl:AcqNote ;
+amsl:AllianceLicense a amsl:SubscriptionType ;
+    rdfs:label "Allianzlizenz"@de ,
+        "alliance license"@en .
+		
+amsl:ConsortialLicense a amsl:SubscriptionType ;
+    rdfs:label "Konsortiallizenz"@de ,
+        "consortial license"@en .  
+		
+amsl:DedicatedLicense a amsl:SubscriptionType ;
+    rdfs:label "Eigene Lizenz"@de ,
+        "dedicated license"@en .
+		
+amsl:ScientificInformationServicesLicense a amsl:SubscriptionType ;
     rdfs:label "FID-Lizenz"@de ,
         "scientific information services license"@en ;
-    rdfs:comment "Zur Kennzeichnung von Lizenzen, die durch einen FID erworben wurden und für andere Einrichtungen nachnutzbar sind."@de .              
+    rdfs:comment "Zur Kennzeichnung von Lizenzen, die durch einen FID erworben wurden und für andere Einrichtungen nachnutzbar sind."@de .
+
+	
+	
+
+
+amsl:AuthorizedSites a owl:Class ;
+    owl:oneOf ( amsl:Campus amsl:CampusWithoutVPN amsl:Faculty amsl:Single amsl:NetworkIndependent amsl:ScientificInformationServicesSpecific  ) ;
+	rdfs:label "Authorized sites"@de ,
+		"Authorized sites"@en .
+
+
+amsl:Campus a amsl:AuthorizedSites ;
+    rdfs:label "Campuslizenz"@de ,
+        "campus license"@en .
+       
+amsl:CampusWithoutVPN a amsl:AuthorizedSites ;
+    rdfs:label "Campuslizenz ohne VPN-Zugang"@de ,
+        "campus license without VPN"@en .
         
-amsl:Unknown a amsl:AcqNote ;
-    rdfs:label "Unbekannt"@de ,
-        "unknown"@en . 
+amsl:Faculty a amsl:AuthorizedSites ;
+    rdfs:label "Fakultätslizenz (Class C Subnetz)"@de ,
+        "faculty license"@en .     
+        
+amsl:Single a amsl:AuthorizedSites ;
+    rdfs:label "Einzelplatzlizenz"@de ,
+        "single-position license"@en .
+
+amsl:NetworkIndependent a amsl:AuthorizedSites ;
+    rdfs:label "netzunabhängig"@de ,
+        "network independent"@en .
+
+amsl:ScientificInformationServicesSpecific a amsl:AuthorizedSites ;
+    rdfs:label "FID-spezifisch"@de ,
+        "Scientific Information Services specific"@en ;
+    rdfs:comment "Die Lizenz ist für den FID-spezifisch definierten Nutzerkreis gültig."@de .
+    
+
+
 
 
 amsl:AuthMethod a owl:Class ;
@@ -1528,19 +1599,19 @@ amsl:Product a owl:Class ;
 
 amsl:Ebook a owl:Class ;
 	rdfs:subClassOf amsl:Product ,
-		amsl:TitleInstance ; 
+		amsl:Title ; 
     rdfs:label "E-Book"@de ,
         "e-book"@en .
 		
 amsl:Ejournal a owl:Class ;
 	rdfs:subClassOf amsl:Product ,
-		amsl:TitleInstance ;
+		amsl:Title ;
     rdfs:label "E-Journal"@de ,
         "e-journal"@en .
 		
 amsl:Database a owl:Class ;
 	rdfs:subClassOf amsl:Product ,
-		amsl:TitleInstance ;
+		amsl:Title ;
     rdfs:label "Datenbank"@de ,
         "database"@en .        
 		
@@ -1669,37 +1740,6 @@ amsl:SilentUninterpreted a amsl:LicenseTerm ;
         "unmentioned"@en .
           
  
-
-
-amsl:LicenseType a owl:Class ;
-    owl:oneOf ( amsl:Faculty amsl:CampusWithoutVPN amsl:Single amsl:Campus amsl:NetworkIndependent amsl:ScientificInformationServicesSpecific ) .               
-
-amsl:Campus a amsl:LicenseType ;
-    rdfs:label "Campuslizenz"@de ,
-        "campus license"@en .
-       
-amsl:CampusWithoutVPN a amsl:LicenseType ;
-    rdfs:label "Campuslizenz ohne VPN-Zugang"@de ,
-        "campus license without VPN"@en .
-        
-amsl:Faculty a amsl:LicenseType ;
-    rdfs:label "Fakultätslizenz (Class C Subnetz)"@de ,
-        "faculty license"@en .     
-
-amsl:ScientificInformationServicesSpecific a amsl:LicenseType ;
-    rdfs:label "FID-spezifisch"@de ,
-        "Scientific Information Services specific"@en ;
-    rdfs:comment "Die Lizenz ist für den FID-spezifisch definierten Nutzerkreis gültig."@de .
-
-amsl:NetworkIndependent a amsl:LicenseType ;
-    rdfs:label "netzunabhängig"@de ,
-        "network independent"@en .
-        
-amsl:Single a amsl:LicenseType ;
-    rdfs:label "Einzelplatzlizenz"@de ,
-        "single-position license"@en .  
- 
-
 
  
 amsl:OrganizationType a owl:Class ;

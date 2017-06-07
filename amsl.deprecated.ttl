@@ -156,6 +156,16 @@ amsl:individualContractItems a owl:ObjectProperty ;
     rdfs:range amsl:Boolean ;
     owl:deprecated "true"^^xsd:boolean . 
 	
+amsl:licenseType a owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "Lizenzart"@de ,
+        "license type"@en ;
+    rdfs:comment "Verknüpft Informationen über die Art der Lizenz, welche den Zugang zu der elektronischen Ressource regelt."@de ,
+        "Links information on the type of license that regulates access to the electronic resource."@en ;
+    rdfs:domain amsl:License ;
+    rdfs:range amsl:LicenseType ;
+    owl:deprecated "true"^^xsd:boolean .
+	
 amsl:metadataUsageProhibited a owl:ObjectProperty ;
     rdfs:label "Metadatennutzung untersagt"@de ,
          "metadata usage prohibited" ;
@@ -174,7 +184,26 @@ amsl:nextUpdateDate a owl:DatatypeProperty ;
     rdfs:range xsd:date ;
 	owl:deprecated "true"^^xsd:boolean .
 	
-# Individuals
+# Collections & Individuals
+
+amsl:AcqNote a owl:Class ;
+    owl:oneOf ( amsl:AllianceLicense amsl:OACharges amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:ScientificInformationServicesLicense amsl:PDA amsl:PPV amsl:Unknown ) ;
+    rdfs:seeAlso "ERMI terms: _Acquisition Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" ;
+    owl:deprecated "true"^^xsd:boolean .
+	
+amsl:Purchase a amsl:AcqType ;
+    rdfs:label "Kauf"@de ,
+        "purchase"@en ;
+    owl:deprecated "true"^^xsd:boolean .	
+
+amsl:Unknown a amsl:AcqType ;
+    rdfs:label "Unbekannt"@de ,
+        "unknown"@en ;
+	owl:deprecated "true"^^xsd:boolean .		
+
+amsl:LicenseType a owl:Class ;
+    owl:oneOf ( amsl:Faculty amsl:CampusWithoutVPN amsl:Single amsl:Campus amsl:NetworkIndependent amsl:ScientificInformationServicesSpecific ) ;
+    owl:deprecated "true"^^xsd:boolean .    
 	
 amsl:BibliographicMimeType a owl:Class ;
     rdfs:subClassOf dct:MediaTypeOrExtent ;

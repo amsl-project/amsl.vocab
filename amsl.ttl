@@ -178,23 +178,6 @@ amsl:annualBudget a owl:ObjectProperty ;
     rdfs:domain amsl:Financial ;
     rdfs:range amsl:AnnualBudget .    
 
-amsl:annualPrice a owl:DatatypeProperty ;
-    rdfs:label "Jahrespreis (EUR)"@de ,
-        "annual price (EUR)"@en ;
-    rdfs:comment "Verknüpft den jährlichen Preis eines Lizenzvertrages in Euro."@de ,
-        "Links the annual price of a license contract in euro."@en ;
-    rdfs:domain amsl:Financial ;
-    rdfs:range xsd:decimal ;
-    owl:deprecated "true"^^xsd:boolean .
-
-amsl:archivedAnnualContractDataLabel a owl:DatatypeProperty ;
-    rdfs:label "Archivierte Vertragsjahresdaten"@de ,
-        "archived annual contract data"@en ;
-    rdfs:comment "Verknüpft Vertragsbasisdaten mit dem Label solcher Vertragsjahresdaten, die im Zuge einer Archivierungsfunktion nicht mehr im aktuellen Datenbestand verfügbar ist. Auf diese Weise ist im aktuellen Datenbestand immer noch eine Historie sichtbar."@de ,
-        "Links basic contract data with the label of annual contract data that are no longer available in the current data set, due to an archiving functionality. This way the current data set does still provide a history of annual contract data."@en ;
-    rdfs:domain amsl:BasicContractData ;
-    owl:deprecated "true"^^xsd:boolean .
-
 amsl:archivingNote a owl:DatatypeProperty ;
     rdfs:label "Verfügbarkeit nach Vertragsende"@de ,
         "availability after termination"@en ;
@@ -229,15 +212,6 @@ amsl:balanceFile a owl:ObjectProperty ;
     rdfs:domain amsl:Financial ;
     rdfs:range foaf:Document .    
 
-amsl:basicContractData a owl:ObjectProperty ;
-    rdfs:label "Zugehörige Vertragsbasisdaten"@de ,
-        "associated basic contract data"@en ;
-    rdfs:comment "Vernüpft die übergeordnteten Vertragsbasisdaten, zu denen bestimmte Vertragsjahresdaten gehören."@de ,
-        "Links the superordinated basic contract data, certain annual contract data are associated with."@en ;
-    rdfs:domain amsl:AnnualContractData ;
-    rdfs:range amsl:BasicContractData ;
-    owl:deprecated "true"^^xsd:boolean .
-
 amsl:branchOffice a owl:ObjectProperty ;
     rdfs:label "Zweigstelle"@de ,
         "branch office"@en ;
@@ -251,8 +225,8 @@ amsl:budget a owl:ObjectProperty ;
         "budget"@en ;
     rdf:comment "Verknüpft das Budget, das mit den Kosten für einen Lizenzvertrag belastet wird."@de ,
     	"Links the budget charged with the costs of a license contract."@en ;
-    #rdfs:domain  [ a owl:Class ;
-    #    owl:unionOf ( amsl:AnnualBudget amsl:Subtotal ) ] ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualBudget amsl:Subtotal ) ] ;
     rdfs:range amsl:Budget .
 
 amsl:budgetAbbr a owl:DatatypeProperty ;
@@ -313,18 +287,9 @@ amsl:contentFile a owl:ObjectProperty ;
         "content file"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die ein Content-File darstellt."@de , 
         "Links a resource of the type Document."@en   ;
-  #  rdfs:domain [ a owl:Class ;
-  #      owl:unionOf ( amsl:MetadataCollection amsl:Package ) ] ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:MetadataCollection amsl:Package ) ] ;
     rdfs:range foaf:Document .  
-
-amsl:contractContainingPackage a owl:ObjectProperty ;
-    rdfs:label "dieses Paket umfassender Vertrag"@de ,
-        "contract containing this package"@en ;
-    rdfs:comment "Verknüpft die Vertragsjahresdaten, zu denen ein bestimmtes Lizenzpaket gehört."@de ,
-        "Links the the annual contact data a certain license package is associated with."@en ;        
-    rdfs:domain amsl:LicensePackage ;
-    rdfs:range amsl:AnnualContractData ;
-    owl:deprecated "true"^^xsd:boolean .
 
 amsl:contractFile a owl:ObjectProperty ;
     rdfs:subPropertyOf amsl:file ;
@@ -335,15 +300,6 @@ amsl:contractFile a owl:ObjectProperty ;
     rdfs:seeAlso "ERMI terms: _License Uniform Resource Identifier_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 145)" ; 
     rdfs:domain amsl:Subscription ;
     rdfs:range foaf:Document .
-
-amsl:contractItemOf a owl:ObjectProperty ;
-    rdfs:label "Vertragsposition von"@de ,
-        "contract item of"@en ;
-    rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit dem Lizenzpaket, in dem sie enthalten ist."@de ,
-        "Links a certain contract item with the license package it is contained in."@en ;
-    rdfs:range  amsl:LicensePackage ;
-    rdfs:domain amsl:ContractItem  ;
-    owl:deprecated "true"^^xsd:boolean .
 
 amsl:costCenter a owl:DatatypeProperty ;
     rdfs:label "Kostenstelle"@de ,
@@ -549,15 +505,6 @@ amsl:evaluateHoldingsFileFor a owl:ObjectProperty ;
     rdfs:domain amsl:MetadataCollection ;
     rdfs:range foaf:Organization .
 
-amsl:expectedInvoiceMonth a owl:DeprecatedProperty ;
-    rdfs:label "Erwarteter Rechnungsmonat"@de ,
-        "expected invoice month"@en ;
-    rdfs:comment "Überholt. Bitte amsl:expectedInvoiceDate nutzen."@de , 
-    	"Deprecated. Please use amsl:expectedInvoiceDate."@en ;   
-    rdfs:domain amsl:BasicContractData ;
-    rdfs:range amsl:Month  ;
-    owl:deprecated "true"^^xsd:boolean .
-
 amsl:expectedInvoiceDate a owl:DatatypeProperty ;
     rdfs:label "Erwartetes Rechnungsdatum"@de ,
         "expected invoice date"@en ;
@@ -575,14 +522,6 @@ amsl:expectedPrice a owl:DatatypeProperty ;
     rdfs:domain  [ a owl:Class ;
         owl:unionOf ( amsl:Financial amsl:Subtotal ) ] ;
     rdfs:range xsd:decimal .
-    
-amsl:expectedPriceFollowingYear a owl:DatatypeProperty ;
-    rdfs:label "Planpreis Folgejahr (EUR)"@de ,
-        "expected price following year (EUR)"@en ;
-    rdfs:comment "Überholt. Bitte amsl:expectedPrice mit nächstjährigen amsl:AnnualContractData nutzen."@de ,
-        "Deprecated. Please use amsl:expectedPrice with next year's amsl:AnnualContractData."@en ;
-    rdfs:domain amsl:AnnualContractData ;
-    owl:deprecated "true"^^xsd:boolean . 
 
 amsl:expectedPriceSubtotal a owl:ObjectProperty ;
 	rdfs:subPropertyOf amsl:price ;
@@ -758,15 +697,6 @@ amsl:indexingLevel a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft Angaben zum gebotenen Indexierungsgrad"@de ,
         "Links information on the indexing level offered."@en ;
     rdfs:domain amsl:MetadataSource .
-
-amsl:individualContractItems a owl:ObjectProperty ;
-    rdfs:label "Individuelle Vertragspositionen"@de ,
-        "individual contract items"@en ;
-    rdfs:comment "Gibt an, ob ein konsortialer Vertrag unterschiedliche Vertragspositionen für verschiedene teilnehmende Bibliotheken umfassen kann. Falls dies der Fall ist, müssen Pakete und Vertragspositionen jeweils in der lokelen Wissensbasis jeder Bibliothek erfasst werden."@de ,
-        "Indicates if a consortial contract can have individual contract items for different participating libraries. If this is the case, license packages and contract items need to be recorded in the local ERM knowledge base of each library."@en ;
-    rdfs:domain amsl:BasicContractData ;
-    rdfs:range amsl:Boolean ;
-    owl:deprecated "true"^^xsd:boolean . 
 
 amsl:initialAcquisitionDate a owl:DatatypeProperty ;
     rdfs:label "Ersterwerbungsdatum"@de ,
@@ -1112,14 +1042,6 @@ amsl:metadataUsagePermittedForLibrary a owl:ObjectProperty ;
     rdfs:domain amsl:MetadataCollection ;
     rdfs:range foaf:Organization .
 
-amsl:metadataUsageProhibited a owl:ObjectProperty ;
-    rdfs:label "Metadatennutzung untersagt"@de ,
-         "metadata usage prohibited" ;
-    rdfs:comment "Verknüpft eine Bibliothek, der die Nutzung einer bestimmten Metadatenkollektion z. B. aus lizenzrechtlichen Gründen untersagt ist."@de , 
-        "Links a library that is prohibited from using a certain metadata collection due to e.g. licensing restrictions."@en ;
-    rdfs:domain amsl:MetadataCollection ;
-    rdfs:range foaf:Organization ;
-    owl:deprecated "true"^^xsd:boolean .
 
 amsl:metadataUsageRestricted a owl:ObjectProperty ;
     rdfs:label "Metadatennutzung eingeschränkt"@de ,
@@ -1128,15 +1050,6 @@ amsl:metadataUsageRestricted a owl:ObjectProperty ;
         "States if a certain metadata collection has restricted usage due to e.g. licensing reasons."@en ;
     rdfs:domain amsl:MetadataCollection ;
     rdfs:range amsl:Boolean .
-
-amsl:nextUpdateDate a owl:DatatypeProperty ;
-    rdfs:label  "Datum des nächsten Updates"@de ,
-        "date of next update"@en ;
-    rdfs:comment "Verknüpft das Datum der nächsten Aktualisierung der angebotenen Metadaten"@de , 
-        "Links the date of the next update of the offered metadata."@en ;
-    rdfs:domain amsl:MetadataSource ;
-    rdfs:range xsd:date ;
-	owl:deprecated "true"^^xsd:boolean .
 
 amsl:noticePeriod a owl:DatatypeProperty ;
     rdfs:label "Kündigungsfrist"@de ,
@@ -1556,12 +1469,6 @@ amsl:Shibboleth a amsl:AuthMethod ;
  
 
 
-
-amsl:BibliographicMimeType a owl:Class ;
-    rdfs:subClassOf dct:MediaTypeOrExtent ;
-   # owl:oneOf (<urn:mimetype:application/marc> <urn:mimetype:application/marcxml+xml>) ;
-    owl:deprecated "true"^^xsd:boolean .
-
         
 amsl:Boolean a owl:Class ;
     	rdfs:subClassOf amsl:ExtendedBoolean ;
@@ -1749,12 +1656,6 @@ amsl:Single a amsl:LicenseType ;
 
 
  
-amsl:Month a owl:DeprecatedClass ;
-   #owl:oneOf ( amsl:January amsl:February amsl:March amsl:April amsl:May amsl:June amsl:July amsl:August amsl:September amsl:October amsl:November amsl:December ) ;
-    owl:deprecated "true"^^xsd:boolean .
-              
-
-      
 amsl:OrganizationType a owl:Class ;
     owl:oneOf ( amsl:Consortium amsl:Enterprise amsl:Library ) .        
 

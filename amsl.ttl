@@ -409,9 +409,9 @@ amsl:dbType a owl:ObjectProperty ;
         "database type"@en ;
     rdfs:comment "Verknüpft den Typ einer Datenbank."@de ,
     	"Links the type of a database."@en ;    
-    rdfs:domain amsl:Title ; 
+    rdfs:domain amsl:Subscription ; 
     rdfs:range amsl:DBType .
-# currently not in use
+
 
 amsl:deduplicationInferiorTo a owl:ObjectProperty ;
     rdfs:label "Untergeordnet unter (Deduplizierung)"@de ,
@@ -503,9 +503,9 @@ amsl:erType a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Produktart der in einem Vertrag lizenzierten elektronischen Ressourcen."@de ,
     	"Links the type of product of the electronic resources licensed in a contract."@en ;
     rdfs:seeAlso "ERMI terms: _Resource Type (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 136)" ; 
-    rdfs:domain amsl:Title ;
+    rdfs:domain amsl:Subscription ;
     rdfs:range amsl:ERType .
-# currently not in use
+
 
 amsl:evaluateHoldingsFileFor a owl:ObjectProperty ;
     rdfs:label "Holdings-File auswerten für"@de , 

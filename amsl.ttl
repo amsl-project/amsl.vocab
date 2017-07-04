@@ -84,6 +84,7 @@ amsl:FacultyShare a owl:Class ;
         "Faculty share"@en ;
     rdfs:comment "Der Anteil an einem Vertrag, den eine bestimmte Fakultät trägt."@de ,
         "The share of a license contract a certain faculty bears."@en .
+		
 
 amsl:Financial a owl:Class ;
     rdfs:label "Financial"@en , "Kosten"@de ;
@@ -153,6 +154,460 @@ amsl:Title a owl:Class ;
 	rdfs:comment "Ein Titel ist die elektronische Ressource auf bibliographischer Ebene, d.h. eine einzelne Zeitschrift oder Datenbank."@de ,
 		"A title is the electronic resource on a bibliographic level, i.e. a single Journal or database."@en .
 
+
+		
+#################################   Restrictions   ######################################################
+
+#Still to Do:
+#amsl:IssueEntitlement 
+#amsl:Collection 
+#amsl:Source 
+#amsl:MetadataCollection
+#amsl:MetadataSource 
+
+amsl:AgreementTerm a owl:Class ;
+	rdfs:subClassOf 
+		[   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:licenseStartDate ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+		 [   a owl:restriction ;
+            owl:onProperty amsl:licenseEndDate ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] .			
+		
+amsl:AnnualBudget a owl:Class ;
+	rdfs:subClassOf amsl:Budget ;
+	rdfs:subClassOf 		
+        [   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:budget ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:fiscalYear ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+			
+amsl:BranchOffice a owl:Class ;
+	rdfs:subClassOf foaf:Organization ;
+    rdfs:label "Branch Office"@en ,
+        "Zweigstelle"@de ;
+    rdfs:comment "Eine Zweigstelle einer Organisation."@de ,
+        "A branch office of an organisation."@en .
+
+amsl:Budget a owl:Class ;
+	rdfs:subClassOf 
+		[   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:budgetAbbr ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+amsl:FacultyShare a owl:Class ;
+	rdfs:subClassOf 
+		[   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:faculty ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:percentage ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+amsl:Financial a owl:Class ;
+	rdfs:subClassOf 
+		[   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:acqMethod ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:paymentPeriod ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:facultyShare ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:localSystemNumber ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:payee ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:annualBudget ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:expectedInvoiceDate ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:invoiceDate ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:invoiceReceived ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:price ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] , # at max one of Subproperties ...
+        [   a owl:restriction ;
+            owl:onProperty amsl:invoiceFile ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:invoiceProcessingDate ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:invoicePriceSubtotal ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] , # different from price
+        [   a owl:restriction ;
+            owl:onProperty amsl:expectedPriceSubtotal ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] , # different from price
+        [   a owl:restriction ;
+            owl:onProperty amsl:file ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] , # same for Subproperties
+        [   a owl:restriction ;
+            owl:onProperty amsl:linkToInvoice ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:linkToBalance ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] .
+
+amsl:License a owl:Class ;
+	rdfs:subClassOf 
+		[   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:agreementTerm ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:description ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:licensee ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:licensor ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:licensingNote ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:initialAcquisitionDate ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:authMethod ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:concUser ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:coursePackE ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:coursePackP ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:courseReserveE ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:courseReserveP ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:digitallyCopy ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:pCopy ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:hasRemoteAccess ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:tdm ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:creator ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:scholarlySharing ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:linkToDescription ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:archivingNote ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:authorizedUser ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:dataAvailability ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:tdmConditions ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+		[   a owl:restriction ;
+            owl:onProperty amsl:file ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] , # as well for subproperties
+		[   a owl:restriction ;
+            owl:onProperty amsl:linkToContract ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+		[   a owl:restriction ;
+            owl:onProperty amsl:licenseType ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+		
+amsl:Package a owl:Class ;
+	rdfs:subClassOf amsl:Collection ;
+	rdfs:subClassOf 
+		[   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:ezbAnchor ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:productISIL ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] , # possibly >1 product ISIL per package?
+        [   a owl:restriction ;
+            owl:onProperty amsl:contentFile ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+		[   a owl:restriction ;
+            owl:onProperty amsl:linkToContentFile ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
+
+amsl:Platform  a owl:Class ;
+	rdfs:subClassOf 
+		[   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty vcard:hasURL ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+       [   a owl:restriction ;
+            owl:onProperty amsl:shibbolethImplStatus ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] . 
+
+amsl:Subscription a owl:Class ;
+	rdfs:subClassOf 
+		[   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:financial ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+       [   a owl:restriction ;
+            owl:onProperty amsl:license ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:subscribedPackage ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:tipp ;
+            owl:miNCardinality "0"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:platform ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:erType ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:licenseStartDate ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:licenseEndDate ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:erAltTitle ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:terminationAlert ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:noticePeriod ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:feedbackDate ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:acqMethod ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:erStatus ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:workflowStatus ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:localSystemNumber ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:usageStatsNote ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:externalContact ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:internalContact ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:consortium ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:consortiumLeader ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:licensingAgent ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:file ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] , # same for subproperties
+        [   a owl:restriction ;
+            owl:onProperty amsl:terminationDate ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:terminationReason ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:shutDownDate ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:previousContract ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:relatedContract ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:ebsAcqRecommendation ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ],
+        [   a owl:restriction ;
+            owl:onProperty amsl:dbType ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
+
+amsl:Subtotal a owl:Class ;
+	rdfs:subClassOf 
+        [   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:annualBudget ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:price ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] . # missing: exactly one Subproperty of :price
+		
+amsl:TIPP a owl:Class ;
+	rdfs:subClassOf 
+        [   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:package ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:title ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ]  ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:primaryAccessURI ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ]  ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:dateFirstIssueOnline ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ]  ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:dateLastIssueOnline ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:numberFirstVolumeOnline ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:numberFirstIssueOnline ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:numberLastVolumeOnline ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:numberLastIssueOnline ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:embargoInfo ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:coverageDepth ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:coverageNotes ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:eissn ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:pissn ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:eisbn ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:pisbn ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:proprietaryID ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:doi ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
+
+amsl:Title a owl:Class ;
+	rdfs:subClassOf 
+        [   a owl:restriction ;
+            owl:onProperty rdfs:label ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty dc:title ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty bibo:shortTitle ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty dc:creator ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty dc:publisher ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty dct:issued ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty dct:language ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty rdvocab:P60163 ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty rdvocab:P60493 ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:eissn ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:pissn ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:eisbn ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:pisbn ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:proprietaryID ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:doi ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ,
+        [   a owl:restriction ;
+            owl:onProperty amsl:zdbID ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
 
 
 
@@ -403,7 +858,6 @@ amsl:dateLastIssueOnline a owl:DatatypeProperty ;
     rdfs:domain amsl:TIPP ;
     rdfs:range xsd:date .   
 
-
 amsl:dbType a owl:ObjectProperty ;
     rdfs:label "Datenbanktyp"@de ,
         "database type"@en ;
@@ -411,7 +865,6 @@ amsl:dbType a owl:ObjectProperty ;
     	"Links the type of a database."@en ;    
     rdfs:domain amsl:Subscription ; 
     rdfs:range amsl:DBType .
-
 
 amsl:deduplicationInferiorTo a owl:ObjectProperty ;
     rdfs:label "Untergeordnet unter (Deduplizierung)"@de ,
@@ -650,7 +1103,7 @@ amsl:holdingsFile a owl:ObjectProperty ;
         "Links a resource of the type Document which is a library's current holdings file."@en   ;
     rdfs:seeAlso "ERMI terms: _Electronic Holdings_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 137)" ;
     rdfs:domain foaf:Organization ;
-    rdfs:range foaf:Document .     
+    rdfs:range foaf:Document . 
 
 amsl:illNote a owl:DatatypeProperty ;
     rdfs:label "Fernleihnotiz"@de ,

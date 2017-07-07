@@ -42,18 +42,54 @@ amsl: a owl:Ontology ;
         <http://aksw.org/ThomasRiechert> ,
         <http://aksw.org/Partner/LydiaUnterdoerfel> .
 
+################ Domains ##############################
 
+amsl:Domain a owl:Class ;
+	rdfs:label "Bereich"@de ,
+		"Domain"@en ;
+	rdfs:comment "Inhaltliche Bereiche / Domänen, die der Bündelung von Informationen in bestimmte Teilthemengebiete dienen."@de ,
+		"Content related domains used to bundle data related to similar topics."@en .
+	
+amsl:domain a owl:ObjectProperty ;
+	rdfs:label "Bereich"@de ,
+		"Domain"@en ;
+	rdfs:comment "Verknüpft den inhaltlichen Bereiche / Domäne, zu dem eine Klasse gehört. Eine Klasse kann auch zu mehreren Domänen gehören."@de ,
+		"Links the content related domain a class is associated with. One class may be associated with several domains."@en .
+
+
+amsl:DomainOrganisation a amsl:Domain ;
+	rdfs:label "Bereich Organisation"@de ,
+		"Domain Organisation"@en .
+		
+amsl:DomainResources a amsl:Domain ;
+	rdfs:label "Bereich Ressourcen"@de ,
+		"Domain Resources"@en .
+		
+amsl:DomainLicense a amsl:Domain ;
+	rdfs:label "Bereich Lizenz"@de ,
+		"Domain License"@en .
+		
+amsl:DomainMetadata a amsl:Domain ;
+	rdfs:label "Bereich Metadaten"@de ,
+		"Domain Metadata"@en .
+		
+amsl:DomainStatistics a amsl:Domain ;
+	rdfs:label "Bereich Statistik"@de ,
+		"Domain Statistics"@en .
+		
 
 
 ################ Classes ##############################
 
 amsl:AgreementTerm a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     rdfs:label "Vertragslaufzeit"@de ,
         "Agreement Term"@en ;
     rdfs:comment "Die Laufzeit eines Vertrages bzw. einer Lizenz."@de ,
         "The term of agreement."@en .
 		
 amsl:AnnualBudget a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
 	rdfs:subClassOf amsl:Budget ;
     rdfs:label "Jahresbudget"@de ,
         "Annual Budget"@en ;
@@ -61,6 +97,7 @@ amsl:AnnualBudget a owl:Class ;
         "A budget for a certain fiscal year."@en .
 
 amsl:BranchOffice a owl:Class ;
+	amsl:domain amsl:DomainOrganisation ;
 	rdfs:subClassOf foaf:Organization ;
     rdfs:label "Branch Office"@en ,
         "Zweigstelle"@de ;
@@ -68,6 +105,7 @@ amsl:BranchOffice a owl:Class ;
         "A branch office of an organisation."@en .
 
 amsl:Budget a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     rdfs:label "Budget"@de ,
         "Budget"@en ;
     rdfs:comment "Budgets für die Medienerwerbung."@de ,
@@ -80,6 +118,7 @@ amsl:Collection a owl:Class ;
         "A collection containing not further specified data. Subclasses are available or a more detailed description."@en .
 
 amsl:FacultyShare a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     rdfs:label "Fakultätsanteil"@de ,
         "Faculty share"@en ;
     rdfs:comment "Der Anteil an einem Vertrag, den eine bestimmte Fakultät trägt."@de ,
@@ -87,22 +126,26 @@ amsl:FacultyShare a owl:Class ;
 		
 
 amsl:Financial a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     rdfs:label "Financial"@en , "Kosten"@de ;
 	rdfs:comment "Kosten bündeln die für einen Lizenzvertrag anfallenden finanziellen Aspekte."@de ,
 		"Financial resources aggregate all financial aspects of a licence subscription."@en .
 
 amsl:IssueEntitlement a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     rdfs:label "Issue Entitlement"@en , "Issue Entitlement"@de ;
 	rdfs:comment "Issue Entitlements bilden die insitutionsspezifische Verbindung von TIPPs und Verträgen."@de ,
 		"Issue Entitlements are the insitution specific connection between TIPPs and Subscriptions."@en .
 # currently not in use
 
 amsl:License a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     rdfs:label "License"@en , "Lizenz"@de ;
 	rdfs:comment "Eine Lizenz stellt die konkret vertraglich festgehaltenen Lizenzbedingungen für die Nutzung der lizenzierten Ressourcen dar."@de ,
 		"A license aggregates the licence terms agreed in in the contract."@en .
 
 amsl:MetadataCollection a owl:Class ;
+	amsl:domain amsl:DomainMetadata ;
     rdfs:subClassOf amsl:Collection ;
     rdfs:label "Metadatenkollektion"@de ,
         "Metadata Collection"@en ;
@@ -110,6 +153,7 @@ amsl:MetadataCollection a owl:Class ;
         "A collection of metadata that is to be integrated in e.g. a library catalog."@en .
 
 amsl:MetadataSource a owl:Class;
+	amsl:domain amsl:DomainMetadata ;
     rdfs:subClassOf amsl:Source ;
     rdfs:label "Metadatenquelle"@de ,
         "Metadata Source"@en ;
@@ -117,12 +161,14 @@ amsl:MetadataSource a owl:Class;
         "A source providing (bibliographic) metadata"@en .
 		
 amsl:Package a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Collection ;
     rdfs:label "Package"@en , "Paket"@de ;
 	rdfs:comment "Ein Paket ist ein Lizenzpaket, im Sinne eine meist durch den Anbieter definierten Sammlung lizenzierter Ressourcen."@de ,
 		"A package is a license package, i. e. a collection of licensed ressources, mostly defined by the vendor."@en .
 
 amsl:Platform  a owl:Class ;
+	amsl:domain amsl:DomainOrganisation ;
     rdfs:label "Platform"@en , "Plattform"@de ;
 	rdfs:comment "Eine Plattform ist eine üblicherweise durch den Anbieter zur Verfügung gestellte elektronische Zugriffsmöglichkeit für die lizenzierten Ressourcen."@de ,
 		"A platform is an electronic access point to the licensed resources, normally provided by the vendor."@en .
@@ -134,27 +180,33 @@ amsl:Source a owl:Class ;
         "A source providing not further specified data. Subclasses are available or a more detailed description."@en .		
 
 amsl:Subscription a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     rdfs:label "Subscription"@en , "Vertrag"@de ;
 	rdfs:comment "Ein Vertrag ist ein Lizenzvertrag, der zwischen zwei Vertragspartnern für einen bestimmten Vertragszeitraum gecshlossen wird. Mit ihm assozieiert sind Lizenzbedingungen, Kosten und Paketinhalte."@de ,
 		"A Subscription is a license subscription between two contracting parties, agreed for a specific period. Associated with a subscription are license terms, fincanial conditions and package contents."@en .
 
 amsl:Subtotal a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     rdfs:label "Teilsumme"@de ,
         "Subtotal"@en ;
     rdfs:comment "Eine Teilsumme bspw. eines Rechnungs- oder Planpreises."@de ,
         "A subtotal of e.g. an invoice or expected price." .
 		
 amsl:TIPP a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     rdfs:label "TIPP"@en , "TIPP"@de ;
 	rdfs:comment "Ein TIPP (Title Instance - Package - Platform) ist ein Titel im Kontext seines Pakets und seiner Plattform. Eine Zeitschrift, die über verschiedene Pakete lizenziert ist, wird alos von zwei TIPPs repräsentiert."@de ,
 		"A TIPP (Title Instance - Package - Platform) is a title in the context of its package and platform. One journal licensed via two different packages will therefore be represented by two TIPPs."@en .
 
 amsl:Title a owl:Class ;
+	amsl:domain amsl:DomainResources ;
     rdfs:label "Title"@en , "Titel"@de ;
 	rdfs:comment "Ein Titel ist die elektronische Ressource auf bibliographischer Ebene, d.h. eine einzelne Zeitschrift oder Datenbank."@de ,
 		"A title is the electronic resource on a bibliographic level, i.e. a single Journal or database."@en .
 
-
+foaf:Organization amsl:domain amsl:DomainOrganisation .
+foaf:Person amsl:domain amsl:DomainOrganisation .
+aiiso:Faculty amsl:domain amsl:DomainOrganisation .
 		
 #################################   Restrictions   ######################################################
 
@@ -608,6 +660,16 @@ amsl:Title a owl:Class ;
         [   a owl:restriction ;
             owl:onProperty amsl:zdbID ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
+			
+
+
+
+### Example for Restriction Class: Set of all active Subscriptions ###
+
+amsl:ActiveSubscription rdfs:subClassOf amsl:Subscription ;
+	rdfs:subClassOf [a owl:Restriction ;
+							owl:onProperty amsl:erStatus ;
+							owl:hasValue amsl:Active ] .
 
 
 
@@ -1856,6 +1918,7 @@ amsl:zdbID a owl:DatatypeProperty ;
 
 
 amsl:AcqType  a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     owl:oneOf ( amsl:PurchaseSingle amsl:PurchaseSubscription amsl:PPV amsl:PDA amsl:EBS amsl:Gift amsl:OACharges amsl:FreeOfCharge  ) ;
 	rdfs:label "Erwerbungsart"@de ,
 		"Acquisiton type"@en .
@@ -1901,6 +1964,7 @@ amsl:FreeOfCharge a amsl:AcqType ;
 	
 
 amsl:SubscriptionType a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     owl:oneOf ( amsl:NationalLicense amsl:AllianceLicense amsl:ConsortialLicense amsl:DedicatedLicense amsl:ScientificInformationServicesLicense  ) ;
 	rdfs:label "Vertragsart"@de ,
 		"Subscription type"@en .
@@ -1932,6 +1996,7 @@ amsl:ScientificInformationServicesLicense a amsl:SubscriptionType ;
 
 
 amsl:AuthorizedSites a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     owl:oneOf ( amsl:Campus amsl:CampusWithoutVPN amsl:Faculty amsl:Single amsl:NetworkIndependent amsl:ScientificInformationServicesSpecific  ) ;
 	rdfs:label "Authorized sites"@de ,
 		"Authorized sites"@en .
@@ -1967,6 +2032,7 @@ amsl:ScientificInformationServicesSpecific a amsl:AuthorizedSites ;
 
 
 amsl:AuthMethod a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     owl:oneOf ( amsl:IPCampus amsl:IPSingle amsl:IPSubnet amsl:LandP amsl:Registration amsl:Shibboleth  ) .
 
 amsl:IPCampus a amsl:AuthMethod ;
@@ -2012,6 +2078,7 @@ amsl:No a amsl:Boolean ;
 
 
 amsl:CoverageDepth a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     owl:oneOf ( amsl:FulltextCoverage amsl:SelectedArticlesCoverage amsl:AbstractCoverage ) .
 
 
@@ -2032,16 +2099,19 @@ amsl:AbstractCoverage a amsl:CoverageDepth ;
 
 # Metaclass for OntoWiki dropdown support
 amsl:DBType a owl:Class ;
+	amsl:domain amsl:DomainResources ;
     owl:oneOf ( amsl:EmpirDB amsl:FactDB amsl:IndexDB amsl:RealtimeDB amsl:StrucDB amsl:FulltextDB amsl:AbstrDB amsl:PicDB ) . 
 
 # Metaclass for OntoWiki dropdown support	
 amsl:ERType  a owl:Class ;
+	amsl:domain amsl:DomainResources ;
     owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage amsl:Metadata amsl:PrintPlusOnlineBook amsl:PrintPlusOnlineJournal ) .     	
 
               
 
 
 amsl:Product a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:label "Produkt"@de ,
 		"Product"@en ;
 	rdfs:comment "Ein erwerb- bzw. lizenzierbares Produkt."@de ,
@@ -2051,18 +2121,21 @@ amsl:Product a owl:Class ;
 
 
 amsl:Ebook a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Product ,
 		amsl:Title ; 
     rdfs:label "E-Book"@de ,
         "e-book"@en .
 		
 amsl:Ejournal a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Product ,
 		amsl:Title ;
     rdfs:label "E-Journal"@de ,
         "e-journal"@en .
 		
 amsl:Database a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Product ,
 		amsl:Title ;
     rdfs:label "Datenbank"@de ,
@@ -2071,41 +2144,49 @@ amsl:Database a owl:Class ;
 		
 	
 amsl:AbstrDB  a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Database ;
     rdfs:label "Abstractdatenbank"@de ,
         "abstracts database"@en .
         
 amsl:EmpirDB a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Database ;
     rdfs:label "empirische Datenbank"@de ,
         "empiric database"@en .
 
 amsl:FactDB a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Database ;
     rdfs:label "Faktendatenbank"@de ,
         "facts database"@en .
                 
 amsl:FulltextDB a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Database ;
     rdfs:label "Volltextdatenbank"@de ,
         "fulltext database"@en .
 
 amsl:IndexDB a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Database ;
     rdfs:label "Indexdatenbank"@de ,
         "index database"@en .
         
 amsl:PicDB a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Database ;
     rdfs:label "Bilddatenbank"@de ,
         "picture database"@en .
         
 amsl:RealtimeDB a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Database ;
     rdfs:label "Realtime Datenbank"@de ,
         "realtime database"@en .
         
 amsl:StrucDB a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Database ;
     rdfs:label "Strukturdatenbank"@de ,
         "structure database"@en .  
@@ -2113,6 +2194,8 @@ amsl:StrucDB a owl:Class ;
 		
 
 amsl:Metadata a owl:Class ;
+	amsl:domain amsl:DomainResources ,
+		amsl:DomainMetadata ;
 	rdfs:subClassOf amsl:Product ;
     rdfs:label "Metadaten"@de ,
         "metadata"@en .
@@ -2121,12 +2204,14 @@ amsl:Metadata a owl:Class ;
 
 
 amsl:EbookPackage a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Product ,
 		amsl:Collection ;
     rdfs:label "E-Book Paket"@de ,
         "e-book package"@en . 
         
 amsl:EjournalPackage a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Product ,
 		amsl:Collection ;
     rdfs:label "E-Journals-Paket"@de ,
@@ -2135,12 +2220,14 @@ amsl:EjournalPackage a owl:Class ;
 
         
 amsl:PrintPlusOnlineBook a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Product ,
 		amsl:Collection ;
     rdfs:label "Print + Online (Buch)"@de ,
         "print + online (book)"@en .
 
 amsl:PrintPlusOnlineJournal a owl:Class ;
+	amsl:domain amsl:DomainResources ;
 	rdfs:subClassOf amsl:Product ,
 		amsl:Collection ;
     rdfs:label "Print + Online (Zeitschrift)"@de ,
@@ -2162,6 +2249,7 @@ amsl:Undetermined a amsl:ExtendedBoolean ;
 
  
 amsl:LicenseTerm a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     owl:oneOf ( amsl:NotApplicable amsl:SilentUninterpreted amsl:ProhibitedInterpreted  amsl:ProhibitedExplicit amsl:PermittedInterpreted  amsl:PermittedExplicitConditions amsl:PermittedExplicit ) .
         
 amsl:NotApplicable a amsl:LicenseTerm ;
@@ -2196,6 +2284,7 @@ amsl:SilentUninterpreted a amsl:LicenseTerm ;
 
  
 amsl:OrganizationType a owl:Class ;
+	amsl:domain amsl:DomainOrganisation ;
     owl:oneOf ( amsl:Consortium amsl:Enterprise amsl:Library ) .        
 
 amsl:Consortium a amsl:OrganizationType ;
@@ -2216,6 +2305,7 @@ amsl:Library a amsl:OrganizationType ;
 
 
 amsl:PaymentPeriod a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     owl:oneOf (amsl:PaymentInAdvance amsl:PaymentInLicensingYear) .
 
 amsl:PaymentInAdvance a amsl:PaymentPeriod ;
@@ -2227,10 +2317,12 @@ amsl:PaymentInLicensingYear a amsl:PaymentPeriod ;
         "payment in licensing year"@en .
 
 
-amsl:SolrShard a owl:Class .
+amsl:SolrShard a owl:Class ;
+	amsl:domain amsl:DomainMetadata .
 
 
 amsl:UserGroup a owl:Class ;
+	amsl:domain amsl:DomainLicense ;
     rdfs:seeAlso "ERMI terms: _User Group Entity_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 176)" ; 
     owl:oneOf ( amsl:TeachingHospitals  amsl:Staff amsl:Students  amsl:UniMember amsl:WalkIns ) .
     

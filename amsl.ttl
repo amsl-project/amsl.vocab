@@ -1284,10 +1284,10 @@ amsl:subscribedPackage a owl:ObjectProperty ;
 	
 amsl:subscriptionType a owl:ObjectProperty,
         owl:ObjectProperty ;
-    rdfs:label "Lizenzart"@de ,
-        "license type"@en ;
-    rdfs:comment "Verknüpft Informationen über die Art der Lizenz, welche den Zugang zu der elektronischen Ressource regelt."@de ,
-        "Links information on the type of license that regulates access to the electronic resource."@en ;
+    rdfs:label "Vertragsart"@de ,
+        "subscription type"@en ;
+    rdfs:comment "Verknüpft Informationen über die Art des vertrages, welcher den Zugang zu der elektronischen Ressource regelt."@de ,
+        "Links information on the type of subscription that regulates access to the electronic resource."@en ;
     rdfs:domain amsl:Subscription ;
     rdfs:range amsl:SubscriptionType .
 	

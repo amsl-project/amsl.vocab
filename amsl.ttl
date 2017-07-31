@@ -202,7 +202,7 @@ amsl:authorizedSites a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Orte (physisch oder im Netz/IP-Ranges), von denen aus der Zugriff auf das Produkt gestattet ist."@de ,
     	"Links the phyical or network (i.e. IP range) sites that are authorized for access to the licensed material."@en ;        
     rdfs:domain amsl:License ;
-    rdfs:range amsl:AuthorizedSites .
+    rdfs:range amsl:AuthorizedSite .
 
 amsl:authorizedUser a owl:ObjectProperty ;
     rdfs:label "Autorisierte Nutzer"@de ,
@@ -1485,33 +1485,33 @@ amsl:ScientificInformationServicesLicense a amsl:SubscriptionType ;
 	
 
 
-amsl:AuthorizedSites a owl:Class ;
+amsl:AuthorizedSite a owl:Class ;
     owl:oneOf ( amsl:Campus amsl:CampusWithoutVPN amsl:Faculty amsl:Single amsl:NetworkIndependent amsl:ScientificInformationServicesSpecific  ) ;
 	rdfs:label "Authorized sites"@de ,
 		"Authorized sites"@en .
 
 
-amsl:Campus a amsl:AuthorizedSites ;
+amsl:Campus a amsl:AuthorizedSite ;
     rdfs:label "Campuslizenz"@de ,
         "campus license"@en .
        
-amsl:CampusWithoutVPN a amsl:AuthorizedSites ;
+amsl:CampusWithoutVPN a amsl:AuthorizedSite ;
     rdfs:label "Campuslizenz ohne VPN-Zugang"@de ,
         "campus license without VPN"@en .
         
-amsl:Faculty a amsl:AuthorizedSites ;
+amsl:Faculty a amsl:AuthorizedSite ;
     rdfs:label "Fakultätslizenz (Class C Subnetz)"@de ,
         "faculty license"@en .     
         
-amsl:Single a amsl:AuthorizedSites ;
+amsl:Single a amsl:AuthorizedSite ;
     rdfs:label "Einzelplatzlizenz"@de ,
         "single-position license"@en .
 
-amsl:NetworkIndependent a amsl:AuthorizedSites ;
+amsl:NetworkIndependent a amsl:AuthorizedSite ;
     rdfs:label "netzunabhängig"@de ,
         "network independent"@en .
 
-amsl:ScientificInformationServicesSpecific a amsl:AuthorizedSites ;
+amsl:ScientificInformationServicesSpecific a amsl:AuthorizedSite ;
     rdfs:label "FID-spezifisch"@de ,
         "Scientific Information Services specific"@en ;
     rdfs:comment "Die Lizenz ist für den FID-spezifisch definierten Nutzerkreis gültig."@de .

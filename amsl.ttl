@@ -1415,6 +1415,12 @@ amsl:AcqType  a owl:Class ;
 		"Acquisiton type"@en .
 
 
+amsl:Purchase a amsl:AcqType ;
+    rdfs:label "Kauf [veraltet]"@de ,
+        "purchase [deprecated]"@en ;
+	owl:deprecated true^^xsd:Boolean .
+		
+		
 amsl:PurchaseSingle a amsl:AcqType ;
     rdfs:label "Kauf (einzeln)"@de ,
         "purchase (single)"@en . 

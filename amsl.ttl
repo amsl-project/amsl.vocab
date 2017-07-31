@@ -753,6 +753,14 @@ amsl:invoiceFile a owl:ObjectProperty ;
     rdfs:domain amsl:Financial ;
     rdfs:range foaf:Document .
 
+amsl:invoiceNumber a owl:DatatypeProperty ;
+	rdfs:subPropertyOf dct:identifier ;
+	rdfs:label "Rechnungsnummer"@de ,
+		"invoice number"@en ;
+	rdfs:comment "Verknüpft die auf der Rechnung angegebene Rechnungsnummer."@de ,
+		"Links the invoice number."@en ;
+	rdfs:domain amsl:Financial .
+
 amsl:invoicePriceGrossEUR  a owl:DatatypeProperty ;
 	rdfs:subPropertyOf amsl:price ;
 	rdfs:label "Rechnungspreis brutto (EUR)"@de ,
@@ -1418,7 +1426,7 @@ amsl:AcqType  a owl:Class ;
 amsl:Purchase a amsl:AcqType ;
     rdfs:label "Kauf [veraltet]"@de ,
         "purchase [deprecated]"@en ;
-	owl:deprecated true^^xsd:Boolean .
+	owl:deprecated "true"^^xsd:Boolean .
 		
 		
 amsl:PurchaseSingle a amsl:AcqType ;

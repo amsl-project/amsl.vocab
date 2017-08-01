@@ -1427,7 +1427,16 @@ amsl:Purchase a amsl:AcqType ;
     rdfs:label "Kauf [veraltet]"@de ,
         "purchase [deprecated]"@en ;
 	owl:deprecated "true"^^xsd:Boolean .
-		
+
+amsl:Unknown a amsl:AcqType ;
+    rdfs:label "Unbekannt [veraltet]"@de ,
+        "unknown [deprecated]"@en ;
+	owl:deprecated "true"^^xsd:Boolean .
+
+amsl:APC a amsl:AcqType ;
+    rdfs:label "APC [veraltet]"@de ,
+        "APC [deprecated]"@en ;
+	owl:deprecated "true"^^xsd:Boolean .			
 		
 amsl:PurchaseSingle a amsl:AcqType ;
     rdfs:label "Kauf (einzeln)"@de ,

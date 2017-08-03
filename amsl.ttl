@@ -1439,7 +1439,7 @@ amsl:APC a amsl:AcqType ;
 	owl:deprecated "true"^^xsd:Boolean .			
 		
 amsl:PurchaseSingle a amsl:AcqType ;
-    rdfs:label "Kauf (einzeln)"@de ,
+    rdfs:label "Kauf (einmalig)"@de ,
         "purchase (single)"@en . 
 
 amsl:PurchaseSubscription a amsl:AcqType ;

@@ -57,28 +57,6 @@ amsl:domain a owl:ObjectProperty ;
 		"Links the content related domain a class is associated with. One class may be associated with several domains."@en ;
 	rdfs:domain owl:Class ;
 	rdfs:range amsl:Domain .
-
-
-amsl:DomainOrganisation a amsl:Domain ;
-	rdfs:label "Bereich Organisation"@de ,
-		"Domain Organisation"@en .
-
-amsl:DomainResources a amsl:Domain ;
-	rdfs:label "Bereich Ressourcen"@de ,
-		"Domain Resources"@en .
-		
-amsl:DomainLicense a amsl:Domain ;
-	rdfs:label "Bereich Lizenz"@de ,
-		"Domain License"@en .
-		
-amsl:DomainMetadata a amsl:Domain ;
-	rdfs:label "Bereich Metadaten"@de ,
-		"Domain Metadata"@en .
-		
-amsl:DomainStatistics a amsl:Domain ;
-	rdfs:label "Bereich Statistik"@de ,
-		"Domain Statistics"@en .
-		
 	
 		
 

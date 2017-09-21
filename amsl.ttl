@@ -1189,9 +1189,10 @@ amsl:platform  a owl:ObjectProperty ;
 
 
 amsl:previousContract a owl:ObjectProperty ;
+	owl:deprecated "true"^^xsd:Boolean ;
     rdfs:label "Vorgängervertrag"@de ,
     	"previous contract"@en ;
-    rdfs:comment "Verknüpft vorhergehende Vertragsbasisdaten, die mit den jetzigen in Beziehung stehen."@de ,
+    rdfs:comment "Verknüpft vorhergehenden Vertragsbasisdaten, die mit den jetzigen in Beziehung stehen."@de ,
     	"Links previous basic cobtract data that are related to the current."@en ;
     rdfs:seeAlso "ERMI terms: _License Replaces_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 149)" ; 
     rdfs:domain amsl:Subscription ;

@@ -1242,6 +1242,14 @@ amsl:relatedContract a owl:ObjectProperty ;
         "Links a related contract, for example a contract of another organisation."@en ;
     rdfs:domain amsl:Subscription ;
     rdfs:range amsl:Subscription .
+
+amsl:renewalContract a owl:ObjectProperty ;
+	rdfs:label "Verlängerungsvertrag"@de ,
+    	"renewal contract"@en ;
+    rdfs:comment "Verknüpft den nachfolgenden Vertrag, der durch eine Verlängerung des bisherigen entstanden ist."@de ,
+    	"Links the following contract that is a renewal of the current subscription."@en ;
+    rdfs:domain amsl:Subscription ;
+    rdfs:range amsl:Subscription  .   
  
 amsl:scholarlySharing a owl:ObjectProperty ;
     rdfs:label "Scholarly Sharing "@de ,

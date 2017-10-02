@@ -635,6 +635,13 @@ amsl:forwarded a owl:ObjectProperty ;
 		"Indicates whether data has already been forwarded."@en ;
 	rdfs:range amsl:Boolean .
 	
+amsl:forwardingDate a owl:DatatypeProperty ;
+	rdfs:label "Weiterleitungsdatum"@de ,
+		"forwarding date"@en ;
+	rdfs:comment "Verknüpft, das Datum, an dem Daten weitergeleitet wurden."@de ,
+		"Links the date that the data was forwarded."@en ;
+	rdfs:range xsd:date .
+	
 amsl:freeContent a owl:ObjectProperty ;
     rdfs:label "Inhalte frei verfügbar"@de ,
      "free Content"@en ;

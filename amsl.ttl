@@ -628,6 +628,13 @@ amsl:fiscalYear a owl:DatatypeProperty ;
     rdfs:domain amsl:AnnualBudget ;
     rdfs:range xsd:integer .
 	
+amsl:forwarded a owl:ObjectProperty ;
+	rdfs:label "weitergeleitet"@de ,
+		"forwarded"@en ;
+	rdfs:comment "Verknüpft, ob bei zur Weiterleitung bestimmten Daten diese bereits stattgefunden hat."@de ,
+		"Indicates whether data has already been forwarded."@en ;
+	rdfs:range amsl:Boolean .
+	
 amsl:freeContent a owl:ObjectProperty ;
     rdfs:label "Inhalte frei verfügbar"@de ,
      "free Content"@en ;

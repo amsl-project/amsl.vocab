@@ -256,8 +256,8 @@ amsl:catalogBaseURL a owl:DatatypeProperty ;
 amsl:collectionID a owl:DatatypeProperty ;
     rdfs:label "Collection ID"@de ,
         "collection ID"@en ;
-    rdfs:comment "Verknüpft die Collection ID einer Metadatenkollektion"@de ,
-        "Links the collection ID of a metadata collection"@en ;
+    rdfs:comment "Verknüpft die Collection ID einer Metadatenkollektion. Diese ID ist über alle Quellen hinweg eindeutig."@de ,
+        "Links the collection ID of a metadata collection. This ID is unique for all sources."@en ;
     rdfs:domain amsl:Collection .    
 
 amsl:concUser a owl:DatatypeProperty ;
@@ -568,6 +568,13 @@ amsl:ezbTitleID a owl:DatatypeProperty ;
         "Links a holdings item with the corresponding EZB title id."@en ;
     rdfs:domain amsl:TIPP .
 
+amsl:facetLabel a owl:DatatypeProperty ;
+    rdfs:label "Facettenlabel"@de ,
+        "facet label"@en ;
+    rdfs:comment "Verknüpft die Bezeichnung einer Metadatenkollektion, die in der im Katalog sichtbaren Facette für den Endnutzer angezeigt werden soll."@de ,
+        "Links the label of a collection that is to be displayed to the user in form of the catalog facet label."@en ;
+    rdfs:domain amsl:Collection . 	
+	
 amsl:faculty a owl:ObjectProperty ;
     rdfs:label "Fakultät"@de ,
         "faculty"@en ;
@@ -648,7 +655,7 @@ amsl:freeContent a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Aussage, ob die Inhalte hinter den Daten einer Metadatenkollektion im Sinne von OpenAccess frei zugänglich sind."@de , 
         "Links whether the contents associated with the data of a metadata collection are free."@en   ;
     rdfs:domain amsl:MetadataCollection ;
-	rdfs:range amsl:Boolean . 
+	rdfs:range amsl:ExtendedBoolean . 
 
 amsl:hasRemoteAccess a owl:ObjectProperty ;
     rdfs:label "Remote Access"@de ,
@@ -1263,7 +1270,15 @@ amsl:renewalContract a owl:ObjectProperty ;
     rdfs:comment "Verknüpft den nachfolgenden Vertrag, der durch eine Verlängerung des bisherigen entstanden ist."@de ,
     	"Links the following contract that is a renewal of the current subscription."@en ;
     rdfs:domain amsl:Subscription ;
-    rdfs:range amsl:Subscription  .   
+    rdfs:range amsl:Subscription  .  
+
+amsl:renewalIntention a owl:ObjectProperty ;
+	rdfs:label "Verlängerungsvertrag"@de ,
+    	"renewal contract"@en ;
+    rdfs:comment "Verknüpft den nachfolgenden Vertrag, der durch eine Verlängerung des bisherigen entstanden ist."@de ,
+    	"Links the following contract that is a renewal of the current subscription."@en ;
+    rdfs:domain amsl:Subscription ;
+    rdfs:range amsl:Subscription  .  	
  
 amsl:scholarlySharing a owl:ObjectProperty ;
     rdfs:label "Scholarly Sharing "@de ,
@@ -1319,6 +1334,15 @@ amsl:subscribedPackage a owl:ObjectProperty ;
         "subscribed Package"@en ;    
     rdfs:domain amsl:Subscription ;  
     rdfs:range amsl:Package .
+	
+amsl:subscriptionStatus a owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "Vertragsstatus"@de ,
+        "subscription status"@en ;
+    rdfs:comment "Verknüpft, ob der Vertrag erst geplant ist, bereits aktiv oder abgeschlossen ist."@de ,
+        "Links whether a subscription ist only planned, already active or terminated."@en ;
+    rdfs:domain amsl:Subscription ;
+    rdfs:range amsl:SubscriptionStatus .
 	
 amsl:subscriptionType a owl:ObjectProperty,
         owl:ObjectProperty ;
@@ -1862,6 +1886,12 @@ amsl:ShibbolethImplStatus a owl:Class ;
 
 amsl:MetadataSourceImplStatus a owl:Class ;
     owl:oneOf   (amsl:Wish amsl:Inquired  amsl:InProcess amsl:Trial amsl:Active amsl:Cancelled amsl:Impossible ) .
+	
+amsl:SubscriptionStatus a owl:Class ;
+    owl:oneOf   (amsl:Planned amsl:Active amsl:Cancelled ) .
+	
+amsl:RenewalIntention a owl:Class ;
+    owl:oneOf   (amsl:Renew amsl:NotRenew amsl:NotApplicable ) .
 
 amsl:ERStatus a owl:Class ;
     owl:oneOf ( amsl:Active amsl:Cancelled  amsl:Trial amsl:Wish  ) ;
@@ -1882,6 +1912,14 @@ amsl:Cancelled a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
     rdfs:label "Abbestellt / beendet"@de ,
         "cancelled / terminated"@en ;
     rdfs:seeAlso "ERMI terms value: Retired for term _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .   
+	
+amsl:NotRenew a amsl:RenewalIntention ;
+    rdfs:label "Nicht verlängern"@de ,
+        "Not renew"@en .
+
+amsl:Renew a amsl:RenewalIntention ;
+    rdfs:label "Verlängern"@de ,
+        "renew"@en .
 
 amsl:Implemented a amsl:ShibbolethImplStatus ;
     rdfs:label "Implementiert"@de ,
@@ -1907,7 +1945,11 @@ amsl:NotRenewed a amsl:WorkflowStatus ;
     rdfs:label "Nicht Verlängert"@de ,
         "not renewed"@en ;
     rdfs:seeAlso "ERMI terms value: _Cancelled_ for term _Renewal Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" .
-        
+ 
+amsl:Planned a amsl:SubscriptionStatus  ;
+    rdfs:label "Geplant"@de ,
+        "planned"@en .
+		
 amsl:Prospected a amsl:ShibbolethImplStatus  ;
     rdfs:label "In Aussicht"@de ,
         "prospected"@en .

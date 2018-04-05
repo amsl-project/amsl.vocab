@@ -1273,7 +1273,7 @@ amsl:renewalContract a owl:ObjectProperty ;
     rdfs:range amsl:Subscription  .  
 
 amsl:renewalIntention a owl:ObjectProperty ;
-	rdfs:label "Plan für Folgejahr"@de ,
+	rdfs:label "Verlängerungsabsicht"@de ,
     	"renewal intention"@en ;
     rdfs:comment "Verknüpft, ob für das Folgejahr die ABsicht zur Verlängerung besteht."@de ,
     	"Links the renewal intention for the following year."@en ;
@@ -1914,7 +1914,7 @@ amsl:Cancelled a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
     rdfs:seeAlso "ERMI terms value: Retired for term _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .   
 	
 amsl:Ended a amsl:SubscriptionStatus  ;
-    rdfs:label "beendet / ausgelaufen"@de ,
+    rdfs:label "Ausgelaufen / Beendet"@de ,
         "ended"@en .		
 		
 amsl:Implemented a amsl:ShibbolethImplStatus ;

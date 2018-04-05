@@ -1273,12 +1273,12 @@ amsl:renewalContract a owl:ObjectProperty ;
     rdfs:range amsl:Subscription  .  
 
 amsl:renewalIntention a owl:ObjectProperty ;
-	rdfs:label "Verlängerungsvertrag"@de ,
-    	"renewal contract"@en ;
-    rdfs:comment "Verknüpft den nachfolgenden Vertrag, der durch eine Verlängerung des bisherigen entstanden ist."@de ,
-    	"Links the following contract that is a renewal of the current subscription."@en ;
+	rdfs:label "Plan für Folgejahr"@de ,
+    	"renewal intention"@en ;
+    rdfs:comment "Verknüpft, ob für das Folgejahr die ABsicht zur Verlängerung besteht."@de ,
+    	"Links the renewal intention for the following year."@en ;
     rdfs:domain amsl:Subscription ;
-    rdfs:range amsl:Subscription  .  	
+    rdfs:range amsl:RenewalIntention  .  	
  
 amsl:scholarlySharing a owl:ObjectProperty ;
     rdfs:label "Scholarly Sharing "@de ,
@@ -1339,8 +1339,8 @@ amsl:subscriptionStatus a owl:ObjectProperty,
         owl:ObjectProperty ;
     rdfs:label "Vertragsstatus"@de ,
         "subscription status"@en ;
-    rdfs:comment "Verknüpft, ob der Vertrag erst geplant ist, bereits aktiv oder abgeschlossen ist."@de ,
-        "Links whether a subscription ist only planned, already active or terminated."@en ;
+    rdfs:comment "Verknüpft, ob der Vertrag erst geplant ist, unterzeichnet, bereits laufend oder abgeschlossen ist."@de ,
+        "Links whether a subscription ist only planned, signed, already running or ended."@en ;
     rdfs:domain amsl:Subscription ;
     rdfs:range amsl:SubscriptionStatus .
 	
@@ -1888,10 +1888,10 @@ amsl:MetadataSourceImplStatus a owl:Class ;
     owl:oneOf   (amsl:Wish amsl:Inquired  amsl:InProcess amsl:Trial amsl:Active amsl:Cancelled amsl:Impossible ) .
 	
 amsl:SubscriptionStatus a owl:Class ;
-    owl:oneOf   (amsl:Planned amsl:Active amsl:Cancelled ) .
+    owl:oneOf   (amsl:PlannedWish amsl:PlannedRenewal amsl:Signed amsl:Running amsl:Ended amsl:Unrealized  ) .
 	
 amsl:RenewalIntention a owl:Class ;
-    owl:oneOf   (amsl:Renew amsl:NotRenew amsl:NotApplicable ) .
+    owl:oneOf   (amsl:Renewal amsl:NoRenewal amsl:NotApplicable ) .
 
 amsl:ERStatus a owl:Class ;
     owl:oneOf ( amsl:Active amsl:Cancelled  amsl:Trial amsl:Wish  ) ;
@@ -1902,7 +1902,7 @@ amsl:WorkflowStatus a owl:Class ;
     rdfs:seeAlso "ERMI terms: _Renewal Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
 
 
-amsl:Active a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
+amsl:Active a amsl:ERStatus , amsl:MetadataSourceImplStatus , amsl:SubscriptionStatus  ;
     rdfs:label "Aktiv"@de ,
         "active"@en ;
     rdfs:seeAlso "ERMI terms value: _Active_ for term _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
@@ -1913,14 +1913,10 @@ amsl:Cancelled a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
         "cancelled / terminated"@en ;
     rdfs:seeAlso "ERMI terms value: Retired for term _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .   
 	
-amsl:NotRenew a amsl:RenewalIntention ;
-    rdfs:label "Nicht verlängern"@de ,
-        "Not renew"@en .
-
-amsl:Renew a amsl:RenewalIntention ;
-    rdfs:label "Verlängern"@de ,
-        "renew"@en .
-
+amsl:Ended a amsl:SubscriptionStatus  ;
+    rdfs:label "beendet / ausgelaufen"@de ,
+        "ended"@en .		
+		
 amsl:Implemented a amsl:ShibbolethImplStatus ;
     rdfs:label "Implementiert"@de ,
         "implemented"@en ;
@@ -1941,14 +1937,22 @@ amsl:Inquired a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus , amsl
     rdfs:label "Angefragt / In Verhandlung"@de ,
         "inquired / in negotiation"@en .
 
+amsl:NoRenewal a amsl:RenewalIntention ;
+    rdfs:label "Keine Verlängerung"@de ,
+        "no renewal"@en .		
+		
 amsl:NotRenewed a amsl:WorkflowStatus ;
     rdfs:label "Nicht Verlängert"@de ,
         "not renewed"@en ;
     rdfs:seeAlso "ERMI terms value: _Cancelled_ for term _Renewal Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" .
  
-amsl:Planned a amsl:SubscriptionStatus  ;
-    rdfs:label "Geplant"@de ,
-        "planned"@en .
+amsl:PlannedWish a amsl:SubscriptionStatus  ;
+    rdfs:label "Geplant (Wunsch)"@de ,
+        "planned (wish)"@en .
+		
+amsl:PlannedRenewal a amsl:SubscriptionStatus  ;
+    rdfs:label "Geplant (Verlängerung)"@de ,
+        "planned (renewal)"@en .		
 		
 amsl:Prospected a amsl:ShibbolethImplStatus  ;
     rdfs:label "In Aussicht"@de ,
@@ -1958,12 +1962,28 @@ amsl:Renewed a amsl:WorkflowStatus ;
     rdfs:label "Verlängert"@de ,
         "renewed"@en ;
     rdfs:seeAlso "ERMI terms value: _Renewed_ for term _Renewal Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 143)" .
+	
+amsl:Renewal a amsl:RenewalIntention ;
+    rdfs:label "Verlängerung"@de ,
+        "renewal"@en .
+		
+amsl:Running a amsl:SubscriptionStatus  ;
+    rdfs:label "Laufend"@de ,
+        "running"@en .		
+			
+amsl:Signed a amsl:SubscriptionStatus  ;
+    rdfs:label "Unterzeichnet"@de ,
+        "signed"@en .	
        
 amsl:Trial a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
     rdfs:label "Test"@de ,
         "trial"@en ;
     rdfs:seeAlso "ERMI terms value: _On Trial_ for term _Electronic Resource Status_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 138)" .
 
+amsl:Unrealized a amsl:SubscriptionStatus  ;
+    rdfs:label "Nicht realisiert"@de ,
+        "unrealized"@en .	
+	
 amsl:Wish a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
     rdfs:label "Wunsch"@de ,
         "wish"@en ;

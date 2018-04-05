@@ -253,10 +253,10 @@ amsl:catalogBaseURL a owl:DatatypeProperty ;
         "Links the base URL of a library's catalog."@en ;
     rdfs:domain foaf:Organization .
 
-amsl:collectionID a owl:DatatypeProperty ;
-    rdfs:label "Collection ID"@de ,
-        "collection ID"@en ;
-    rdfs:comment "Verknüpft die Collection ID einer Metadatenkollektion. Diese ID ist über alle Quellen hinweg eindeutig."@de ,
+amsl:technicalCollectionID a owl:DatatypeProperty ;
+    rdfs:label "Technische Collection-ID"@de ,
+        "technical collection ID"@en ;
+    rdfs:comment "Verknüpft die technische Collection ID einer Metadatenkollektion. Diese ID ist über alle Quellen hinweg eindeutig. Sie wird entsprechend der technischen Bedingungen der Metadaten definiert. Falls notwendig, kann eine amsl-Collection über mehrere technische IDs verfügen."@de ,
         "Links the collection ID of a metadata collection. This ID is unique for all sources."@en ;
     rdfs:domain amsl:Collection .    
 

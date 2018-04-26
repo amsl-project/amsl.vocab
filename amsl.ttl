@@ -193,8 +193,16 @@ amsl:authMethod a owl:ObjectProperty ;
         "authentication method"@en ;
     rdfs:comment "Verknüpft die nötige Authentifizierungsmethode, um Zugang zu den lizenzierten elektronischen Ressourcen zu erhalten."@de ,
     	"Links the method of authentification required to gain access to the licensed electronic resources."@en ;        
-    rdfs:domain amsl:License ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:License amsl:Platform ) ] ;
     rdfs:range amsl:AuthMethod .
+	
+amsl:authNote a owl:DatatypeProperty ;
+    rdfs:label "Authentifizierungnotiz"@de ,
+        "authentication note"@en ;
+    rdfs:comment "Verknüpft weitere Informationen zur Authentifizierungsmethode"@de ,
+    	"Links further information on the authentification method."@en ;        
+    rdfs:domain amsl:Platform .
 	
 amsl:authorizedSites a owl:ObjectProperty ;
     rdfs:label "Authorized Sites"@de ,
@@ -683,8 +691,6 @@ amsl:illNote a owl:DatatypeProperty ;
         "Links further information on terms concerning the interlibrary loan."@en ;
     rdfs:seeAlso "ERMI terms: _Interlibrary Loan Term Note_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 155)" ; 
     rdfs:domain amsl:License .
-# currently not in use - no ILL information
-
 
 amsl:illset a owl:ObjectProperty ;
     rdfs:label "Interlibrary Loan Secure Electronic Transmission"@de ,
@@ -694,7 +700,6 @@ amsl:illset a owl:ObjectProperty ;
     rdfs:seeAlso "ERMI terms: _Interlibrary Loan Secure Electronic Transmission_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 154)" ;       
     rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
-# currently not in use - no ILL information
 
 
 amsl:illElectronic a owl:ObjectProperty ;
@@ -705,7 +710,6 @@ amsl:illElectronic a owl:ObjectProperty ;
     rdfs:seeAlso "ERMI terms: _Interlibrary Loan Electronic_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 155)" ; 
     rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
-# currently not in use - no ILL information
 
 amsl:illPrintOrFax a owl:ObjectProperty ;
     rdfs:label "Fernleihe print / Fax"@de ,
@@ -715,7 +719,6 @@ amsl:illPrintOrFax a owl:ObjectProperty ;
     rdfs:seeAlso "ERMI terms: _Interlibrary Loan Print or Fax_ (cf. https://old.diglib.org/pubs/dlf102/ERMFINAL.pdf, p. 154)" ; 
     rdfs:domain amsl:License ;
     rdfs:range amsl:LicenseTerm .
-# currently not in use - no ILL information
 
 amsl:includedInMetadataSource a owl:ObjectProperty ;
     rdfs:label "enthalten in Metadatenquelle"@de ,
@@ -1275,7 +1278,7 @@ amsl:renewalContract a owl:ObjectProperty ;
 amsl:renewalIntention a owl:ObjectProperty ;
 	rdfs:label "Verlängerungsabsicht"@de ,
     	"renewal intention"@en ;
-    rdfs:comment "Verknüpft, ob für das Folgejahr die ABsicht zur Verlängerung besteht."@de ,
+    rdfs:comment "Verknüpft, ob für das Folgejahr die Absicht zur Verlängerung besteht."@de ,
     	"Links the renewal intention for the following year."@en ;
     rdfs:domain amsl:Subscription ;
     rdfs:range amsl:RenewalIntention  .  	
@@ -1591,7 +1594,7 @@ amsl:ScientificInformationServicesSpecific a amsl:AuthorizedSite ;
 
 
 amsl:AuthMethod a owl:Class ;
-    owl:oneOf ( amsl:IPCampus amsl:IPSingle amsl:IPSubnet amsl:LandP amsl:Registration amsl:Shibboleth  ) .
+    owl:oneOf ( amsl:IPCampus amsl:IPSubnet amsl:IPSingle amsl:LandP amsl:Registration amsl:Shibboleth amsl:EZproxy ) .
 
 amsl:IPCampus a amsl:AuthMethod ;
     rdfs:label "IP-Check Campusnetz"@de ,
@@ -1616,6 +1619,10 @@ amsl:Registration a amsl:AuthMethod ;
 amsl:Shibboleth a amsl:AuthMethod ;
     rdfs:label "Shibboleth"@de ,
     	"shibboleth"@en .
+		
+amsl:EZproxy a amsl:AuthMethod ;
+    rdfs:label "EZproxy"@de ,
+    	"EZproxy"@en .
  
 
 

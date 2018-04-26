@@ -860,7 +860,7 @@ amsl:invoiceReceived a owl:ObjectProperty ;
     rdfs:comment "Verknüpft die Information, ob die aktuelle Rechnung bereits eingegangen ist."@de ,
         "Links the information, if the current invoice has alreday been received."@en ;
     rdfs:domain amsl:Financial ;
-    rdfs:range amsl:Boolean .
+    rdfs:range amsl:ExtendedBooleanNotApplicable .
     
 amsl:isMemberOf a owl:ObjectProperty ;
     rdfs:label "Mitglied von"@de ,
@@ -1788,14 +1788,16 @@ amsl:ExtendedBoolean  a owl:Class ;
 amsl:Undetermined a amsl:ExtendedBoolean ;
     rdfs:label "Nicht festgelegt"@de ,
         "undetermined"@en .
- 
+		
 
-
+amsl:ExtendedBooleanNotApplicable  a owl:Class ;
+    owl:oneOf (  amsl:Yes amsl:No amsl:NotApplicable ) .
+        
  
 amsl:LicenseTerm a owl:Class ;
     owl:oneOf ( amsl:NotApplicable amsl:SilentUninterpreted amsl:ProhibitedInterpreted  amsl:ProhibitedExplicit amsl:PermittedInterpreted  amsl:PermittedExplicitConditions amsl:PermittedExplicit ) .
         
-amsl:NotApplicable a amsl:LicenseTerm ;
+amsl:NotApplicable a amsl:LicenseTerm, a amsl:ExtendedBooleanNotApplicable ;
     rdfs:label "Nicht zutreffend"@de ,
         "not applicable"@en .
  

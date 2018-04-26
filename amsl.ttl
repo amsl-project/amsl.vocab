@@ -1797,7 +1797,7 @@ amsl:ExtendedBooleanNotApplicable  a owl:Class ;
 amsl:LicenseTerm a owl:Class ;
     owl:oneOf ( amsl:NotApplicable amsl:SilentUninterpreted amsl:ProhibitedInterpreted  amsl:ProhibitedExplicit amsl:PermittedInterpreted  amsl:PermittedExplicitConditions amsl:PermittedExplicit ) .
         
-amsl:NotApplicable a amsl:LicenseTerm, a amsl:ExtendedBooleanNotApplicable ;
+amsl:NotApplicable a amsl:LicenseTerm, amsl:ExtendedBooleanNotApplicable ;
     rdfs:label "Nicht zutreffend"@de ,
         "not applicable"@en .
  

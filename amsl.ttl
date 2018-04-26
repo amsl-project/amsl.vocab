@@ -1166,7 +1166,15 @@ amsl:paymentPeriod  a owl:ObjectProperty ;
     rdfs:comment "Verknüpft den Zeitraum, in dem die Zahlung einer Rechnung fällig wird."@de ,
         "Línks the period the payment of an invoice is due."@en ;
     rdfs:domain amsl:Financial ;
-    rdfs:range amsl:PaymentPeriod .       
+    rdfs:range amsl:PaymentPeriod . 
+
+amsl:paymentSchedule a owl:ObjectProperty ;
+    rdfs:label "Planmäßigkeit der Zahlung"@de ,
+        "payment schedule"@en ;
+    rdfs:comment "Verknüpft ob der Zahlungszeitraum planmäßig oder außerplanmäßig ist."@de ,
+        "Línks whether the payment period is scheduled or unscheduled."@en ;
+    rdfs:domain amsl:Financial ;
+    rdfs:range amsl:Schedule . 	
 
 amsl:pCopy a owl:ObjectProperty ;
     rdfs:label "Kopie print"@de ,
@@ -1778,8 +1786,6 @@ amsl:PrintPlusOnlineJournal a owl:Class ;
         "print + online (journal)"@en .
 
 
- 
-
 
 
 amsl:ExtendedBoolean  a owl:Class ;
@@ -1854,10 +1860,21 @@ amsl:PaymentPeriod a owl:Class ;
 amsl:PaymentInAdvance a amsl:PaymentPeriod ;
     rdfs:label "Zahlung im Voraus"@de ,
         "payment in advance"@en .
-
+		
 amsl:PaymentInLicensingYear a amsl:PaymentPeriod ;
     rdfs:label "Zahlung im Lizenzjahr"@de ,
         "payment in licensing year"@en .
+		
+
+amsl:Schedule a owl:Class ;
+    owl:oneOf (amsl:Scheduled amsl:Unscheduled) .
+	
+amsl:Scheduled a amsl:PaymentPeriod ;
+    rdfs:label "planmäßig"@de ,
+        "scheduled"@en .
+amsl:Unscheduled a amsl:PaymentPeriod ;
+    rdfs:label "außerplanmäßig"@de ,
+        "unscheduled"@en .
 
 
 amsl:SolrShard a owl:Class .

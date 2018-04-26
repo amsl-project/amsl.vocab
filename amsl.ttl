@@ -1301,6 +1301,7 @@ amsl:scholarlySharing a owl:ObjectProperty ;
     rdfs:range amsl:LicenseTerm .
 
 amsl:shibbolethImplStatus a owl:ObjectProperty ;
+	owl:deprecated "true"^^xsd:Boolean ;
     rdfs:label "Status Shibboleth Implementation"@de ,
         "shibboleth implementation status"@en ;
     rdfs:comment "Verknüpft Informationen über den Status der Shibboleth Implementation."@de ,
@@ -1908,6 +1909,7 @@ amsl:WalkIns a amsl:UserGroup ;
 
                
 amsl:ShibbolethImplStatus a owl:Class ;
+	owl:deprecated "true"^^xsd:Boolean ;
     owl:oneOf ( amsl:Inquired amsl:Prospected amsl:InProcess amsl:Implemented amsl:Impossible   ) .
 
 amsl:MetadataSourceImplStatus a owl:Class ;
